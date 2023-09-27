@@ -7,11 +7,18 @@ using UnityEngine;
 public class InspectHelper : MonoBehaviour
 {
     public bool ShowArm;
-
     [SerializeField] SkinnedMeshRenderer[] mesh;
 
+
+    [Range(0, 1)]
+    public float IKWeight;
     // Update is called once per frame
     void Update()
+    {
+        EnableArms();
+    }
+
+    private void EnableArms()
     {
         if (ShowArm)
         {
@@ -27,4 +34,6 @@ public class InspectHelper : MonoBehaviour
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
         }
     }
+
+
 }

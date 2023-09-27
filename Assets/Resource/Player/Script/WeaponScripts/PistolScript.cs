@@ -95,6 +95,18 @@ public class PistolScript : MonoBehaviour
                 return;
             }
             animator.Play("Shoot");
+
+
+            //model Animator
+            if (player.state == PlayerController.State.Primary)
+            {
+                modelAnimator.Play("ShootSMG");
+            }
+            else if (player.state == PlayerController.State.Secondary)
+            {
+                modelAnimator.Play("ShootPistol");
+            }
+
             recoil.RecoilShoot();
         }
 

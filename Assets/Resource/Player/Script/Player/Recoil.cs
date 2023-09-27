@@ -32,6 +32,12 @@ public class Recoil : MonoBehaviour
 
     public void RecoilShoot()
     {
+        if (input.Aim)
+        {
+            targetRotation += new Vector3(recoilX/2, Random.Range(-recoilY/2, recoilY/2), Random.Range(-recoilZ/2, recoilZ/2));
+            return;
+        }
+
         targetRotation += new Vector3(recoilX, Random.Range(-recoilY, recoilY), Random.Range(-recoilZ, recoilZ));
     }
 }

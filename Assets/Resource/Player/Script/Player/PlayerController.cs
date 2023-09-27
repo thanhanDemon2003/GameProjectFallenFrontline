@@ -129,7 +129,7 @@ namespace FPS.Player
             animator.SetFloat(_Yvelocity, currentVelocity.y);
 
 
-            if (currentSpeed() < 1)
+            if (currentSpeed() < 0.4)
             {
                 animator.SetFloat(_Xvelocity, 0);
                 animator.SetFloat(_Yvelocity, 0);
