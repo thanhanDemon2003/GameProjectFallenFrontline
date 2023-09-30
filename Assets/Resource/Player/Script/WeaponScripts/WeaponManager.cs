@@ -3,6 +3,7 @@ using FPS.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] Animator smgAnimator;
 
     public PlayerController player;
+    public InputManager input;
+
+    public bool flashLightEquip = false;
+    private bool buttonPressed = false;
+    [SerializeField] GameObject FlashLight;
 
     void Start()
     {
@@ -42,6 +48,11 @@ public class WeaponManager : MonoBehaviour
                 StartCoroutine(SetSecondary());
                 return;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        EquipFLash();
     }
 
     private IEnumerator SetSMG()
@@ -76,6 +87,22 @@ public class WeaponManager : MonoBehaviour
         pistolCam.SetActive(true);
         animator.SetLayerWeight(pistolAnimatorLayer, 1f);
         pistolModel.SetActive(true);
+    }
+
+    private void EquipFLash()
+    {
+        if (input.Flash && !buttonPressed)
+        {
+            flashLightEquip = !flashLightEquip;
+            buttonPressed = true;
+        }
+
+        if (!input.Flash)
+        {
+            buttonPressed = false;
+        }
+
+        FlashLight.SetActive(flashLightEquip);
     }
 
 

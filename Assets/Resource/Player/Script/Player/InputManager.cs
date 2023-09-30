@@ -23,6 +23,7 @@ namespace FPS.Manager
         public bool Knife { get; set; }
         public bool Reload { get; set; }
         public bool Aim { get; set; }
+        public bool Flash { get; set; }
 
         private InputActionMap _currentMap;
         private InputAction _moveAction;
@@ -38,6 +39,7 @@ namespace FPS.Manager
         private InputAction _knifeAction;
         private InputAction _reloadAction;
         private InputAction _aimAction;
+        private InputAction _flashLightAction;
 
         private void Awake()
         {
@@ -54,6 +56,7 @@ namespace FPS.Manager
             _knifeAction = _currentMap.FindAction("Knife");
             _reloadAction = _currentMap.FindAction("Reload");
             _aimAction = _currentMap.FindAction("Aim");
+            _flashLightAction = _currentMap.FindAction("Flashlight");
 
             _moveAction.performed += onMove;
             _lookAction.performed += onLook;
@@ -67,6 +70,8 @@ namespace FPS.Manager
             _knifeAction.started += onKnife;
             _reloadAction.started += onReload;
             _aimAction.started += onAim;
+            _flashLightAction.performed += onFlash;
+
 
             _moveAction.canceled += onMove;
             _JumpAction.canceled += onJump;
@@ -80,7 +85,14 @@ namespace FPS.Manager
             _knifeAction.canceled += onKnife;
             _reloadAction.canceled += onReload;
             _aimAction.canceled += onAim;
+            _flashLightAction.canceled += onFlash;
 
+
+        }
+        private void onFlash(InputAction.CallbackContext context)
+        {
+            Flash = context.ReadValueAsButton();
+            Debug.Log(Flash);
         }
 
         private void onMove(InputAction.CallbackContext context)
