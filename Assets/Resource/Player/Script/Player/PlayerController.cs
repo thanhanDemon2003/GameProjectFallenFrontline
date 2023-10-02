@@ -53,6 +53,7 @@ namespace FPS.Player
         private float LayerWeightVelocity;
 
         private bool isCrouching;
+        private bool crouchPressed;
         float speed;
 
         private Vector3 previousPosition;
@@ -145,7 +146,7 @@ namespace FPS.Player
                 speed = runSpeed;
                 return;
             }
-            else if (inputManager.Crouch)
+            else if (isCrouching)
             {
                 speed = crouchSpeed;
                 return;
@@ -177,10 +178,18 @@ namespace FPS.Player
 
         private void Crouch()
         {
-            animator.SetBool("isCrouching", inputManager.Crouch);
+            if (inputManager.Crouch && !crouchPressed)
+            {
+                isCrouching = !isCrouching;
+                crouchPressed = true;
+            }
 
-            if (!inputManager.Crouch) return;
-            speed = crouchSpeed;
+            if (!inputManager.Crouch)
+            {
+                crouchPressed = false;
+            }
+
+            animator.SetBool("isCrouching", isCrouching);
         }
 
         private void EquipWeapon()
