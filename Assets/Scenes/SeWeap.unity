@@ -1129,10 +1129,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2660432950772899161, guid: f74c8eb63d51bf14da9f4580b933ed92,
+        type: 3}
+      propertyPath: impactForce
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2788880883756783916, guid: f74c8eb63d51bf14da9f4580b933ed92,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870180472996050206, guid: f74c8eb63d51bf14da9f4580b933ed92,
+        type: 3}
+      propertyPath: impactForce
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8933284273894916488, guid: f74c8eb63d51bf14da9f4580b933ed92,
         type: 3}
