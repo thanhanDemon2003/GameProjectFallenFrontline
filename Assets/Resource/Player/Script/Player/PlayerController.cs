@@ -28,10 +28,6 @@ namespace FPS.Player
         private Animator animator;
         private bool _hasAnimator;
 
-        // Pistol Script funtion
-        private PistolScript pistolScript;
-
-
         private int _Xvelocity, _Yvelocity;
         private int _EquipWeapon;
 
@@ -52,12 +48,14 @@ namespace FPS.Player
         private int pistolAnimatorLayer, smgAnimatorLayer;
         private float LayerWeightVelocity;
 
-        private bool isCrouching;
+        public bool isCrouching;
+        private bool crouchPressed;
         float speed;
 
         private Vector3 previousPosition;
         public float curSpeed;
 
+        public bool isOnGround = true;
         public enum State
         {
             Primary,
@@ -85,7 +83,6 @@ namespace FPS.Player
 
             pistolAnimatorLayer = animator.GetLayerIndex("Pistol_Layer");
 
-            pistolScript = GetComponent<PistolScript>();
         }
 
         private void FixedUpdate()
@@ -145,7 +142,7 @@ namespace FPS.Player
                 speed = runSpeed;
                 return;
             }
-            else if (inputManager.Crouch)
+            else if (isCrouching)
             {
                 speed = crouchSpeed;
                 return;
@@ -177,10 +174,18 @@ namespace FPS.Player
 
         private void Crouch()
         {
-            animator.SetBool("isCrouching", inputManager.Crouch);
+            if (inputManager.Crouch && !crouchPressed)
+            {
+                isCrouching = !isCrouching;
+                crouchPressed = true;
+            }
 
-            if (!inputManager.Crouch) return;
-            speed = crouchSpeed;
+            if (!inputManager.Crouch)
+            {
+                crouchPressed = false;
+            }
+
+            animator.SetBool("isCrouching", isCrouching);
         }
 
         private void EquipWeapon()

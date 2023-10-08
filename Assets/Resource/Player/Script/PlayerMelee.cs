@@ -6,42 +6,40 @@ using UnityEngine;
 
 public class PlayerMelee : MonoBehaviour
 {
-    private Animator animator;
-    private InputManager inputManager;
-    private PlayerController playerController;
-    private int _kickHash;
-    private bool _hasAnimator;
-    [SerializeField] Transform lookDirection;
-    [SerializeField] AvatarTarget matchBodyPart;
+    public GameObject Knife, Gun;
+    public Animator knifeAnimator;
+
+    public InputManager inputManager;
+    private bool buttonPressed;
     // Start is called before the first frame update
     void Start()
     {
-        _hasAnimator = TryGetComponent<Animator>(out animator);
-        playerController = GetComponent<PlayerController>();
-        inputManager= GetComponent<InputManager>();
 
-        _kickHash = Animator.StringToHash("Kick");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Kick();
+        KnifeUse();
     }
 
-    private void Kick()
+    private void KnifeUse()
     {
-        if (!_hasAnimator) return;
-        if (!inputManager.Kick) return;
-        animator.Play("Kick");
-        StartCoroutine(setControl());
+        if (inputManager.Knife && !buttonPressed)
+        {
+            Knife.SetActive(true);
+        }
+
+        Gun.SetActive(!AnimCheck(knifeAnimator, "Knife"));
+        Knife.SetActive(AnimCheck(knifeAnimator, "Knife"));
     }
 
-    IEnumerator setControl()
+    private bool AnimCheck(Animator anim, string stateName)
     {
-        playerController.canControl = false;
-        yield return new WaitForSeconds(0.6f);
-        playerController.canControl = true;
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(stateName) &&
+                anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+            return true;
+        else
+            return false;
     }
-
 }

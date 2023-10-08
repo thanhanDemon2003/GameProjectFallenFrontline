@@ -7,7 +7,10 @@ using UnityEngine;
 public class InspectHelper : MonoBehaviour
 {
     public bool ShowArm;
-    [SerializeField] SkinnedMeshRenderer[] mesh;
+    public bool PlayerShadow;
+    [SerializeField] SkinnedMeshRenderer[] meshArm;
+
+    [SerializeField] SkinnedMeshRenderer[] meshPlayer;
 
 
     [Range(0, 1)]
@@ -22,18 +25,17 @@ public class InspectHelper : MonoBehaviour
     {
         if (ShowArm)
         {
-            foreach (var renderer in mesh)
+            foreach (var renderer in meshArm)
             {
                 renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
             }
             return;
         }
 
-        foreach (var renderer in mesh)
+        foreach (var renderer in meshArm)
         {
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
         }
     }
-
 
 }
