@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Laboratory_Map/Laboratory/Settings/URP/URP.unitypackage.meta
 guid: 2921ef1210f3ee74f9de33803b9c3757
+========
+guid: 6e402e90979899d4ba556af01e087a1f
+folderAsset: yes
+>>>>>>>> Huan04:Assets/Resource/MapFolder.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

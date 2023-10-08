@@ -16,11 +16,13 @@ public class PistolScript : MonoBehaviour
 
     public int maxBullet = 8;
     public int currentBullet;
+    public int impactForce;
 
     public float bulletSpreadAngle;
 
     public ParticleSystem muzzleFlash,smoke;
     public GameObject impactEffect;
+    public GameObject fleshEffect;
 
     public LayerMask hitLayer;
 
@@ -201,23 +203,43 @@ public class PistolScript : MonoBehaviour
             muzzleFlash.Play();
             //smoke.Play();
             currentBullet--;
-
-            // Bắn một Raycast từ vị trí camera
             RaycastHit hit;
             if (Physics.Raycast(gunPivot.transform.position, gunPivot.transform.forward, out hit, maxRange, hitLayer))
             {
                 Debug.DrawRay(gunPivot.transform.position, gunPivot.transform.forward * hit.distance, Color.green);
                 Debug.Log(hit.transform.name);
+                if (hit.rigidbody != null)
+                {
+                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                }
 
                 TargetScript target = hit.transform.GetComponent<TargetScript>();
 
                 if (target != null)
                 {
                     target.TakeDamage(damage);
+                    GameObject impact1 = Instantiate(fleshEffect, hit.point, Quaternion.LookRotation(-hit.normal));
+                    impact1.transform.SetParent(hit.transform, true);
+                    Destroy(impact1, 10f);
+                    Debug.Log(">>> target");
                 }
 
-                Destroy(Instantiate(impactEffect, hit.point, Quaternion.LookRotation(-hit.normal)), 10f);
+                else if (hit.collider.gameObject.CompareTag("Wall"))
+                {
+                    GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(-hit.normal));
+                    impact.transform.SetParent(hit.transform, true);
+                    Destroy(impact, 5f);
+                    Debug.Log(">>> Wall");
+                }
+                else
+                {
+                    GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(-hit.normal));
+                    impact.transform.SetParent(hit.transform, true);
+                    Destroy(impact, 5f);
+                    Debug.Log(">>> orther");
+                }
             }
+
         }
 
     }

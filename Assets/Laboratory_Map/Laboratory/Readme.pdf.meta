@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Laboratory_Map/Laboratory/Readme.pdf.meta
 guid: e77e7930f3d2caa42a99d9ebe27f1e06
+========
+guid: 8633ea07a7eae634c9fc6d9e126b87a8
+>>>>>>>> Huan04:Assets/Scenes/Map.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
