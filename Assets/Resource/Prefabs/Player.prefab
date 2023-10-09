@@ -388,7 +388,7 @@ Transform:
   - {fileID: 7802645596534500624}
   - {fileID: 7554972395834404989}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &6842090646771106419
 CapsuleCollider:
@@ -6230,10 +6230,13 @@ MonoBehaviour:
   damage: 10
   maxBullet: 8
   currentBullet: 8
+  impactForce: 0
   bulletSpreadAngle: 0
   muzzleFlash: {fileID: 3539927845505375961}
   smoke: {fileID: 0}
   impactEffect: {fileID: 686729198845939695, guid: 0db859a4b314770498cfefa337e7dc16,
+    type: 3}
+  fleshEffect: {fileID: 295924368469834953, guid: 86df71da23cfab3498cbb176b3d5dbd6,
     type: 3}
   hitLayer:
     serializedVersion: 2
@@ -7523,10 +7526,13 @@ MonoBehaviour:
   damage: 10
   maxBullet: 30
   currentBullet: 30
+  impactForce: 0
   bulletSpreadAngle: 0
   muzzleFlash: {fileID: 4636543847687294499}
   smoke: {fileID: 0}
   impactEffect: {fileID: 686729198845939695, guid: 0db859a4b314770498cfefa337e7dc16,
+    type: 3}
+  fleshEffect: {fileID: 295924368469834953, guid: 86df71da23cfab3498cbb176b3d5dbd6,
     type: 3}
   hitLayer:
     serializedVersion: 2
@@ -12349,6 +12355,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9157471461740337599}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 43329537fb846f146a5df1affcb4cd80,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 999497316487597134}
   m_SourcePrefab: {fileID: 100100000, guid: 43329537fb846f146a5df1affcb4cd80, type: 3}
 --- !u!1 &4792709642289100782 stripped
 GameObject:
@@ -12377,6 +12387,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &999497316487597134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792709642289100782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7206c687a72782b47862b9ec9f964162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knifePivot: {fileID: 6909553864640888364}
+  maxRange: 15
+  damage: 10
+  impactForce: 50
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 119
 --- !u!4 &5316763974229519700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 43329537fb846f146a5df1affcb4cd80,
