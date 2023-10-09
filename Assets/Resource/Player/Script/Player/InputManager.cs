@@ -24,6 +24,7 @@ namespace FPS.Manager
         public bool Reload { get; set; }
         public bool Aim { get; set; }
         public bool Flash { get; set; }
+        public bool Heal { get; set; }
 
         private InputActionMap _currentMap;
         private InputAction _moveAction;
@@ -40,10 +41,12 @@ namespace FPS.Manager
         private InputAction _reloadAction;
         private InputAction _aimAction;
         private InputAction _flashLightAction;
+        private InputAction _healtAction;
 
         private void Awake()
         {
             _currentMap = playerInput.currentActionMap;
+
             _moveAction = _currentMap.FindAction("Move");
             _lookAction = _currentMap.FindAction("Look");
             _JumpAction = _currentMap.FindAction("Jump");
@@ -57,6 +60,7 @@ namespace FPS.Manager
             _reloadAction = _currentMap.FindAction("Reload");
             _aimAction = _currentMap.FindAction("Aim");
             _flashLightAction = _currentMap.FindAction("Flashlight");
+            _healtAction = _currentMap.FindAction("Heal");
 
             _moveAction.performed += onMove;
             _lookAction.performed += onLook;
@@ -71,6 +75,7 @@ namespace FPS.Manager
             _reloadAction.started += onReload;
             _aimAction.started += onAim;
             _flashLightAction.performed += onFlash;
+            _healtAction.performed += onHeal;
 
 
             _moveAction.canceled += onMove;
@@ -86,13 +91,18 @@ namespace FPS.Manager
             _reloadAction.canceled += onReload;
             _aimAction.canceled += onAim;
             _flashLightAction.canceled += onFlash;
+            _healtAction.canceled += onHeal;
 
 
         }
         private void onFlash(InputAction.CallbackContext context)
         {
             Flash = context.ReadValueAsButton();
-            Debug.Log(Flash);
+        }
+
+        private void onHeal(InputAction.CallbackContext context)
+        {
+            Heal = context.ReadValueAsButton();
         }
 
         private void onMove(InputAction.CallbackContext context)
