@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18325159, g: 0.22889355, b: 0.30637982, a: 1}
+  m_IndirectSpecularColor: {r: 0.18325183, g: 0.22889417, b: 0.306381, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4457,10 +4457,13 @@ MonoBehaviour:
   damage: 10
   maxBullet: 30
   currentBullet: 30
+  impactForce: 0
   bulletSpreadAngle: 0
   muzzleFlash: {fileID: 3423614973750346594}
   smoke: {fileID: 0}
   impactEffect: {fileID: 686729198845939695, guid: 0db859a4b314770498cfefa337e7dc16,
+    type: 3}
+  fleshEffect: {fileID: 295924368469834953, guid: 86df71da23cfab3498cbb176b3d5dbd6,
     type: 3}
   hitLayer:
     serializedVersion: 2
@@ -14985,10 +14988,13 @@ MonoBehaviour:
   damage: 10
   maxBullet: 8
   currentBullet: 8
+  impactForce: 0
   bulletSpreadAngle: 0
   muzzleFlash: {fileID: 65764843}
   smoke: {fileID: 0}
   impactEffect: {fileID: 686729198845939695, guid: 0db859a4b314770498cfefa337e7dc16,
+    type: 3}
+  fleshEffect: {fileID: 295924368469834953, guid: 86df71da23cfab3498cbb176b3d5dbd6,
     type: 3}
   hitLayer:
     serializedVersion: 2
@@ -15479,6 +15485,7 @@ MonoBehaviour:
   Gun: {fileID: 1011366050}
   ArmHeal: {fileID: 0}
   knifeAnimator: {fileID: 625813503}
+  healAnimator: {fileID: 0}
   modelAnimator: {fileID: 0}
   inputManager: {fileID: 2519820871307894035}
 --- !u!4 &8624054816726459615
