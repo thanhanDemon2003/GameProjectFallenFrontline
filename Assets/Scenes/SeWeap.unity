@@ -228,7 +228,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &334753995
 GameObject:
@@ -367,7 +367,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 689264145307309709}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1067,12 +1067,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d375b91a596ffcf409a8cb2601fb0a08, type: 3}
---- !u!20 &689264145307309709 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3831635201543421018, guid: f74c8eb63d51bf14da9f4580b933ed92,
-    type: 3}
-  m_PrefabInstance: {fileID: 4090023066793323375}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4090023066793323375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1084,7 +1078,7 @@ PrefabInstance:
     - target: {fileID: 883071828097099482, guid: f74c8eb63d51bf14da9f4580b933ed92,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 883071828097099482, guid: f74c8eb63d51bf14da9f4580b933ed92,
         type: 3}
@@ -1136,10 +1130,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3208646022611015319, guid: f74c8eb63d51bf14da9f4580b933ed92,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3493555304323829726, guid: f74c8eb63d51bf14da9f4580b933ed92,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079799770057798741, guid: f74c8eb63d51bf14da9f4580b933ed92,
+        type: 3}
+      propertyPath: impactForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190291536090216665, guid: f74c8eb63d51bf14da9f4580b933ed92,
+        type: 3}
+      propertyPath: impactForce
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
