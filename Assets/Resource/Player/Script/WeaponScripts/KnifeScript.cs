@@ -10,17 +10,6 @@ public class KnifeScript : MonoBehaviour
     public int impactForce;
     public LayerMask hitLayer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Slash()
     {
