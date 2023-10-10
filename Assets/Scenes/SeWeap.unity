@@ -1484,7 +1484,17 @@ PrefabInstance:
     - target: {fileID: 8100626098012094051, guid: f74c8eb63d51bf14da9f4580b933ed92,
         type: 3}
       propertyPath: maxRange
-      value: 3
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100626098012094051, guid: f74c8eb63d51bf14da9f4580b933ed92,
+        type: 3}
+      propertyPath: impactForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100626098012094051, guid: f74c8eb63d51bf14da9f4580b933ed92,
+        type: 3}
+      propertyPath: hitLayer.m_Bits
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 8629041564925685527, guid: f74c8eb63d51bf14da9f4580b933ed92,
         type: 3}

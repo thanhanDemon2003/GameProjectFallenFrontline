@@ -34,11 +34,11 @@ public class KnifeScript : MonoBehaviour
 
                 else if (hit.collider.gameObject.CompareTag("Wall"))
                 {
-                    Debug.Log(">>> Wall");
+                    Debug.Log(">>> Knife Wall");
                 }
                 else
                 {
-                    Debug.Log(">>> orther");
+                    Debug.Log(">>> Knife orther");
                 }
             }
 
