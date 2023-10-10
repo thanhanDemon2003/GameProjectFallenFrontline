@@ -3489,7 +3489,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4032005958669886200}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -5365,7 +5365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1365664501621400632
 Transform:
   m_ObjectHideFlags: 0
@@ -5576,7 +5576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1501641371255355837
 GameObject:
   m_ObjectHideFlags: 0
@@ -6898,8 +6898,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1191454108}
-  - {fileID: 3864810599447207136}
-  - {fileID: 8898735266331374395}
   - {fileID: 2958936550626271494}
   - {fileID: 4217824085907345416}
   - {fileID: 9186358632657890162}
@@ -7281,7 +7279,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358857990902888507}
   m_Enabled: 1
-  m_CastShadows: 3
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -8491,14 +8489,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358857990902888507}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 1.1389401, z: 0.01869009}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 1.1389399, z: 0.01869011}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3585909287730896100}
-  m_Father: {fileID: 2601581915481218661}
-  m_RootOrder: -2
+  m_Father: {fileID: 4217824085907345416}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3876919863258771560
 Transform:
@@ -9246,6 +9244,8 @@ Transform:
   - {fileID: 2216038803447663474}
   - {fileID: 5548616384285423885}
   - {fileID: 7399220424805922112}
+  - {fileID: 3864810599447207136}
+  - {fileID: 8898735266331374395}
   m_Father: {fileID: 2601581915481218661}
   m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9729,7 +9729,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5012247134123927270}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -10403,7 +10403,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8165449250929251016}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -10602,7 +10602,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7753206271162482723}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -10873,7 +10873,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6626414438267459113}
   m_Enabled: 1
-  m_CastShadows: 3
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -11167,12 +11167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowArm: 0
-  PlayerShadow: 1
+  PlayerShadow: 0
   meshArm:
   - {fileID: 3104386223141070424}
   - {fileID: 5261714394571801689}
-  meshPlayer:
-  - {fileID: 3104386223141070424}
+  meshPlayer: []
+  weaponRoot: {fileID: 7374009328959331398}
   IKWeight: 0
 --- !u!1 &5407714742125191695
 GameObject:
@@ -12818,7 +12818,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466674574229465319}
   m_Enabled: 1
-  m_CastShadows: 3
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -13937,7 +13937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7399220424805922112
 Transform:
   m_ObjectHideFlags: 0
@@ -15477,9 +15477,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Knife: {fileID: 512603771}
   Gun: {fileID: 1011366050}
-  ArmHeal: {fileID: 0}
+  ArmHeal: {fileID: 424818325}
   knifeAnimator: {fileID: 625813503}
-  modelAnimator: {fileID: 0}
+  healAnimator: {fileID: 1859252003}
+  modelAnimator: {fileID: 708615582498212470}
   inputManager: {fileID: 2519820871307894035}
 --- !u!4 &8624054816726459615
 Transform:
@@ -15987,12 +15988,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466674574229465319}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.00086021423, y: 1.758173, z: -0.00549379}
+  m_LocalPosition: {x: 0.00086021423, y: 1.758173, z: -0.0054941177}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601581915481218661}
-  m_RootOrder: -2
+  m_Father: {fileID: 4217824085907345416}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8901960484091784971
 MeshFilter:

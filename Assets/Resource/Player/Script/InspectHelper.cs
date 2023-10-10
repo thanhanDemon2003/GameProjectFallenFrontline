@@ -11,14 +11,14 @@ public class InspectHelper : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer[] meshArm;
 
     [SerializeField] SkinnedMeshRenderer[] meshPlayer;
-
+    [SerializeField] GameObject weaponRoot;
 
     [Range(0, 1)]
     public float IKWeight;
     // Update is called once per frame
     void Update()
     {
-        EnableArms();
+        EnablePlayerShadow();
     }
 
     private void EnableArms()
@@ -38,4 +38,23 @@ public class InspectHelper : MonoBehaviour
         }
     }
 
+
+    private void EnablePlayerShadow()
+    {
+        if (PlayerShadow)
+        {
+            foreach (var renderer in meshPlayer)
+            {
+                renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            }
+            weaponRoot.SetActive(true);
+            return;
+        }
+
+        foreach (var renderer in meshArm)
+        {
+            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        }
+        weaponRoot.SetActive(false);
+    }
 }

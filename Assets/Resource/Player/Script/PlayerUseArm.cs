@@ -31,6 +31,7 @@ public class PlayerUseArm : MonoBehaviour
         {
             Knife.SetActive(true);
             buttonPressed = true;
+            modelAnimator.SetTrigger("Melee");
         }
 
         if (!inputManager.Knife) buttonPressed= false;
