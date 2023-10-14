@@ -231,12 +231,13 @@ public class PistolScript : MonoBehaviour
                     Destroy(impact, 5f);
                     Debug.Log(">>> Wall");
                 }
-                else
+                else if (hit.collider.gameObject.CompareTag("Destructable"))
                 {
                     GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(-hit.normal));
                     impact.transform.SetParent(hit.transform, true);
                     Destroy(impact, 5f);
-                    Debug.Log(">>> orther");
+
+                    hit.transform.gameObject.GetComponent<MeshDestroy>().DestroyMesh();
                 }
             }
 

@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Undefined
   - Wall
+  - Destructable
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Eject
   - Player
   - Enviroment
-  - 
+  - Destructable
   - 
   - 
   - 
