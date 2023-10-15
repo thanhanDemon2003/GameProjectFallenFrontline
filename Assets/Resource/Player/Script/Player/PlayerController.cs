@@ -69,7 +69,7 @@ namespace FPS.Player
 
         void Start()
         {
-            state = State.Secondary;
+            state = State.Primary;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             UnityEngine.Cursor.visible = false;
 
@@ -96,6 +96,8 @@ namespace FPS.Player
 
         private void LateUpdate()
         {
+            _camera.position = _cameraRoot.position;
+            if (!canControl) return;
             CamMovements();
         }
 
