@@ -170,5 +170,28 @@ namespace FPS.Manager
         {
             _currentMap.Disable();
         }
+
+
+
+
+        private void Update()
+        {
+            Constraint();
+        }
+
+
+        private void Constraint()
+        {
+            if (this.Run)
+            {
+                playerInput.actions.FindAction("Aim").Disable();
+                playerInput.actions.FindAction("Shoot").Disable();
+            }
+            else
+            {
+                playerInput.actions.FindAction("Aim").Enable();
+                playerInput.actions.FindAction("Shoot").Enable();
+            }
+        }
     }
 }

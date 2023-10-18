@@ -81,21 +81,29 @@ public class WeaponSway : MonoBehaviour
 
     void CompositeRotation()
     {
-        if (inputManager.Run)
-        {
-            bobExaggeration = 10;
-        } else if (player.isCrouching)
-        {
-            bobExaggeration = 2;
-        }
-
-        bobExaggeration = 5;
 
 
+        BobState();
 
         transform.localPosition =
             Vector3.Lerp(transform.localPosition, bobPosition, Time.deltaTime * smooth);
 
         transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(bobEulerRotation), Time.deltaTime * smooth);
+    }
+
+    private void BobState()
+    {
+        if (inputManager.Run)
+        {
+            bobExaggeration = 10;
+            return;
+        }
+        else if (player.isCrouching)
+        {
+            bobExaggeration = 2;
+            return;
+        }
+
+        bobExaggeration = 5;
     }
 }

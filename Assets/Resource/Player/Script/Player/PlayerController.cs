@@ -223,5 +223,7 @@ namespace FPS.Player
             this.canControl = canControl;
             GetComponent<Collider>().enabled = canControl;
         }
+
+        
     }
 }

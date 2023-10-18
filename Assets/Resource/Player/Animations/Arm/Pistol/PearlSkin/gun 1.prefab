@@ -574,6 +574,11 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1234650329005971380, guid: b3ba3e7262c8f29478793a3360cb78e4,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 2146249439845593009, guid: b3ba3e7262c8f29478793a3360cb78e4,
         type: 3}
       propertyPath: m_CastShadows
@@ -664,7 +669,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9147070820895505231, guid: b3ba3e7262c8f29478793a3360cb78e4, type: 3}
+    - {fileID: 1234650329005971380, guid: b3ba3e7262c8f29478793a3360cb78e4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
