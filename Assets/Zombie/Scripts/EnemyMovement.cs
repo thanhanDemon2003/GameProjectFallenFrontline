@@ -107,6 +107,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void DoAttack()
     {
+        Agent.SetDestination(transform.position);
+
         if (Vector3.Distance(Target.position, transform.position) > (Agent.stoppingDistance + Agent.radius) * 2)
         {
             Animator.SetBool("IsAttacking", false);
