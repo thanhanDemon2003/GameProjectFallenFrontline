@@ -1,15 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.UIElements.ToolbarMenu;
 
 public class TargetScript : MonoBehaviour
 {
-    public float health;
+    public float health = 50f;
     public float enemiesDmg;
     [SerializeField]
     private RagdollEnabler RagdollEnabler;
     [SerializeField]
-    private float FadeOutDelay = 10f;
-
+    private float FadeOutDelay;
+    public GameObject objectToDelete;
     public delegate void DeathEvent(TargetScript TargetScript);
     public DeathEvent OnDie;
 
@@ -58,7 +59,7 @@ public class TargetScript : MonoBehaviour
             yield return null;
         }
 
-        gameObject.SetActive(false);
+        Destroy(objectToDelete);
     }
 
     private void OnCollisionEnter(Collision collision)

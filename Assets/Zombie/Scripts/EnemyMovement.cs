@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
-    private Attackable Attackable;
+    private TargetScript TargetScript;
     [SerializeField]
     private NavMeshAgent Agent;
     [SerializeField]
@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
             Triangulation = NavMesh.CalculateTriangulation();
         }
 
-        Attackable.OnTakeDamage += GetAggressive;
+        TargetScript.OnTakeDamage += GetAggressive;
     }
 
     private void GetAggressive()

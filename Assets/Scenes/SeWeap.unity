@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 140899946}
   - component: {fileID: 140899945}
   - component: {fileID: 140899949}
+  - component: {fileID: 140899950}
   m_Layer: 6
   m_Name: Plane
   m_TagString: Ground
@@ -262,6 +263,28 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 8dae1f853b9a35f4cb4ac3a02e43ac42, type: 2}
   m_BuildHeightMesh: 0
+--- !u!64 &140899950
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140899944}
+  m_Material: {fileID: 13400000, guid: 40bae9da14df8914fb5e008a0b1d59c6, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: -1
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &242382395 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1360468884782421070, guid: f74c8eb63d51bf14da9f4580b933ed92,
@@ -659,6 +682,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 883071828097099482, guid: f74c8eb63d51bf14da9f4580b933ed92,
     type: 3}
   m_PrefabInstance: {fileID: 4090023066793323375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &972952052 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7746190794098117959, guid: 43ea126c6a843ef4393702d2898e5b72,
+    type: 3}
+  m_PrefabInstance: {fileID: 1212449646}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &999029210
 GameObject:
@@ -1143,10 +1172,81 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 410287455, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 410287469, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: RagdollRoot
+      value: 
+      objectReference: {fileID: 972952052}
+    - target: {fileID: 410287478, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 410287478, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 410287515, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 410287518, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 410287520, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
       propertyPath: Target
       value: 
       objectReference: {fileID: 859207205}
+    - target: {fileID: 410287520, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: Attackable
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 410287520, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: TargetScript
+      value: 
+      objectReference: {fileID: 1297992385}
+    - target: {fileID: 410287520, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+      propertyPath: IdleSpeedModifier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149144424698350123, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: FadeOutDelay
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149144424698350123, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: objectToDelete
+      value: 
+      objectReference: {fileID: 1297992376}
+    - target: {fileID: 2812408835014711430, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
+    - target: {fileID: 2812408835014711430, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956632289285028835, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: FadeOutDelay
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956632289285028835, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: objectToDelete
+      value: 
+      objectReference: {fileID: 1297992376}
+    - target: {fileID: 3719684411149484036, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5300082753460270588, guid: 43ea126c6a843ef4393702d2898e5b72,
         type: 3}
       propertyPath: m_RootOrder
@@ -1154,13 +1254,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5300082753460270588, guid: 43ea126c6a843ef4393702d2898e5b72,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5300082753460270588, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5300082753460270588, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5300082753460270588, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.575823
+      value: 6.67
       objectReference: {fileID: 0}
     - target: {fileID: 5300082753460270588, guid: 43ea126c6a843ef4393702d2898e5b72,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.320791
+      value: -8.024
       objectReference: {fileID: 0}
     - target: {fileID: 5300082753460270588, guid: 43ea126c6a843ef4393702d2898e5b72,
         type: 3}
@@ -1202,16 +1317,102 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6648085774466449665, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648085774466449665, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: FadeOutDelay
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648085774466449665, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: objectToDelete
+      value: 
+      objectReference: {fileID: 1297992376}
+    - target: {fileID: 7746190794098117959, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1414
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746190794098117959, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1414
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746190794098117959, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1414
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746190794098117959, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0001721
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746190794098117959, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.86407
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746190794098117959, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.057454
+      objectReference: {fileID: 0}
     - target: {fileID: 9211819425361725423, guid: 43ea126c6a843ef4393702d2898e5b72,
         type: 3}
       propertyPath: m_Name
       value: Enemy Zombie Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 8917697100957399399, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9211819425361725423, guid: 43ea126c6a843ef4393702d2898e5b72,
+        type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1297992385}
   m_SourcePrefab: {fileID: 100100000, guid: 43ea126c6a843ef4393702d2898e5b72, type: 3}
+--- !u!1 &1297992376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9211819425361725423, guid: 43ea126c6a843ef4393702d2898e5b72,
+    type: 3}
+  m_PrefabInstance: {fileID: 1212449646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1297992381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 410287469, guid: 43ea126c6a843ef4393702d2898e5b72,
+    type: 3}
+  m_PrefabInstance: {fileID: 1212449646}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297992376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d867a69d62cd64fa4ea1ba4e737995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1297992385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297992376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6b2f067e3d7164595bf28dd3e04cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  enemiesDmg: 0
+  RagdollEnabler: {fileID: 1297992381}
+  FadeOutDelay: 2.2
+  objectToDelete: {fileID: 1297992376}
 --- !u!95 &1717665901 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5830775745621637670, guid: f74c8eb63d51bf14da9f4580b933ed92,
