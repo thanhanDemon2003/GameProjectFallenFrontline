@@ -4,49 +4,56 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows;
+using static UnityEngine.GraphicsBuffer;
 
 public class PistolScript : MonoBehaviour
 {
     [SerializeField] InputManager inputManager;
+
+    [Header("Shooting Attributes")]
     public Transform gunPivot;
     public int maxRange = 100;
     public float damage = 10;
-
     public int maxBullet = 8;
     public int currentBullet;
     public int impactForce;
-
     public float bulletSpreadAngle;
 
+    [Header("Shooting VFX")]
     public ParticleSystem muzzleFlash, smoke;
     public GameObject impactEffect;
     public GameObject fleshEffect;
 
     public LayerMask hitLayer;
 
-    private Animator animator;
 
+    [Header("GameObjectSpawn")]
     public Transform shellPoint;
     public GameObject shell;
-
     public Transform magPoint;
     public GameObject mag;
 
+    [Header("FOV")]
     public Camera _camera;
-    public float fov = 68;
+    public float unAimFOV = 68;
+    public float AimFOV = 55;
+    public float aimTime = 3f;
+    private float fov;
 
     public Animator modelAnimator;
-
+    private Animator animator;
     public PlayerController player;
     public Recoil recoil;
 
-
+    [Header("Firing")]
     public float fireRate;
     private float fireRateCount;
     private bool readyToFire = true;
 
+    [Header("Shooting SFX")]
     private AudioSource audio;
     [SerializeField] AudioClip shootSFX, shootEmptySFX;
     [SerializeField] GameObject reloadSFX;
@@ -69,6 +76,7 @@ public class PistolScript : MonoBehaviour
     private void Start()
     {
         currentBullet = maxBullet;
+        fov = unAimFOV;
     }
 
     private void Update()
@@ -158,13 +166,17 @@ public class PistolScript : MonoBehaviour
 
     private void AimDownSight()
     {
+        float yVelocity = 0.0f;
         if (inputManager.Aim)
         {
             Aim();
+            Mathf.SmoothDamp(fov, AimFOV, ref yVelocity, aimTime);
         }
         else
         {
             StartCoroutine(Unaim());
+            Mathf.SmoothDamp(fov, AimFOV, ref yVelocity, aimTime);
+
         }
     }
 

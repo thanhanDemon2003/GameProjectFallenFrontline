@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerUseArm : MonoBehaviour
 {
     public GameObject Knife, Gun, ArmHeal;
+    public GameObject knifeRoot, gunRoot;
     public Animator knifeAnimator,healAnimator;
     public Animator modelAnimator;
 
@@ -29,14 +30,24 @@ public class PlayerUseArm : MonoBehaviour
     {
         if (inputManager.Knife && !buttonPressed)
         {
+            modelAnimator.SetTrigger("Knife");
             Knife.SetActive(true);
             buttonPressed = true;
+            StartCoroutine(waitUse());
         }
 
         if (!inputManager.Knife) buttonPressed= false;
 
         Gun.SetActive(!AnimCheck(knifeAnimator, "Knife"));
         Knife.SetActive(AnimCheck(knifeAnimator, "Knife"));
+        gunRoot.SetActive(!AnimCheck(knifeAnimator, "Knife"));
+        knifeRoot.SetActive(AnimCheck(knifeAnimator, "Knife"));
+    }
+
+    IEnumerator waitUse()
+    {
+        yield return new WaitForSeconds(0.2f);
+        modelAnimator.ResetTrigger("Knife");
     }
 
     private void HealUse()

@@ -139,7 +139,7 @@ namespace FPS.Player
         private void MovementState()
         {
 
-            if (inputManager.Run)
+            if (inputManager.Run && inputManager.Move.y > 0)
             {
                 speed = runSpeed;
                 return;
@@ -224,6 +224,6 @@ namespace FPS.Player
             GetComponent<Collider>().enabled = canControl;
         }
 
-        
+
     }
 }
