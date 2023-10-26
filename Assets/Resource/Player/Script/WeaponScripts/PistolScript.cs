@@ -31,9 +31,10 @@ public class PistolScript : MonoBehaviour
     public GameObject mag;
 
     [Header("FOV")]
+    private WeaponManager weaponManager;
     public Camera _camera;
-    public float unAimFOV = 68;
-    public float AimFOV = 55;
+    private float unAimFOV;
+    private float AimFOV;
     public float aimTime = 3f;
     private float fov;
 
@@ -53,6 +54,7 @@ public class PistolScript : MonoBehaviour
     [SerializeField] GameObject reloadSFX;
     private void Awake()
     {
+        weaponManager= GetComponentInParent<WeaponManager>();
         audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         fireRateCount = fireRate;
@@ -160,27 +162,35 @@ public class PistolScript : MonoBehaviour
 
     private void AimDownSight()
     {
-        float yVelocity = 0.0f;
+        unAimFOV = weaponManager.unAimFOV;
+        AimFOV = weaponManager.AimFOV;
+
         if (inputManager.Aim)
         {
             Aim();
-            Mathf.SmoothDamp(fov, AimFOV, ref yVelocity, aimTime);
         }
         else
         {
             StartCoroutine(Unaim());
-            Mathf.SmoothDamp(fov, AimFOV, ref yVelocity, aimTime);
-
         }
     }
 
     private void Aim()
     {
         animator.SetBool("Aim", true);
+
+        if (fov > AimFOV)
+        {
+            fov -= 80 * Time.deltaTime;
+        }
     }
 
     private IEnumerator Unaim()
     {
+        if (fov < unAimFOV)
+        {
+            fov += 80 * Time.deltaTime;
+        }
         animator.SetBool("Aim", false);
         yield return new WaitForSeconds(1f);
     }
@@ -242,7 +252,7 @@ public class PistolScript : MonoBehaviour
                     if (zombie != null)
                     {
                         zombie.GetHit();
-                        if (target.health < 0 || hit.collider.gameObject.CompareTag("Leg"))
+                        if (target.health < -50 || hit.collider.gameObject.CompareTag("Leg"))
                         {
                             Vector3 forceDirection = zombie.transform.position - _camera.transform.position;
                             forceDirection.y = 1;
@@ -260,7 +270,7 @@ public class PistolScript : MonoBehaviour
                     Destroy(impact1, 10f);
                 }
 
-                else if (hit.collider.gameObject.CompareTag("Wall"))
+                else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
                 {
                     GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(-hit.normal));
                     impact.transform.SetParent(hit.transform, true);

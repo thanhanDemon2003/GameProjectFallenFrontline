@@ -35,16 +35,16 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHP -= amount;
         Debug.Log(">>> Player HP: " + currentHP);
-       
+        animator.Play("Hit");
     }
 
     public void Dead()
     {
         player.state = PlayerController.State.Unarmed;
         cameraArm.SetActive(false);
-        model.SetActive(false);
-        animator.Play("Dead");
+        animator.SetTrigger("Dead");
         player.canControl= false;
+        transform.gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
 }

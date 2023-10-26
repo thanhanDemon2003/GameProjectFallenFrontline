@@ -33,6 +33,14 @@ public class KnifeScript : MonoBehaviour
 
                 if (zombie != null)
                 {
+                    if (zombie._currentState != Zombie.ZombieState.Ragdoll &&
+                        zombie._currentState != Zombie.ZombieState.Dead)
+                    {
+                        zombie._currentState = Zombie.ZombieState.Ragdoll;
+                        zombie._animator.SetTrigger("Stumble");
+                        return;
+                    }
+
                     Vector3 forceDirection = zombie.transform.position - Camera.main.transform.position;
                     forceDirection.y = 1;
                     forceDirection.Normalize();
@@ -40,8 +48,6 @@ public class KnifeScript : MonoBehaviour
                     Vector3 force = 50 * forceDirection;
 
                     zombie.TriggerRagdoll(force, hit.point);
-
-
                 }
             }
 

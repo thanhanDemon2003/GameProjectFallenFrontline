@@ -41,8 +41,8 @@ public class Zombie : MonoBehaviour
 
     private Rigidbody[] _ragdollRigidbodies;
     public ZombieState _currentState = ZombieState.Walking;
-    private Animator _animator;
-    private float _timeToWakeUp;
+    public Animator _animator;
+    private float _timeToWakeUp = 4;
     private Transform _hipsBone;
     private Transform player;
 
@@ -61,7 +61,7 @@ public class Zombie : MonoBehaviour
 
     void Awake()
     {
-        _isAlive= true;
+        _isAlive = true;
         health = GetComponent<TargetScript>();
         Agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -151,7 +151,6 @@ public class Zombie : MonoBehaviour
         hitRigidbody.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
 
         _currentState = ZombieState.Ragdoll;
-        _timeToWakeUp = Random.Range(2, 4);
     }
 
     private Rigidbody FindHitRigidbody(Vector3 hitPoint)
@@ -183,7 +182,7 @@ public class Zombie : MonoBehaviour
         _animator.enabled = true;
     }
 
-    private void EnableRagdoll()
+    public void EnableRagdoll()
     {
         foreach (var rigidbody in _ragdollRigidbodies)
         {
@@ -229,11 +228,9 @@ public class Zombie : MonoBehaviour
 
     public void GetHit()
     {
-        int i = Random.Range(0, 10);
-        if (i > 8)
+        if (RandomChance() < 7)
         {
             _animator.SetTrigger("Hit");
-
         }
 
     }
@@ -242,7 +239,7 @@ public class Zombie : MonoBehaviour
     {
         _timeToWakeUp -= Time.deltaTime;
         Agent.SetDestination(transform.position);
-        if (_timeToWakeUp <= 0 && _currentState !=ZombieState.Dead)
+        if (_timeToWakeUp <= 0 && _currentState != ZombieState.Dead)
         {
             _isFacingUp = _hipsBone.forward.y > 0;
 
@@ -253,6 +250,7 @@ public class Zombie : MonoBehaviour
 
             _currentState = ZombieState.ResettingBones;
             _elapsedResetBonesTime = 0;
+            _timeToWakeUp = 3;
         }
     }
 
@@ -373,6 +371,19 @@ public class Zombie : MonoBehaviour
 
     private void DeadBehavior()
     {
+        Agent.SetDestination(transform.position);
+        if (_currentState != Zombie.ZombieState.Ragdoll &&
+                        _currentState != Zombie.ZombieState.StandingUp &&
+                        _currentState != Zombie.ZombieState.ResettingBones)
+        {
+            _animator.SetBool("Dead", true);
+        }
+
         Destroy(gameObject, 20f);
+    }
+
+    private float RandomChance()
+    {
+        return Random.Range(0, 10);
     }
 }

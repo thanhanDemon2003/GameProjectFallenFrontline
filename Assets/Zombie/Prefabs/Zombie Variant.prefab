@@ -1035,18 +1035,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -95.54277
+    limit: -131.32231
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 46.672016
+    limit: 15.776428
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 57.11891
+    limit: 75.43414
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -1287,7 +1287,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -90
+    limit: -71.26535
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
@@ -1585,6 +1585,7 @@ MonoBehaviour:
   _faceDownStandUpClipName: Standing Up
   _timeToResetBones: 0.5
   _currentState: 0
+  _animator: {fileID: 0}
 --- !u!195 &3896488654007406549
 NavMeshAgent:
   m_ObjectHideFlags: 0

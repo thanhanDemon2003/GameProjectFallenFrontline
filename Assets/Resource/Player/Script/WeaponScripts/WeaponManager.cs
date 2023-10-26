@@ -8,7 +8,6 @@ using UnityEngine.Windows;
 public class WeaponManager : MonoBehaviour
 {
     private Animator animator;
-    private PistolScript pistol;
     private int pistolAnimatorLayer, smgAnimatorLayer;
 
 
@@ -26,6 +25,10 @@ public class WeaponManager : MonoBehaviour
     public bool flashLightEquip = false;
     private bool buttonPressed = false;
     [SerializeField] GameObject FlashLight;
+
+
+    public float unAimFOV = 68;
+    public float AimFOV = 55;
 
     void Start()
     {
