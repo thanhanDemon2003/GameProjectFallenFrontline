@@ -72,7 +72,8 @@ public class PistolScript : MonoBehaviour
     private void Start()
     {
         currentBullet = maxBullet;
-        fov = unAimFOV;
+        fov = weaponManager.unAimFOV;
+        recoil = GetComponentInParent<Recoil>();
     }
 
     private void Update()
@@ -113,7 +114,6 @@ public class PistolScript : MonoBehaviour
                 modelAnimator.Play("ShootPistol");
             }
 
-            recoil.RecoilShoot();
         }
 
 
@@ -215,6 +215,7 @@ public class PistolScript : MonoBehaviour
     {
         if (currentBullet > 0)
         {
+            recoil.RecoilShoot();
             audio.PlayOneShot(shootSFX);
             muzzleFlash.Play();
             //smoke.Play();

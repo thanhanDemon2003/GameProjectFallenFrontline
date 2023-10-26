@@ -56,6 +56,7 @@ public class Zombie : MonoBehaviour
     private NavMeshAgent Agent;
     private TargetScript health;
 
+
     float curSpeed;
     Vector3 previousPosition;
 
@@ -113,10 +114,9 @@ public class Zombie : MonoBehaviour
                 DeadBehavior();
                 break;
         }
-
+        SetRandom();
         StateConstraint();
-
-        Debug.Log(_currentState);
+        SetCurrentSpeed();
     }
 
     private void StateConstraint()
@@ -210,11 +210,15 @@ public class Zombie : MonoBehaviour
         return curSpeed;
     }
 
+    private void SetCurrentSpeed()
+    {
+        _animator.SetFloat("Speed", currentSpeed());
+    }
+
     private void DoTargetMovement()
     {
 
         Agent.SetDestination(player.position);
-        _animator.SetFloat("Speed", currentSpeed());
         _animator.SetBool("isAttacking", false);
 
 
@@ -372,6 +376,11 @@ public class Zombie : MonoBehaviour
     private void DeadBehavior()
     {
         Agent.SetDestination(transform.position);
+
+
+        
+        _isAlive = false;
+
         if (_currentState != Zombie.ZombieState.Ragdoll &&
                         _currentState != Zombie.ZombieState.StandingUp &&
                         _currentState != Zombie.ZombieState.ResettingBones)
@@ -384,6 +393,15 @@ public class Zombie : MonoBehaviour
 
     private float RandomChance()
     {
+
         return Random.Range(0, 10);
+    }
+
+    private void SetRandom()
+    {
+        if (_isAlive)
+        {
+            _animator.SetFloat("Random", RandomChance());
+        }
     }
 }

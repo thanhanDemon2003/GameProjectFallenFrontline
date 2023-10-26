@@ -36,7 +36,7 @@ public class KnifeScript : MonoBehaviour
                     if (zombie._currentState != Zombie.ZombieState.Ragdoll &&
                         zombie._currentState != Zombie.ZombieState.Dead)
                     {
-                        zombie._currentState = Zombie.ZombieState.Ragdoll;
+                        //zombie._currentState = Zombie.ZombieState.Ragdoll;
                         zombie._animator.SetTrigger("Stumble");
                         return;
                     }
