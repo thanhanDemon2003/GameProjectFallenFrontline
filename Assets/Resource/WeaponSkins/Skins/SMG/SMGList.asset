@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: SMGList
+  m_EditorClassIdentifier: Assembly-CSharp::GunSkinList
+  Skins:
+  - {fileID: 11400000, guid: e922eb98de3cc594f893430aa889c61d, type: 2}
+  - {fileID: 11400000, guid: 1d48c751bb992214aa217ee9de198c8d, type: 2}
+  - {fileID: 11400000, guid: e8774801ddf096f4e9ba16130b04c944, type: 2}

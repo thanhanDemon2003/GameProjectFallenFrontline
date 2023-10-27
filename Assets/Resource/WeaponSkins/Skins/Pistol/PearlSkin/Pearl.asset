@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b834edb4cd9962d4d8de3aa322cd9d85, type: 3}
+  m_Name: Pearl
+  m_EditorClassIdentifier: 
+  SkinName: Pearl
+  Skin: {fileID: 3216709615101361046, guid: 41183a723c5f0964584e770fd6b342e1, type: 3}
+  Price: 300
+  Purchased: 0
+  Equipped: 0

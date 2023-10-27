@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6985222101816281942
 Transform:
   m_ObjectHideFlags: 0
@@ -388,11 +388,13 @@ MonoBehaviour:
   damage: 10
   maxBullet: 30
   currentBullet: 30
+  impactForce: 0
   bulletSpreadAngle: 0
   muzzleFlash: {fileID: 7963341841725517020}
   smoke: {fileID: 0}
   impactEffect: {fileID: 686729198845939695, guid: 0db859a4b314770498cfefa337e7dc16,
     type: 3}
+  fleshEffect: {fileID: 0}
   hitLayer:
     serializedVersion: 2
     m_Bits: 119
@@ -401,7 +403,7 @@ MonoBehaviour:
   magPoint: {fileID: 6875577588030549319}
   mag: {fileID: 3795107199320967469, guid: 93056e271be95c74582445ae53b0822b, type: 3}
   _camera: {fileID: 0}
-  fov: 68
+  aimTime: 3
   modelAnimator: {fileID: 0}
   player: {fileID: 0}
   recoil: {fileID: 0}
