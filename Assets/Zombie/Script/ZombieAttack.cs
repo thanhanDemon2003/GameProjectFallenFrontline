@@ -11,6 +11,9 @@ public class ZombieAttack : MonoBehaviour
     float maxRange = 2.5f;
 
     [SerializeField]
+    float damage = 10f;
+
+    [SerializeField]
     LayerMask hitLayer;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,7 @@ public class ZombieAttack : MonoBehaviour
             PlayerHealth player = hit.collider.GetComponent<PlayerHealth>();
 
             if (player == null) return;
-            player.TakeDamage(10f);
+            player.TakeDamage(damage);
         }
     }
 }

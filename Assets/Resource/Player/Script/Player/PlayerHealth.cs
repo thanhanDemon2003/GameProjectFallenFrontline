@@ -2,6 +2,7 @@ using FPS.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,23 +11,28 @@ public class PlayerHealth : MonoBehaviour
 
 
     [Header("Dead animation")]
-
     [SerializeField] Animator animator;
     [SerializeField] PlayerController player;
     [SerializeField] GameObject model;
     [SerializeField] GameObject modelArm;
     [SerializeField] GameObject cameraArm;
+
+    private Transform mainCamera;
+    private float xRotation;
     // Start is called before the first frame update
     void Start()
     {
         currentHP = maxHP;
+        mainCamera = Camera.main.transform;
     }
 
     private void Update()
     {
         if (currentHP <= 0f)
         {
+            xRotation = Mathf.Lerp(mainCamera.localRotation.x, 0f, 2 * Time.deltaTime);
             Dead();
+            mainCamera.localRotation = Quaternion.Euler(xRotation, 0, 0);
             animator.SetBool("PistolEquip", false);
         }
     }
@@ -43,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
         player.state = PlayerController.State.Unarmed;
         cameraArm.SetActive(false);
         animator.SetTrigger("Dead");
-        player.canControl= false;
+        player.canControl = false;
         transform.gameObject.layer = LayerMask.NameToLayer("Default");
     }
 

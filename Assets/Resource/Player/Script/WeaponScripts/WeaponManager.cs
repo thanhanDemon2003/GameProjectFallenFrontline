@@ -50,6 +50,10 @@ public class WeaponManager : MonoBehaviour
             case PlayerController.State.Secondary:
                 StartCoroutine(SetSecondary());
                 return;
+
+            case PlayerController.State.Unarmed:
+                StartCoroutine(Setunarmed());
+                return;
         }
     }
 
@@ -58,6 +62,25 @@ public class WeaponManager : MonoBehaviour
         EquipFLash();
     }
 
+    private IEnumerator Setunarmed()
+    {
+        pistolAnimator.SetBool("Equip", false);
+        animator.SetBool("PistolEquip", false);
+
+        animator.SetBool("SMGEquip", false);
+        smgAnimator.SetBool("Equip", false);
+
+        yield return new WaitForSeconds(0.5f);
+        animator.SetLayerWeight(pistolAnimatorLayer, 0f);
+        pistolCam.SetActive(false);
+        pistolModel.SetActive(false);
+
+
+        smgModel.SetActive(false);
+        smglCam.SetActive(false);
+        animator.SetLayerWeight(smgAnimatorLayer, 0f);
+
+    }
     private IEnumerator SetSMG()
     {
         pistolAnimator.SetBool("Equip", false);

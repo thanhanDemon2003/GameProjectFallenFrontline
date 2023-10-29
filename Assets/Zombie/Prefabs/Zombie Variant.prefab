@@ -26,17 +26,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8456a4d3f8ac3d64fb077bbf8a868d27,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.748
+      value: -0.6287607
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8456a4d3f8ac3d64fb077bbf8a868d27,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.3399982
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8456a4d3f8ac3d64fb077bbf8a868d27,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.91
+      value: -7.075613
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8456a4d3f8ac3d64fb077bbf8a868d27,
         type: 3}
@@ -3390,7 +3390,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0.26
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0

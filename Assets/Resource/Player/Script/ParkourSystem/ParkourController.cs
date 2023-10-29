@@ -13,11 +13,17 @@ public class ParkourController : MonoBehaviour
     PlayerController playerController;
     private InputManager inputManager;
 
+    private Transform mainCamera;
+    private float xRotation;
+    private float curentRotation;
+
 
 
     bool inAction;
     private void Awake()
     {
+        mainCamera = Camera.main.transform;
+        animator = GetComponent<Animator>();
         scanner = GetComponent<EnviromentScan>();
         playerController = GetComponent<PlayerController>();
         inputManager = GetComponent<InputManager>();
@@ -25,6 +31,11 @@ public class ParkourController : MonoBehaviour
 
     private void Update()
     {
+        if (!inAction)
+        {
+            curentRotation = mainCamera.localRotation.x;
+        }
+
         if (inputManager.Jump && !inAction)
         {
             var hitData = scanner.ObstacleCheck();
