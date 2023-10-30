@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2995544402626166105}
   m_Layer: 3
-  m_Name: gun
+  m_Name: PistolDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

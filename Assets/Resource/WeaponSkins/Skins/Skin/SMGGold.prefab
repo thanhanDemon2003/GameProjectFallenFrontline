@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7194604133513646770}
   m_Layer: 3
-  m_Name: smg45 1
+  m_Name: SMGGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
