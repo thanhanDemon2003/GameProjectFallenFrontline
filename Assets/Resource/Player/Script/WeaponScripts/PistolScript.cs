@@ -1,6 +1,7 @@
 ﻿using FPS.Manager;
 using FPS.Player;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class PistolScript : MonoBehaviour
@@ -12,6 +13,7 @@ public class PistolScript : MonoBehaviour
     public int maxRange = 100;
     public float damage = 10;
     public int maxBullet = 8;
+    public int remainingAmmo = 80;
     public int currentBullet;
     public int impactForce;
     public float bulletSpreadAngle;
@@ -52,9 +54,13 @@ public class PistolScript : MonoBehaviour
     private AudioSource audio;
     [SerializeField] AudioClip shootSFX, shootEmptySFX;
     [SerializeField] GameObject reloadSFX;
+
+    [Header("UI")]
+    [SerializeField] TextMeshProUGUI currentBulletText;
+    [SerializeField] TextMeshProUGUI maxBulletText;
     private void Awake()
     {
-        weaponManager= GetComponentInParent<WeaponManager>();
+        weaponManager = GetComponentInParent<WeaponManager>();
         audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         fireRateCount = fireRate;
@@ -82,11 +88,12 @@ public class PistolScript : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(player.currentVelocity.y));
         animator.SetInteger("Bullet", currentBullet);
+        animator.SetInteger("Remaining", remainingAmmo);
         _camera.fieldOfView = fov;
 
         UseWeapon();
         AimDownSight();
-
+        AmmoUI();
         Shoot();
 
     }
@@ -199,7 +206,17 @@ public class PistolScript : MonoBehaviour
 
     public void Reload()
     {
-        currentBullet = maxBullet;
+        int ammoNeedReload = maxBullet - currentBullet;
+        if (remainingAmmo > ammoNeedReload)
+        {
+            remainingAmmo -= ammoNeedReload;
+            currentBullet += ammoNeedReload;
+        }
+        else
+        {
+            currentBullet += remainingAmmo;
+            remainingAmmo = 0;
+        }
     }
 
     public void EjectMag()
@@ -263,7 +280,7 @@ public class PistolScript : MonoBehaviour
 
                             zombie.TriggerRagdoll(force, hit.point);
                         }
-                       
+
                     }
 
                     GameObject impact1 = Instantiate(fleshEffect, hit.point, Quaternion.LookRotation(-hit.normal));
@@ -271,7 +288,10 @@ public class PistolScript : MonoBehaviour
                     Destroy(impact1, 10f);
                 }
 
-                else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+                    hit.collider.gameObject.layer == LayerMask.NameToLayer("Default") ||
+                    hit.collider.gameObject.layer == LayerMask.NameToLayer("Enviroment")
+                    )
                 {
                     GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(-hit.normal));
                     impact.transform.SetParent(hit.transform, true);
@@ -299,5 +319,11 @@ public class PistolScript : MonoBehaviour
         bulletShell.GetComponent<Rigidbody>().AddForce(force);
         bulletShell.transform.SetParent(null);
         Destroy(bulletShell, 10f);
+    }
+
+    private void AmmoUI()
+    {
+        currentBulletText.SetText("" + currentBullet);
+        maxBulletText.SetText("/" + remainingAmmo);
     }
 }

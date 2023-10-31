@@ -60,6 +60,9 @@ public class Zombie : MonoBehaviour
     float curSpeed;
     Vector3 previousPosition;
 
+    private AudioSource audioSource;
+    [SerializeField] AudioClip[] zombieSound;
+
     void Awake()
     {
         _isAlive = true;
@@ -133,8 +136,11 @@ public class Zombie : MonoBehaviour
 
         if (Vector3.Distance(player.position, transform.position) > (Agent.stoppingDistance + Agent.radius) * 2)
         {
-            _currentState = ZombieState.Walking;
+            if (!AnimCheck(_animator, "Attack"))
+            {
+                _currentState = ZombieState.Walking;
 
+            }
         }
         else
         {
@@ -403,5 +409,14 @@ public class Zombie : MonoBehaviour
         {
             _animator.SetFloat("Random", RandomChance());
         }
+    }
+
+    private bool AnimCheck(Animator anim, string stateName)
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(stateName) &&
+                anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+            return true;
+        else
+            return false;
     }
 }

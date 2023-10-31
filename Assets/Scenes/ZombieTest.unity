@@ -603,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 845951889792194284, guid: 22d11eaa4605fc349b5e38c710fc7496,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00039160252
+      value: -0.0003914833
       objectReference: {fileID: 0}
     - target: {fileID: 3896488654007406549, guid: 22d11eaa4605fc349b5e38c710fc7496,
         type: 3}
@@ -1031,6 +1031,16 @@ PrefabInstance:
       propertyPath: m_CullingMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1629717405467103677, guid: 02e1fbb565d26184b9bf23ce8553dc36,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:LeftArm'\n\tTransform 'mixamorig:LeftForeArm'\n\tTransform
+        'mixamorig:LeftHand'\n\tTransform 'mixamorig:LeftArm'\n\tTransform 'mixamorig:LeftForeArm'\n\tTransform
+        'mixamorig:LeftHand'\n\tTransform 'mixamorig:LeftArm'\n\tTransform 'mixamorig:LeftForeArm'\n\tTransform
+        'mixamorig:LeftHand'"
+      objectReference: {fileID: 0}
     - target: {fileID: 1633856237103408989, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1069,7 +1079,7 @@ PrefabInstance:
     - target: {fileID: 1955790104136959407, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
       propertyPath: mouseSensitive
-      value: 16
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2048915401456471374, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
@@ -1393,13 +1403,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6195704849919209724, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
+      propertyPath: smooth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195704849919209724, guid: 02e1fbb565d26184b9bf23ce8553dc36,
+        type: 3}
       propertyPath: multiplierBob.x
-      value: -2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6195704849919209724, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
       propertyPath: multiplierBob.y
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195704849919209724, guid: 02e1fbb565d26184b9bf23ce8553dc36,
+        type: 3}
+      propertyPath: multiplierBob.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6233601030803260453, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
@@ -1479,7 +1499,7 @@ PrefabInstance:
     - target: {fileID: 7079655369889329592, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689709784084356678, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
@@ -1504,7 +1524,7 @@ PrefabInstance:
     - target: {fileID: 8191999860511717938, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8330829739954897123, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
