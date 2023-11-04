@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ZombieTest.unity
     guid: 7ebce664781e33f42bf48ac760bc047c
   - enabled: 1
-    path: Assets/Resource/MapFolder/Station_v3/DEMO_Scene.unity
+    path: Assets/Scenes/Game/Map/ConstructionSite.unity
     guid: cb33d671eff7a7a4aa8449ce9db53760
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4a59148a03cd85f4394605a1bc2354f2,
