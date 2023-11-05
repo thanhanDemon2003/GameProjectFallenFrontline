@@ -2,6 +2,7 @@ using FPS.Manager;
 using FPS.Player;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerUseArm : MonoBehaviour
@@ -13,6 +14,13 @@ public class PlayerUseArm : MonoBehaviour
 
     public InputManager inputManager;
     private bool buttonPressed;
+
+
+    //Heal
+
+    public int currentPotion;
+
+    [SerializeField] TextMeshProUGUI painkiller;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +32,7 @@ public class PlayerUseArm : MonoBehaviour
     {
         KnifeUse();
         HealUse();
+        HealUI();
     }
 
     private void KnifeUse()
@@ -54,6 +63,8 @@ public class PlayerUseArm : MonoBehaviour
     {
         if (inputManager.Heal && !buttonPressed)
         {
+            if (currentPotion <= 0) return;
+
             ArmHeal.SetActive(true);
             buttonPressed = true;
         }
@@ -62,6 +73,11 @@ public class PlayerUseArm : MonoBehaviour
 
         Gun.SetActive(!AnimCheck(healAnimator, "Heal"));
         ArmHeal.SetActive(AnimCheck(healAnimator, "Heal"));
+    }
+
+    private void HealUI()
+    {
+        painkiller.SetText(currentPotion.ToString());
     }
 
     private bool AnimCheck(Animator anim, string stateName)
