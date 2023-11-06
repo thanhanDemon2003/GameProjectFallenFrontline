@@ -3,22 +3,32 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Target
+  - Arm
+  - Ground
+  - Undefined
+  - Wall
+  - Destructable
+  - Head
+  - Body
+  - Leg
+  - Concrete
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Arm
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Eject
+  - Player
+  - Enviroment
+  - Destructable
+  - Zombie
+  - Block
+  - Climbable
   - 
   - 
   - 
