@@ -29,6 +29,10 @@ TagManager:
   - Zombie
   - Block
   - Climbable
+  - Floor
+  - Wall
+  - SavePoint
+  - DocCase
   - 
   - 
   - 
