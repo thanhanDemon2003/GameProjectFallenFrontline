@@ -14,6 +14,13 @@ TagManager:
   - Body
   - Leg
   - Concrete
+  - PlayerCore
+  - Generator
+  - Car
+  - Item
+  - Gas
+  - Ammo
+  - Objective
   layers:
   - Default
   - TransparentFX
@@ -29,8 +36,8 @@ TagManager:
   - Zombie
   - Block
   - Climbable
-  - 
-  - 
+  - Items
+  - Interactable
   - 
   - 
   - 

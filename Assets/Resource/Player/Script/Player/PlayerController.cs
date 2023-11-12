@@ -31,7 +31,7 @@ namespace FPS.Player
         private int _Xvelocity, _Yvelocity;
         private int _EquipWeapon;
 
-        private const float crouchSpeed = 1f;
+        private const float crouchSpeed = 2f;
         private const float walkSpeed = 3f;
         private const float runSpeed = 6f;
 
@@ -141,6 +141,7 @@ namespace FPS.Player
 
             if (inputManager.Run && inputManager.Move.y > 0)
             {
+                if (isCrouching) return;
                 speed = runSpeed;
                 return;
             }

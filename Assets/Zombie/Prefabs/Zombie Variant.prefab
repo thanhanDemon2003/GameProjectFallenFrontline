@@ -3507,7 +3507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca6014d82e7ea44aac9eb3b40d4bf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 2.5
+  RotatetoPlayer: 0
+  maxRange: 3
   damage: 10
   hitLayer:
     serializedVersion: 2

@@ -1,13 +1,26 @@
+using FPS.Manager;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class EnviromentScan : MonoBehaviour
 {
+    [Header("Parkua Scan")]
     [SerializeField] Transform hipPoint;
     [SerializeField] float distance = 0.8f;
     [SerializeField] float heightLenght = 5f;
     [SerializeField] LayerMask obstacleLayer;
+
+    [Header("Camera Scan")]
+    [SerializeField] LayerMask hitLayer;
+    [SerializeField] TextMeshProUGUI actionText;
+    private Camera _cam;
+    RaycastHit hit;
+
+    private InputManager input;
+    private bool pressed;
     public ObstacleHitData ObstacleCheck()
     {
         var hitData = new ObstacleHitData();
@@ -26,6 +39,59 @@ public class EnviromentScan : MonoBehaviour
 
         }
         return hitData;
+    }
+
+
+
+    private void Start()
+    {
+        _cam = Camera.main;
+        input = GetComponent<InputManager>();
+    }
+
+    private void Update()
+    {
+        Interaction();
+    }
+    private bool ForwardScan()
+    {
+        return Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, 8, hitLayer);
+    }
+
+    private void Interaction()
+    {
+        if (!ForwardScan())
+        {
+            actionText.SetText("");
+            return;
+        }
+
+        if (hit.collider.gameObject.CompareTag("Gas"))
+        {
+            actionText.SetText("E - Pick Up");
+
+            if (input.Interact && !pressed)
+            {
+                hit.collider.gameObject.GetComponent<ObjectPickup>().Interact();
+                pressed = true;
+            }
+
+            if (!input.Interact) pressed = false;
+
+        }
+        
+
+        else if (hit.collider.gameObject.CompareTag("Generator"))
+        {
+            actionText.SetText("E - Fill Up");
+            if (input.Interact && !pressed)
+            {
+                hit.collider.gameObject.GetComponentInParent<MapObjective>().UseGas();
+                pressed = true;
+            }
+
+            if (!input.Interact) pressed = false;
+        }
     }
 }
 

@@ -25,6 +25,7 @@ namespace FPS.Manager
         public bool Aim { get; set; }
         public bool Flash { get; set; }
         public bool Heal { get; set; }
+        public bool Interact { get; set; }
 
         private InputActionMap _currentMap;
         private InputAction _moveAction;
@@ -42,6 +43,7 @@ namespace FPS.Manager
         private InputAction _aimAction;
         private InputAction _flashLightAction;
         private InputAction _healtAction;
+        private InputAction _interactAction;
 
         private void Awake()
         {
@@ -61,6 +63,7 @@ namespace FPS.Manager
             _aimAction = _currentMap.FindAction("Aim");
             _flashLightAction = _currentMap.FindAction("Flashlight");
             _healtAction = _currentMap.FindAction("Heal");
+            _interactAction = _currentMap.FindAction("Interact");
 
             _moveAction.performed += onMove;
             _lookAction.performed += onLook;
@@ -76,6 +79,7 @@ namespace FPS.Manager
             _aimAction.started += onAim;
             _flashLightAction.performed += onFlash;
             _healtAction.performed += onHeal;
+            _interactAction.performed += onInteract;
 
 
             _moveAction.canceled += onMove;
@@ -92,8 +96,13 @@ namespace FPS.Manager
             _aimAction.canceled += onAim;
             _flashLightAction.canceled += onFlash;
             _healtAction.canceled += onHeal;
+            _interactAction.canceled += onInteract;
 
 
+        }
+        private void onInteract(InputAction.CallbackContext context)
+        {
+            Interact = context.ReadValueAsButton();
         }
         private void onFlash(InputAction.CallbackContext context)
         {

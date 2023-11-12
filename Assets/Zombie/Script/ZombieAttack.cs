@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using static UnityEngine.GraphicsBuffer;
 
 public class ZombieAttack : MonoBehaviour
 {
     Zombie zombie;
+    private Transform player;
+    public bool RotatetoPlayer;
 
     [SerializeField]
     float maxRange = 2.5f;
@@ -18,15 +21,25 @@ public class ZombieAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (RotatetoPlayer)
+        {
+            FaceToPlayer();
+        }
     }
 
+    public void FaceToPlayer()
+    {
+        Vector3 targetDirection = player.position - transform.position;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 10f * Time.deltaTime, 0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
+        Debug.Log(">>>>Face to player");
+    }
 
     public void AttackNormal()
     {

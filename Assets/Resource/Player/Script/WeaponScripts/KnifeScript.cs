@@ -28,7 +28,7 @@ public class KnifeScript : MonoBehaviour
 
             if (target != null)
             {
-                target.TakeDamage(damage * 5);
+                target.TakeDamage(damage);
                 Zombie zombie = hit.collider.GetComponentInParent<Zombie>();
 
                 if (zombie != null)

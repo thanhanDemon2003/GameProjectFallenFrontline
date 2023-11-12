@@ -17,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] GameObject modelArm;
     [SerializeField] GameObject cameraArm;
 
+
+    [SerializeField] GameObject HitVFX;
     private Transform mainCamera;
     private float xRotation;
     // Start is called before the first frame update
@@ -42,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
         currentHP -= amount;
         Debug.Log(">>> Player HP: " + currentHP);
         animator.Play("Hit");
+        Destroy(Instantiate(HitVFX), 2f);
     }
 
     public void Dead()
