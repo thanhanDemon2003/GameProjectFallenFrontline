@@ -27,7 +27,6 @@ Material:
   m_ValidKeywords:
   - _ALPHAMODULATE_ON
   - _ALPHATEST_ON
-  - _METALLICSPECGLOSSMAP
   - _NORMALMAP
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
