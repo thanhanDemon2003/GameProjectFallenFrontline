@@ -2,6 +2,7 @@ using FPS.Manager;
 using FPS.Player;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -30,6 +31,9 @@ public class WeaponManager : MonoBehaviour
     public float unAimFOV = 68;
     public float AimFOV = 55;
 
+    public int primaryAmmo;
+    public int secondaryAmmo;
+    public TextMeshProUGUI addAmmoText;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -131,5 +135,26 @@ public class WeaponManager : MonoBehaviour
         FlashLight.SetActive(flashLightEquip);
     }
 
+    public void AddAmmo(bool isPrimary)
+    {
+        if (isPrimary)
+        {
+            int ammoAdd = Random.RandomRange(25, 40);
+            primaryAmmo += ammoAdd;
+            StartCoroutine(Indicator("+" + ammoAdd + " SMG"));
+        }
+        else
+        {
+            int ammoAdd = Random.RandomRange(20, 30);
+            secondaryAmmo += ammoAdd;
+            StartCoroutine(Indicator("+" + ammoAdd + " Pistol"));
+        }
+    }
 
+    private IEnumerator Indicator(string text)
+    {
+        addAmmoText.text = text;
+        yield return new WaitForSeconds(2f);
+        addAmmoText.text = "";
+    }
 }

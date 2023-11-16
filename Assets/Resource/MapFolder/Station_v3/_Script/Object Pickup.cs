@@ -9,7 +9,6 @@ public class ObjectPickup : MonoBehaviour
     public bool primaryAmmo;
     void Start()
     {
-
     }
 
     public void Interact()
@@ -23,9 +22,7 @@ public class ObjectPickup : MonoBehaviour
             }
         }
 
-        else if (gameObject.CompareTag("Ammo"))
-        {
-
-        }
     }
+
+
 }

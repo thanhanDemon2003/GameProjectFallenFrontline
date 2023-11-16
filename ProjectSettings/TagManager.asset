@@ -21,6 +21,7 @@ TagManager:
   - Gas
   - Ammo
   - Objective
+  - Zombie
   layers:
   - Default
   - TransparentFX

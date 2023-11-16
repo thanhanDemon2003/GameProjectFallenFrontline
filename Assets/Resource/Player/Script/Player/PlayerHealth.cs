@@ -1,12 +1,12 @@
 using FPS.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     public float maxHP;
+
+    [Range(0,100)]
     public float currentHP;
 
 
@@ -21,6 +21,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] GameObject HitVFX;
     private Transform mainCamera;
     private float xRotation;
+
+    [Header("UI")]
+    public UnityEngine.UI.Slider healthBar;
+    public Image healthImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +42,14 @@ public class PlayerHealth : MonoBehaviour
             mainCamera.localRotation = Quaternion.Euler(xRotation, 0, 0);
             animator.SetBool("PistolEquip", false);
         }
+
+        UI();
+    }
+
+    private void UI()
+    {
+        healthBar.value = currentHP;
+        healthImage.color = Color.Lerp(Color.red, Color.blue, healthBar.value / 100);
     }
 
     public void TakeDamage(float amount)

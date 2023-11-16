@@ -13,10 +13,11 @@ public class PistolScript : MonoBehaviour
     public int maxRange = 100;
     public float damage = 10;
     public int maxBullet = 8;
-    public int remainingAmmo = 80;
+    public int remainingAmmo;
     public int currentBullet;
     public int impactForce;
     public float bulletSpreadAngle;
+    public bool isPrimary;
 
     [Header("Shooting VFX")]
     public ParticleSystem muzzleFlash, smoke;
@@ -85,6 +86,15 @@ public class PistolScript : MonoBehaviour
     private void Update()
     {
         if (!this.enabled) return;
+
+        if (isPrimary)
+        {
+            remainingAmmo = weaponManager.primaryAmmo;
+        }
+        else
+        {
+            remainingAmmo = weaponManager.secondaryAmmo;
+        }
 
         animator.SetFloat("Speed", Mathf.Abs(player.currentVelocity.y));
         animator.SetInteger("Bullet", currentBullet);
@@ -216,6 +226,15 @@ public class PistolScript : MonoBehaviour
         {
             currentBullet += remainingAmmo;
             remainingAmmo = 0;
+        }
+
+        if (isPrimary)
+        {
+            weaponManager.primaryAmmo = remainingAmmo;
+        }
+        else
+        {
+            weaponManager.secondaryAmmo = remainingAmmo;
         }
     }
 

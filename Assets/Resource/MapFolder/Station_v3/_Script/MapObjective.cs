@@ -9,16 +9,19 @@ public class MapObjective : MonoBehaviour
 {
     public int GasCan;
 
-    public float totalTime = 100;
+    public float totalTime = 200;
     public float time;
     [Range(0, 1)]
     public float speed;
 
 
     public Slider batterySlider;
-    private float batteryValue;
+    public float batteryValue;
+    private bool fuelFull;
+    public bool batteryFull;
 
     public TextMeshProUGUI indicatorText;
+    public TextMeshProUGUI objectiveText;
     public TextMeshProUGUI gasText;
 
     void Start()
@@ -46,6 +49,7 @@ public class MapObjective : MonoBehaviour
 
     public void UseGas()
     {
+        if (fuelFull) return;
         if (GasCan <= 0)
         {
             StartCoroutine(Indicator("Need Gas Can!"));
@@ -53,22 +57,29 @@ public class MapObjective : MonoBehaviour
         }
 
         GasCan--;
-        time += Random.RandomRange(20, 30);
-        totalTime -= time;
+        batteryValue += Random.RandomRange(20, 30);
     }
 
     private void ChargingTime()
     {
-        if (totalTime < 0)
+        if (batteryValue > 100)
         {
-            totalTime = 0;
+            fuelFull = true;
+            objectiveText.text = "Survive Until Finished Charging";
+            batteryValue = 100;
         }
 
-        if (time > 0)
+        if (fuelFull)
         {
-            time -= Time.deltaTime;
-            batteryValue += speed * Time.deltaTime;
+            batteryValue -= speed * Time.deltaTime;
         }
+
+        if (batteryValue < 0)
+        {
+            batteryFull = true;
+            objectiveText.text = "Get In The Car";
+        }
+
         batterySlider.value = batteryValue;
         gasText.text = GasCan.ToString();
     }
@@ -77,5 +88,15 @@ public class MapObjective : MonoBehaviour
         indicatorText.text = text;
         yield return new WaitForSeconds(4f);
         indicatorText.text = "";
+    }
+
+    public void FinisheGame()
+    {
+        if (!batteryFull)
+        {
+            StartCoroutine(Indicator("Battery is not fully charged!"));
+            return;
+        }
+        Debug.Log(">>>>>>>Show Win Screen");
     }
 }

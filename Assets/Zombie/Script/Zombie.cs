@@ -56,7 +56,6 @@ public class Zombie : MonoBehaviour
     private NavMeshAgent Agent;
     private TargetScript health;
 
-
     float curSpeed;
     Vector3 previousPosition;
 

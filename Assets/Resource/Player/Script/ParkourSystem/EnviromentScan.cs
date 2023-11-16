@@ -21,6 +21,7 @@ public class EnviromentScan : MonoBehaviour
 
     private InputManager input;
     private bool pressed;
+    WeaponManager weapon;
     public ObstacleHitData ObstacleCheck()
     {
         var hitData = new ObstacleHitData();
@@ -47,6 +48,7 @@ public class EnviromentScan : MonoBehaviour
     {
         _cam = Camera.main;
         input = GetComponent<InputManager>();
+        weapon= GetComponent<WeaponManager>();
     }
 
     private void Update()
@@ -79,7 +81,22 @@ public class EnviromentScan : MonoBehaviour
             if (!input.Interact) pressed = false;
 
         }
-        
+
+        else if (hit.collider.gameObject.CompareTag("Ammo"))
+        {
+            actionText.SetText("E - Pick Up");
+
+            if (input.Interact && !pressed)
+            {
+                bool isPrimary = hit.collider.gameObject.GetComponent<ObjectPickup>().primaryAmmo;
+                weapon.AddAmmo(isPrimary);
+                Destroy(hit.collider.gameObject);
+                pressed = true;
+            }
+
+            if (!input.Interact) pressed = false;
+        }
+
 
         else if (hit.collider.gameObject.CompareTag("Generator"))
         {
@@ -87,6 +104,18 @@ public class EnviromentScan : MonoBehaviour
             if (input.Interact && !pressed)
             {
                 hit.collider.gameObject.GetComponentInParent<MapObjective>().UseGas();
+                pressed = true;
+            }
+
+            if (!input.Interact) pressed = false;
+        }
+
+        else if (hit.collider.gameObject.CompareTag("Car"))
+        {
+            actionText.SetText("E - Leave");
+            if (input.Interact && !pressed)
+            {
+                hit.collider.gameObject.GetComponentInParent<MapObjective>().FinisheGame();
                 pressed = true;
             }
 
