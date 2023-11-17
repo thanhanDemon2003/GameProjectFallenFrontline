@@ -4,37 +4,35 @@ using UnityEngine;
 
 public class DocCaseScript : MonoBehaviour
 {
-    public float interactionRange = 3f; 
-    public LayerMask interactableLayer; 
-    public Mission1Script gameManager;
+    public float interactionRange = 4f; 
+    public LayerMask interactableLayer;
 
     private void Start()
     {
-        gameManager = FindObjectOfType<Mission1Script>();
+
     }
 
     private void Update()
-    {      
+    {
         Vector3 playerPosition = transform.position;
         Vector3 forward = transform.forward;
         RaycastHit hit;
 
+        Debug.DrawRay(playerPosition, forward * interactionRange, Color.green);
+
         if (Physics.Raycast(playerPosition, forward, out hit, interactionRange, interactableLayer))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("DocCase"))
+            if (hit.collider.CompareTag("DocCase"))
             {
-                Debug.Log(">>> DocCase!");         
-                    gameManager.CollectDocument(); 
-                    Destroy(hit.collider.gameObject);
-            }
-            else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("ExitPoint"))
-            {
-                Debug.Log(">>> ExitPoint!");
+                Debug.DrawRay(playerPosition, forward * interactionRange, Color.red);
+                Debug.Log(">>> find Case");
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    gameManager.TryExit();
+                    Mission1Script.CollectDocument();
+                    Destroy(hit.collider.gameObject);
                 }
             }
         }
     }
 }
+//chay thu coi

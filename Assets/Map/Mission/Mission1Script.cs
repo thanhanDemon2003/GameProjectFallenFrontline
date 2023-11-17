@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Mission1Script : MonoBehaviour
 {
-    public int numberOfDocumentsToCollect = 5;
-    private int collectedDocuments = 0;
-    private bool isGameOver = false;
-
-    public void CollectDocument()
+    public static int numberOfDocumentsToCollect = 5;
+    public static  int collectedDocuments = 0;
+    public static bool isGameOver = false;
+    
+    public static void CollectDocument()
     {
         if (!isGameOver)
         {

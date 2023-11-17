@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6949014581689460971}
   m_Layer: 17
   m_Name: Sci-fi Military Casse 1
-  m_TagString: Untagged
+  m_TagString: DocCase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,3 +138,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19bfa6f46e9a164cb6d9e6b18d6d440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDistance: 2
