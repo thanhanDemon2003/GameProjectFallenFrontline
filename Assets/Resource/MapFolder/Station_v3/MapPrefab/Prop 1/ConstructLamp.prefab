@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6677154117608122857}
   - component: {fileID: 329285590838150728}
   - component: {fileID: 3249724275643971283}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 3650816805820819417}
   - component: {fileID: 7764424985231028196}
   - component: {fileID: 712186988851682177}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   intensityFromLight: 1
   intensityModeAdvanced: 0
-  intensityInside: 1.76
+  intensityInside: 47.95
   intensityOutside: 1.76
   blendingMode: 0
   spotAngleFromLight: 1
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 5595496690358309316}
   - component: {fileID: 5659937594723893246}
   - component: {fileID: 8521341379297687316}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 9186077075923904723}
   - component: {fileID: 2544766492269715357}
   - component: {fileID: 8923350509466531995}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

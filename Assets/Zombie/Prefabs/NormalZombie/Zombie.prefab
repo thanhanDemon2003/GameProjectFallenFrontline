@@ -1205,7 +1205,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8456a4d3f8ac3d64fb077bbf8a868d27,
         type: 3}
       propertyPath: m_Name
-      value: Zombie Variant
+      value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8456a4d3f8ac3d64fb077bbf8a868d27,
         type: 3}
@@ -3422,8 +3422,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6b2f067e3d7164595bf28dd3e04cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   enemiesDmg: 0
+  ammoPrimaryBox: {fileID: 492044218807554397, guid: c6db5db087b33934c8596aa4235665ce,
+    type: 3}
+  ammoSecondaryBox: {fileID: 492044218807554397, guid: bf12fa690b7c46b418eeb5d5ba92a274,
+    type: 3}
+  painkiller: {fileID: 2156495054132763506, guid: 2402facfdf47e15429d303e003981ca3,
+    type: 3}
 --- !u!114 &1284516871880126089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3566,7 +3572,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 7.61
+  MaxDistance: 31.2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

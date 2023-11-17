@@ -24,5 +24,17 @@ public class ObjectPickup : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (gameObject.CompareTag("Painkiller"))
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponentInChildren<PlayerUseArm>().currentPotion += 1;
+                Destroy(gameObject);
+            }
+        }
+    }
+
 
 }

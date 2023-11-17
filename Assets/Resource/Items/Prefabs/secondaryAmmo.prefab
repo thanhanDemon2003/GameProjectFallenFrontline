@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7000150652088305161}
   - component: {fileID: 3366032573111365637}
   m_Layer: 14
-  m_Name: primaryAmmo
+  m_Name: secondaryAmmo
   m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4301fe1d51a43e04fa31a13ac42e08c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAmmo: 1
+  primaryAmmo: 0
 --- !u!1 &2110691490989210174
 GameObject:
   m_ObjectHideFlags: 0

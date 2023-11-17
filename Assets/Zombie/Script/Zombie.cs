@@ -396,9 +396,8 @@ public class Zombie : MonoBehaviour
         Destroy(gameObject, 20f);
     }
 
-    private float RandomChance()
+    public float RandomChance()
     {
-
         return Random.Range(0, 10);
     }
 
