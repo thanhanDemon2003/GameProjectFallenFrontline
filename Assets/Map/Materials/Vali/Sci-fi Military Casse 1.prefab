@@ -125,7 +125,6 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 0
-  gameManager: {fileID: 0}
 --- !u!114 &6949014581689460971
 MonoBehaviour:
   m_ObjectHideFlags: 0

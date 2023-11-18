@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Mission1Script : MonoBehaviour
 {
     public static int numberOfDocumentsToCollect = 5;
-    public static  int collectedDocuments = 0;
+    public static int collectedDocuments = 0;
     public static bool isGameOver = false;
     
     public static void CollectDocument()
@@ -17,7 +17,7 @@ public class Mission1Script : MonoBehaviour
 
             if (collectedDocuments >= numberOfDocumentsToCollect)
             {
-                Debug.Log("Collected enough documents!");
+                Debug.Log("Collected enough documents! >>> Number: " + numberOfDocumentsToCollect);
             }
         }
     }

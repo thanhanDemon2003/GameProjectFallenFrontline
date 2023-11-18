@@ -30,9 +30,9 @@ public class DocCaseScript : MonoBehaviour
                 {
                     Mission1Script.CollectDocument();
                     Destroy(hit.collider.gameObject);
+                    Debug.Log(">>> Collected");
                 }
             }
         }
     }
 }
-//chay thu coi
