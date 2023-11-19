@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class MissionComplete : MonoBehaviour
 {
     [Header("Objectives to Complete")]
-    public TextMeshPro Mission_1;
-    public TextMeshPro Mission_2;
-    public TextMeshPro Mission_3;
+    public TMP_Text Mission_1;
+    public TMP_Text Mission_2;
+    public TMP_Text Mission_3;
 
     public static MissionComplete occurrence;
 
