@@ -33,6 +33,26 @@ public class DocCaseScript : MonoBehaviour
                     Debug.Log(">>> Collected");
                 }
             }
+            if (hit.collider.CompareTag("VirusSample"))
+            {
+                Debug.DrawRay(playerPosition, forward * interactionRange, Color.red);
+                Debug.Log(">>> find Virus Sample");
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Mission1Script.CollectVirusSample();
+                    Destroy(hit.collider.gameObject);
+                    Debug.Log(">>> Collected");
+                }
+            }
+            if (hit.collider.CompareTag("ExitPoint"))
+            {
+                Debug.DrawRay(playerPosition, forward * interactionRange, Color.red);
+                Debug.Log(">>> find Exit Point");
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Mission1Script.TryExit();
+                }
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ public class Mission1Script : MonoBehaviour
 {
     public static int numberOfDocumentsToCollect = 5;
     public static int collectedDocuments = 0;
+    public static int QualityVirusSample = 1;
+    public static int collectedVirusSample = 0;
     public static bool isGameOver = false;
     
     public static void CollectDocument()
@@ -18,10 +20,23 @@ public class Mission1Script : MonoBehaviour
             if (collectedDocuments >= numberOfDocumentsToCollect)
             {
                 Debug.Log("Collected enough documents! >>> Number: " + numberOfDocumentsToCollect);
+                MissionComplete.Instance.Mission_1_Done(true);
             }
         }
     }
 
+    public static void CollectVirusSample()
+    {
+        if (!isGameOver)
+        {
+            collectedVirusSample++;
+            if (collectedVirusSample >= QualityVirusSample)
+            {
+                Debug.Log("Collected enough virus sample! >>> Number: " + QualityVirusSample);
+                MissionComplete.Instance.Mission_2_Done(true);
+            }
+        }      
+    }
     public void PlayerIsDead()
     {
         if (!isGameOver)
@@ -30,13 +45,15 @@ public class Mission1Script : MonoBehaviour
         }
     }
 
-    public void TryExit()
+    public static void TryExit()
     {
         if (!isGameOver)
         {
-            if (collectedDocuments >= numberOfDocumentsToCollect)
+            if (collectedDocuments >= numberOfDocumentsToCollect && collectedVirusSample >= QualityVirusSample)
             {
                 Debug.Log("Mission Complete! Change to exit point...");
+                MissionComplete.Instance.Mission_3_Done(true);
+                EndGame(true);
             }
             else
             {
@@ -45,13 +62,13 @@ public class Mission1Script : MonoBehaviour
         }
     }
 
-    private void EndGame(bool isSuccessful)
+    private static void EndGame(bool isSuccessful)
     {
         isGameOver = true;
 
         if (isSuccessful)
         {
-            Debug.Log("Mission Complete!");
+            Debug.Log("Mission Complete, End Mode!");
         }
         else
         {

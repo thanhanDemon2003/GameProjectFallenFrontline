@@ -11,43 +11,28 @@ public class MissionComplete : MonoBehaviour
     public TMP_Text Mission_2;
     public TMP_Text Mission_3;
 
-    public static MissionComplete occurrence;
+    public static MissionComplete Instance;
 
     private void Awake()
     {
-        occurrence = this;
+        Instance = this;
     }
 
-    public void GetObjectiveDone(bool obj1, bool obj2, bool obj3)
+    public void SetObjectiveStatus(TMP_Text missionText, bool isCompleted, string completedText, string incompleteText)
     {
-        if(obj1 == true)
-        {
-            Mission_1.text = "Collected full Document!";
-            Mission_1.color = Color.green;
-        }
-        else
-        {
-            Mission_1.text = "Find and collect 5 Document!";
-            Mission_1.color = Color.green;
-        }
-        if (obj2 == true)
-        {
-            Mission_2.text = "Collected Virus Sample!";
-            Mission_2.color = Color.green;
-        }
-        else {
-            Mission_2.text = "Find and collect Virus Sample!";
-            Mission_2.color = Color.green;
-        }
-        if (obj3 == true)
-        {
-            Mission_3.text = "Get out Lab!";
-            Mission_3.color = Color.green;
-        }
-        else
-        {
-            Mission_3.text = "Get out Lab!";
-            Mission_3.color = Color.green;
-        }
+        missionText.text = isCompleted ? completedText : incompleteText;
+        missionText.color = isCompleted ? Color.green : Color.white;
+    }
+    public void Mission_1_Done(bool obj1)
+    {
+        SetObjectiveStatus(Mission_1, obj1, "Complete Mission!", "Collect 5 Document Case!");
+    }
+    public void Mission_2_Done(bool obj2)
+    {
+        SetObjectiveStatus(Mission_2, obj2, "Complete Mission!", "Find Virus Sample!");
+    }
+    public void Mission_3_Done(bool obj3)
+    {
+        SetObjectiveStatus(Mission_3, obj3, "Complete Mission!", "Exit the lab!");
     }
 }

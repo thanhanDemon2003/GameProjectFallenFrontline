@@ -17,6 +17,8 @@ TagManager:
   - DocCase
   - Enemy
   - hammer
+  - VirusSample
+  - ExitPoint
   layers:
   - Default
   - TransparentFX
@@ -37,7 +39,7 @@ TagManager:
   - SavePoint
   - DocCase
   - ExitPoint
-  - 
+  - VirusSample
   - 
   - 
   - 
