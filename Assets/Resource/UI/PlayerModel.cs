@@ -8,12 +8,14 @@ public class PlayerModel
     public string nofication;
     public string data;
     public string url;
-    public int stt;
+    public string stt;
     public string name;
     public string id;
     public string fb_id;
     public string id_discord;
-    PlayerModel(string success, string nofication, string data, string url, int stt, string name, string id, string fb_id, string id_discord)
+    public string token;
+    public string method;
+    PlayerModel(string success, string nofication, string data, string url, string stt, string name, string id, string fb_id, string id_discord, string token, string method)
     {
         this.success = success;
         this.nofication = nofication;
@@ -24,5 +26,7 @@ public class PlayerModel
         this.id = id;
         this.fb_id = fb_id;
         this.id_discord = id_discord;
+        this.token = token;
+        this.method = method;
     }
 }
