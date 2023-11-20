@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
+using PlayerModel;
+
 public class LoginSrcipts : MonoBehaviour
 {
     public string urlApi1 = "http://localhost:3001/api";
@@ -13,7 +16,7 @@ public class LoginSrcipts : MonoBehaviour
     public RectTransform login;
     public RectTransform loading;
     public TextMeshProUGUI textLoading;
-    
+
 
     void Start()
     {
@@ -41,9 +44,9 @@ public class LoginSrcipts : MonoBehaviour
         else
         {
             string responseData = www.downloadHandler.text;
-            PlayerModel playerModel = JsonUtility.FromJson<PlayerModel>(responseData);
-            string url = playerModel.url;
-            string stt = playerModel.stt;
+            Player player = JsonUtility.FromJson<Player>(responseData);
+            string url = player.url;
+            string stt = player.stt;
             Application.OpenURL(url);
             loadPlayer(stt);
             login.gameObject.SetActive(false);
@@ -71,7 +74,7 @@ public class LoginSrcipts : MonoBehaviour
         else
         {
             string responseData = www.downloadHandler.text;
-            PlayerModel playerModel = JsonUtility.FromJson<PlayerModel>(responseData);
+            Player playerModel = JsonUtility.FromJson<Player>(responseData);
             string token = playerModel.token;
             string method = playerModel.method;
             string name = playerModel.name;
@@ -95,8 +98,8 @@ public class LoginSrcipts : MonoBehaviour
     IEnumerator GetLoginGG(string token, string name)
     {
         WWWForm form = new WWWForm();
-        form.AddField("myField", token);
         form.AddField("token", token);
+        form.AddField("name", name);
         UnityWebRequest www = UnityWebRequest.Post("http://localhost:3000/games/Login", form);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
@@ -110,7 +113,7 @@ public class LoginSrcipts : MonoBehaviour
         else
         {
             string responseData = www.downloadHandler.text;
-            PlayerModel playerModel = JsonUtility.FromJson<PlayerModel>(responseData);
+            Player playerModel = JsonUtility.FromJson<Player>(responseData);
             string data = playerModel.data;
             Debug.Log("Dữ liệu nhận được: " + data);
             login.gameObject.SetActive(false);
@@ -121,7 +124,60 @@ public class LoginSrcipts : MonoBehaviour
     }
     public void apiGetLoginDC(string token, string name)
     {
-        // StartCoroutine(GetLoginDC(stt));
-        Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + token + " " + name);
+        StartCoroutine(GetLoginDC(token, name));
+
     }
+    IEnumerator GetLoginDC(string token, string name)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("id_discord", token);
+        form.AddField("name", token);
+        UnityWebRequest www = UnityWebRequest.Post("http://localhost:3000/games/Loginwithdiscord", form);
+        yield return www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Lỗi kết nối: " + www.error);
+            textLoading.text = "Lỗi đăng nhập, vui lòng thử lại!";
+            login.gameObject.SetActive(true);
+            loading.gameObject.SetActive(false);
+
+        }
+        else
+        {
+            string responseData = www.downloadHandler.text;
+            Player playerModel = JsonUtility.FromJson<Player>(responseData);
+            bool success = playerModel.success;
+            string notification = playerModel.notification;
+            string data = playerModel.data;
+            Debug.Log(playerModel);
+            Debug.Log("Dữ liệu nhận được: "+"" + data+"aa");
+            Debug.Log("Dữ liệu nhận được: " + success + notification);
+            login.gameObject.SetActive(false);
+            loading.gameObject.SetActive(true);
+            textLoading.text = "Đăng nhập thành công";
+            Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
+            // SavePlayer(data);
+        }
+    }
+    public void SavePlayer(string data)
+    {
+        Data dataplayer = JsonUtility.FromJson<Data>(data);
+
+        string _id = dataplayer._id;
+        string name = dataplayer.name;
+        string fb_id = dataplayer.fb_id;
+        string id_discord = dataplayer.id_discord;
+        string balance = dataplayer.balance;
+        Skins[] skins = dataplayer.wardrobe;
+
+
+
+        string filePath = Application.persistentDataPath + "/player.json";
+
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(filePath, json);
+        Debug.Log("Lưu thành công!" + filePath);
+    }
+
+
 }
