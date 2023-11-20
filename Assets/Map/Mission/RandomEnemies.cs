@@ -5,23 +5,9 @@ using UnityEngine;
 public class RandomEnemies : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public int initialEnemyCount = 5;
-    public int maxEnemies = 8; 
+    public int maxEnemies = 5;
     public Transform[] spawnPoints;
 
-    private void Start()
-    {
-        InitializeEnemies();
-    }
-
-    void InitializeEnemies()
-    {
-        for (int i = 0; i < initialEnemyCount; i++)
-        {
-            Transform spawnPoint = GetRandomSpawnPoint();
-            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        }
-    }
 
     void Update()
     {
