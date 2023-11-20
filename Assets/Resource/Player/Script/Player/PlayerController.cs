@@ -88,7 +88,6 @@ namespace FPS.Player
         private void FixedUpdate()
         {
             if (!canControl) return;
-            Move();
             Crouch();
             EquipWeapon();
 
@@ -96,6 +95,8 @@ namespace FPS.Player
 
         private void LateUpdate()
         {
+
+            Move();
             _camera.position = _cameraRoot.position;
             if (!canControl) return;
             CamMovements();
