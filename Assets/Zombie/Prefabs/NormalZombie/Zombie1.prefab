@@ -1702,11 +1702,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33206b95a6baa3f498ad333772b39909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _faceUpStandUpStateName: 
-  _faceDownStandUpStateName: 
-  _faceUpStandUpClipName: 
-  _faceDownStandUpClipName: 
-  _timeToResetBones: 0
+  _faceUpStandUpStateName: Face Up Stand Up
+  _faceDownStandUpStateName: Face Down Stand Up
+  _faceUpStandUpClipName: Stand Up
+  _faceDownStandUpClipName: Standing Up
+  _timeToResetBones: 0.5
   _currentState: 0
   _animator: {fileID: 0}
   zombieSound: []
