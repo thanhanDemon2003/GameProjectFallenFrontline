@@ -19,6 +19,7 @@ TagManager:
   - hammer
   - VirusSample
   - ExitPoint
+  - AmmoStorage
   layers:
   - Default
   - TransparentFX
@@ -40,7 +41,7 @@ TagManager:
   - DocCase
   - ExitPoint
   - VirusSample
-  - 
+  - AmmoStorage
   - 
   - 
   - 

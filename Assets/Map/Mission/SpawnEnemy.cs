@@ -9,7 +9,6 @@ public class SpawnEnemy : MonoBehaviour
     public Transform[] spawnPoints;
     public int radius;
     public int maxEnemies;
-    private bool canSpawn = true;
 
     void Update()
     {
