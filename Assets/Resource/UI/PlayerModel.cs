@@ -9,14 +9,14 @@ namespace PlayerModel
     {
         public bool success;
         public string notification;
-        public string data;
+        public Data data;
         public string url;
         public string stt;
         public string token;
         public string method;
         public string name;
 
-        Player(bool success, string notification, string data, string url, string stt, string token, string method, string name)
+        Player(bool success, string notification, Data Data, string url, string stt, string token, string method, string name)
         {
             this.success = success;
             this.notification = notification;

@@ -11,8 +11,8 @@ using PlayerModel;
 
 public class LoginSrcipts : MonoBehaviour
 {
-    public string urlApi1 = "http://localhost:3001/api";
-    public string urlApi2 = "http://localhost:3000/games";
+    public string urlApi1 = "https://payment.dotstudio.demondev.games/api";
+    // public string urlApi2 = "http://localhost:3000/games";
     public RectTransform login;
     public RectTransform loading;
     public TextMeshProUGUI textLoading;
@@ -114,7 +114,7 @@ public class LoginSrcipts : MonoBehaviour
         {
             string responseData = www.downloadHandler.text;
             Player playerModel = JsonUtility.FromJson<Player>(responseData);
-            string data = playerModel.data;
+            Data data = playerModel.data;
             Debug.Log("Dữ liệu nhận được: " + data);
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
@@ -148,9 +148,13 @@ public class LoginSrcipts : MonoBehaviour
             Player playerModel = JsonUtility.FromJson<Player>(responseData);
             bool success = playerModel.success;
             string notification = playerModel.notification;
-            string data = playerModel.data;
-            Debug.Log(playerModel);
-            Debug.Log("Dữ liệu nhận được: "+"" + data+"aa");
+            Data data = playerModel.data;
+            data = JsonUtility.FromJson<Data>(responseData);
+            string _id = data._id;
+            string name1 = data.name;
+            string fb_id = data.fb_id;
+            Debug.Log("Dữ liệu nhận được: " + _id + name1 + fb_id);
+            Debug.LogWarning("Dữ liệu nhận được: " + "" + data + "aa");
             Debug.Log("Dữ liệu nhận được: " + success + notification);
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
