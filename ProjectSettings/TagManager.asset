@@ -23,6 +23,12 @@ TagManager:
   - Objective
   - Zombie
   - Painkiller
+  - DocCase
+  - Enemy
+  - hammer
+  - VirusSample
+  - ExitPoint
+  - AmmoStorage
   layers:
   - Default
   - TransparentFX
@@ -45,6 +51,13 @@ TagManager:
   - 
   - 
   - 
+  - Floor
+  - Wall
+  - SavePoint
+  - DocCase
+  - ExitPoint
+  - VirusSample
+  - AmmoStorage
   - 
   - 
   - 
