@@ -11,7 +11,7 @@ using PlayerModel;
 
 public class LoginSrcipts : MonoBehaviour
 {
-    public string urlApi1 = "https://payment.dotstudio.demondev.games/api";
+    public string urlApi1 = "http://dotstudio.andemongame.tech/api";
     // public string urlApi2 = "http://localhost:3000/games";
     public RectTransform login;
     public RectTransform loading;
@@ -35,7 +35,7 @@ public class LoginSrcipts : MonoBehaviour
     IEnumerator Login()
     {
 
-        UnityWebRequest www = UnityWebRequest.Get(urlApi1 + "/LoginGameWeb");
+        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.andemongame.tech/api/LoginGameWeb");
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -61,7 +61,7 @@ public class LoginSrcipts : MonoBehaviour
     }
     IEnumerator LoadPlayerGame(string stt)
     {
-        UnityWebRequest www = UnityWebRequest.Get(urlApi1 + "/getdatauser?stt=" + stt);
+        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.andemongame.tech/api/getdatauser?stt=" + stt);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -100,7 +100,7 @@ public class LoginSrcipts : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("token", token);
         form.AddField("name", name);
-        UnityWebRequest www = UnityWebRequest.Post("http://localhost:3000/games/Login", form);
+        UnityWebRequest www = UnityWebRequest.Post("https://dotstudio.andemongame.tech/games/Login", form);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -132,7 +132,7 @@ public class LoginSrcipts : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("id_discord", token);
         form.AddField("name", token);
-        UnityWebRequest www = UnityWebRequest.Post("http://localhost:3000/games/Loginwithdiscord", form);
+        UnityWebRequest www = UnityWebRequest.Post("https://darkdisquitegame.andemongame.tech/games/Loginwithdiscord", form);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {

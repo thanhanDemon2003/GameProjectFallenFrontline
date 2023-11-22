@@ -511,8 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e480f139635b84981de1b6661eaab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  urlApi1: http://localhost:3001/api
-  urlApi2: http://localhost:3000/api
+  urlApi1: https://dotstudio.demondev.games/api
   login: {fileID: 673968180}
   loading: {fileID: 541841705}
   textLoading: {fileID: 25266083}
