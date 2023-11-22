@@ -14,8 +14,11 @@ public class LoginSrcipts : MonoBehaviour
     public string urlApi1 = "http://dotstudio.andemongame.tech/api";
     // public string urlApi2 = "http://localhost:3000/games";
     public RectTransform login;
+    public RectTransform cancel;
+
     public RectTransform loading;
     public TextMeshProUGUI textLoading;
+    
 
 
     void Start()
@@ -51,6 +54,7 @@ public class LoginSrcipts : MonoBehaviour
             loadPlayer(stt);
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
+            cancel.gameObject.SetActive(true);
             textLoading.text = "Đang đăng nhập...";
             Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
         }
@@ -58,6 +62,14 @@ public class LoginSrcipts : MonoBehaviour
     public void loadPlayer(string stt)
     {
         StartCoroutine(LoadPlayerGame(stt));
+    }
+    public void cancelLoadPlayer()
+    {
+        login.gameObject.SetActive(true);
+        loading.gameObject.SetActive(false);
+        cancel.gameObject.SetActive(false);
+        textLoading.text = "Bạn đã dừng login!";
+        StopCoroutine(LoadPlayerGame(""));
     }
     IEnumerator LoadPlayerGame(string stt)
     {
@@ -149,38 +161,32 @@ public class LoginSrcipts : MonoBehaviour
             bool success = playerModel.success;
             string notification = playerModel.notification;
             Data data = playerModel.data;
-            data = JsonUtility.FromJson<Data>(responseData);
-            string _id = data._id;
-            string name1 = data.name;
-            string fb_id = data.fb_id;
-            Debug.Log("Dữ liệu nhận được: " + _id + name1 + fb_id);
             Debug.LogWarning("Dữ liệu nhận được: " + "" + data + "aa");
             Debug.Log("Dữ liệu nhận được: " + success + notification);
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
             textLoading.text = "Đăng nhập thành công";
             Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
-            // SavePlayer(data);
+            SavePlayer(data);
         }
     }
-    public void SavePlayer(string data)
+ 
+    public void SavePlayer(Data data)
     {
-        Data dataplayer = JsonUtility.FromJson<Data>(data);
 
-        string _id = dataplayer._id;
-        string name = dataplayer.name;
-        string fb_id = dataplayer.fb_id;
-        string id_discord = dataplayer.id_discord;
-        string balance = dataplayer.balance;
-        Skins[] skins = dataplayer.wardrobe;
-
-
-
+        string _id = data._id;
+        string name = data.name;
+        string fb_id = data.fb_id;
+        string id_discord = data.id_discord;
+        string balance = data.balance;
+        Skins[] skins = data.wardrobe;
         string filePath = Application.persistentDataPath + "/player.json";
-
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(filePath, json);
         Debug.Log("Lưu thành công!" + filePath);
+        Debug.Log("Dữ liệu nhận được: " + _id + name + fb_id + id_discord + balance + skins);
+
+        // code chuyển màn tại đây
     }
 
 

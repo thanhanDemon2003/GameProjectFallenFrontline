@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Data.Common;
 namespace PlayerModel
 {
     [Serializable]
@@ -60,6 +61,16 @@ namespace PlayerModel
         public string nameSkin;
         public string color;
         public string category;
+        public Skins(string id, string gunskinId, string nameSkin, string color, string category)
+        {
+            this.id = id;
+            this.gunskinId = gunskinId;
+            this.nameSkin = nameSkin;
+            this.color = color;
+            this.category = category;
+        }
     }
+
+
 
 }
