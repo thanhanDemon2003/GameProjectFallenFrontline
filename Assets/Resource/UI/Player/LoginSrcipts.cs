@@ -112,7 +112,7 @@ public class LoginSrcipts : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("token", token);
         form.AddField("name", name);
-        UnityWebRequest www = UnityWebRequest.Post("https://dotstudio.andemongame.tech/games/Login", form);
+        UnityWebRequest www = UnityWebRequest.Post("https://darkdisquitegame.andemongame.tech/games/Login", form);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -132,6 +132,7 @@ public class LoginSrcipts : MonoBehaviour
             loading.gameObject.SetActive(true);
             textLoading.text = "Đăng nhập thành công";
             Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
+            SavePlayer(data);
         }
     }
     public void apiGetLoginDC(string token, string name)
@@ -171,9 +172,9 @@ public class LoginSrcipts : MonoBehaviour
         }
     }
  
-    public void SavePlayer(Data data)
+    private void SavePlayer(Data data)
     {
-
+        Debug.Log("Lưu dữ liệu vào file json"+ data);
         string _id = data._id;
         string name = data.name;
         string fb_id = data.fb_id;
