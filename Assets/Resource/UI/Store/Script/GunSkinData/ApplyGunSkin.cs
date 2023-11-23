@@ -4,14 +4,17 @@ using UnityEngine;
 using GunSkinModel;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.IO;
 // using GunSkinList;
 
 public class ApplySkin : MonoBehaviour
 {
-    public string prefabsFolderPath = "Assets/Resource/UI/Skins/Skin/";
-    public string gunImageFolderPath = "Assets/Resource/UI/Skins/Images/";
+    public string prefabsFolderPath = "Assets/Resource/UI/Skins/Skin";
+    public string gunImageFolderPath = "Assets/Resource/UI/Skins/Images";
     public GameObject conTent;
     public GameObject itemGunSkin;
+    public Sprite anh;
 
 
     void Start()
@@ -25,6 +28,7 @@ public class ApplySkin : MonoBehaviour
     async void getAllSkin()
     {
         GunSkinData Skins = await GunSkinApi.GetAllSkins();
+        
         Debug.Log("Skins: " + Skins);
         foreach (GunSkinModel.GunSkin skin in Skins.data)
         {
@@ -35,35 +39,31 @@ public class ApplySkin : MonoBehaviour
             var price = skin.price;
             var category = skin.category;
             skin.PrefabPath = prefabsFolderPath + "/" + color;
-            skin.image = gunImageFolderPath + "/" + name+".png";
-            //Debug.Log("id: " + id);
-            //Debug.Log("name: " + name);
-            //Debug.Log("Skin: " + skin.PrefabPath);
-            //Debug.Log("img: " + skin.image);
-            //Debug.Log("fullskin: " + skin);
-            
-             Instantiate(itemGunSkin, conTent.transform);
+            skin.image = gunImageFolderPath + "/" + name + ".png";
+
+
+            Debug.Log("fullskin: " + skin.image);
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = price.ToString();
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[2].text = percent.ToString();
-            itemGunSkin.GetComponentsInChildren<SpriteRenderer>()[1].sprite = Resources.Load<Sprite>(skin.image);
-            Debug.Log("vị trí" + itemGunSkin.GetComponentsInChildren<SpriteRenderer>()[0] + itemGunSkin.GetComponentsInChildren<SpriteRenderer>()[1]);
+            
+            var image = itemGunSkin.GetComponentsInChildren<Image>()[0];
 
-            itemGunSkin.GetComponentsInChildren<RawImage>()[0].texture = Resources.Load<Texture>(skin.PrefabPath);
+            Texture2D tex = new(2, 2);
+            tex.LoadImage(File.ReadAllBytes(skin.image));
+         image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
+                Debug.Log("image: " + image.sprite);
 
+            Instantiate(itemGunSkin, conTent.transform);
 
-            //var nameText = item.transform.Find("name").GetComponent<TextMeshProUGUI>();
-            //var priceText = item.transform.Find("gia").GetComponent<TextMeshProUGUI>();
-            //var percentText = item.transform.Find("sale").GetComponent<TextMeshProUGUI>();
-            //var iconImage = item.transform.Find("Image").GetComponent<Image>();
-
-            //nameText.text = name;
-            //priceText.text = price.ToString();
-            //percentText.text = percent.ToString();
-            //iconImage.sprite = Resources.Load<Sprite>(skin.image);
 
 
         }
+    }
+
+    private Texture LoadTexture(string image)
+    {
+        throw new NotImplementedException();
     }
     //void OnDataLoaded(Skin skin)
     //{
@@ -76,5 +76,5 @@ public class ApplySkin : MonoBehaviour
     //    skinData.priceText.text = skin.price.ToString();
     //    skinData.iconImage.sprite = LoadSprite(skin.iconUrl);
 
- }
+}
 
