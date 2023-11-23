@@ -7,7 +7,7 @@ using GunSkinModel;
 
 public class GunSkinApi
 {
-  private const string BaseURL = "https://darkdisquite.demondev.games/games/wardrobeplayer/652582884b678760d528928e";
+  private const string BaseURL = "https://darkdisquitegame.andemongame.tech/games/getallgunskin";
 
   public static async Task<GunSkinData> GetAllSkins()
   {
