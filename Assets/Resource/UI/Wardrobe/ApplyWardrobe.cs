@@ -17,7 +17,7 @@ public class ApplyWardrobe : MonoBehaviour
     public GameObject vitri;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         PathFile = Application.persistentDataPath + "/Player.json";
         prefabsFolderPath = "Assets/Resource/UI/Skins/Skin";

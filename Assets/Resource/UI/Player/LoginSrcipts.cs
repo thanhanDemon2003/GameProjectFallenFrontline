@@ -179,7 +179,7 @@ public class LoginSrcipts : MonoBehaviour
         string name = data.name;
         string fb_id = data.fb_id;
         string id_discord = data.id_discord;
-        string balance = data.balance;
+        int balance = data.balance;
         Skins[] skins = data.wardrobe;
         string filePath = Application.persistentDataPath + "/player.json";
         string json = JsonUtility.ToJson(data);

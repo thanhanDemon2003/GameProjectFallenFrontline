@@ -29,7 +29,6 @@ public class ApplySkin : MonoBehaviour
     {
         GunSkinData Skins = await GunSkinApi.GetAllSkins();
 
-        Debug.Log("Skins: " + Skins);
         foreach (GunSkinModel.GunSkin skin in Skins.data)
         {
             var id = skin._id;
@@ -42,7 +41,6 @@ public class ApplySkin : MonoBehaviour
             skin.image = gunImageFolderPath + "/" + name + ".png";
 
 
-            Debug.Log("fullskin: " + skin.image);
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = price.ToString();
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[2].text = percent.ToString();
@@ -50,27 +48,13 @@ public class ApplySkin : MonoBehaviour
             Texture2D tex = new(2, 2);
             tex.LoadImage(File.ReadAllBytes(skin.image));
             image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
-            Debug.Log("image: " + image.sprite);
             var skinDataStorage = itemGunSkin.GetComponent<StorageData>();
-            skinDataStorage.SkinData(id, skin.PrefabPath, price, percent);
-
-            //itemGunSkin.GetComponent<Button>().onClick.AddListener(onClickData);
-            
+            skinDataStorage.SkinData(id, skin.PrefabPath, price, percent);         
             var newSkin =  Instantiate(itemGunSkin, conTent.transform);
           newSkin.name = id;
             
         }
     }
-    //public void onClickData()
-    //{
-    //    var skinData = itemGunSkin.GetComponent<StorageData>();
-    //    var skinId = skinData.skinId;
-    //    var pathModelSkin = skinData.pathModelSkin;
-    //    var balance = skinData.blance;
-    //    skinData.GetSkinData(skinId, pathModelSkin, balance);
-    //    Debug.Log("skinId: " + skinId);
-    //    Debug.Log("pathModelSkin: " + pathModelSkin);
-    //    Debug.Log("balance: " + balance);
-    //}
+
 }
 
