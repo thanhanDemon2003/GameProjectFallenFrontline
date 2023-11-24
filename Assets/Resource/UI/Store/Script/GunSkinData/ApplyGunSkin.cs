@@ -16,7 +16,6 @@ public class ApplySkin : MonoBehaviour
     public GameObject itemGunSkin;
     public Sprite anh;
 
-
     void Start()
     {
         getAllSkin();
@@ -28,7 +27,7 @@ public class ApplySkin : MonoBehaviour
     async void getAllSkin()
     {
         GunSkinData Skins = await GunSkinApi.GetAllSkins();
-        
+
         Debug.Log("Skins: " + Skins);
         foreach (GunSkinModel.GunSkin skin in Skins.data)
         {
@@ -46,35 +45,19 @@ public class ApplySkin : MonoBehaviour
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = price.ToString();
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[2].text = percent.ToString();
-            
             var image = itemGunSkin.GetComponentsInChildren<Image>()[0];
-
             Texture2D tex = new(2, 2);
             tex.LoadImage(File.ReadAllBytes(skin.image));
-         image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
-                Debug.Log("image: " + image.sprite);
+            image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
+            Debug.Log("image: " + image.sprite);
+            var skinDataStorage = itemGunSkin.GetComponent<StorageData>();
+            skinDataStorage.SkinData(id, skin.PrefabPath, price, percent);
 
-            Instantiate(itemGunSkin, conTent.transform);
-
-
-
+            
+            var newSkin =  Instantiate(itemGunSkin, conTent.transform);
+          newSkin.name = id;
+            
         }
     }
-
-    private Texture LoadTexture(string image)
-    {
-        throw new NotImplementedException();
-    }
-    //void OnDataLoaded(Skin skin)
-    //{
-
-    //    var newSkin = Instantiate(skinPrefab);
-
-    //    var skinData = newSkin.GetComponent<SkinData>();
-
-    //    skinData.nameText.text = skin.name;
-    //    skinData.priceText.text = skin.price.ToString();
-    //    skinData.iconImage.sprite = LoadSprite(skin.iconUrl);
-
 }
 

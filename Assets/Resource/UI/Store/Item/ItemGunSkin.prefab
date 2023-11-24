@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 4129055160446588408}
   - component: {fileID: 9092363514927173669}
   - component: {fileID: 3481770785877182467}
+  - component: {fileID: -4440192992966691728}
   m_Layer: 5
   m_Name: ItemGunSkin
   m_TagString: Untagged
@@ -361,7 +362,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 3481770785877182467}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -392,6 +393,21 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &-4440192992966691728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107191592634200200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9199e1a37dc3344886e7c6c5249a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinId: 
+  pathModelSkin: 
+  blance: 0
 --- !u!1 &7633237277511419602
 GameObject:
   m_ObjectHideFlags: 0
