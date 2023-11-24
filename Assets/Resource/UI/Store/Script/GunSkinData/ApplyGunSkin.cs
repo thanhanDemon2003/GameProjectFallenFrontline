@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.IO;
+using Unity.VisualScripting;
 // using GunSkinList;
 
 public class ApplySkin : MonoBehaviour
@@ -53,11 +54,23 @@ public class ApplySkin : MonoBehaviour
             var skinDataStorage = itemGunSkin.GetComponent<StorageData>();
             skinDataStorage.SkinData(id, skin.PrefabPath, price, percent);
 
+            //itemGunSkin.GetComponent<Button>().onClick.AddListener(onClickData);
             
             var newSkin =  Instantiate(itemGunSkin, conTent.transform);
           newSkin.name = id;
             
         }
     }
+    //public void onClickData()
+    //{
+    //    var skinData = itemGunSkin.GetComponent<StorageData>();
+    //    var skinId = skinData.skinId;
+    //    var pathModelSkin = skinData.pathModelSkin;
+    //    var balance = skinData.blance;
+    //    skinData.GetSkinData(skinId, pathModelSkin, balance);
+    //    Debug.Log("skinId: " + skinId);
+    //    Debug.Log("pathModelSkin: " + pathModelSkin);
+    //    Debug.Log("balance: " + balance);
+    //}
 }
 
