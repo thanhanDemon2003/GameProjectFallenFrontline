@@ -139,13 +139,13 @@ public class WeaponManager : MonoBehaviour
     {
         if (isPrimary)
         {
-            int ammoAdd = Random.RandomRange(25, 40);
+            int ammoAdd = Random.RandomRange(10, 15);
             primaryAmmo += ammoAdd;
             StartCoroutine(Indicator("+" + ammoAdd + " SMG"));
         }
         else
         {
-            int ammoAdd = Random.RandomRange(20, 30);
+            int ammoAdd = Random.RandomRange(5, 15);
             secondaryAmmo += ammoAdd;
             StartCoroutine(Indicator("+" + ammoAdd + " Pistol"));
         }

@@ -65,17 +65,21 @@ public class WeaponSway : MonoBehaviour
 
     void BobOffset()
     {
-        speedCurve += Time.deltaTime * (player.isOnGround ? (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical")) * bobExaggeration : 1f) + 0.01f;
+
+
+        speedCurve += Time.deltaTime * (player.isOnGround ? (inputManager.Move.x + Mathf.Abs(inputManager.Move.y)) * bobExaggeration : 1f) + 0.01f;
 
         bobPosition.x = (curveCos * bobLimit.x * (player.isOnGround ? 1 : 0)) - (inputManager.Move.x * travelLimit.x);
-        bobPosition.y = (curveSin * bobLimit.y) - (Input.GetAxis("Vertical") * travelLimit.y);
+        bobPosition.y = (curveSin * bobLimit.y) - (inputManager.Move.y * travelLimit.y);
         bobPosition.z = -(inputManager.Move.y * travelLimit.z);
     }
 
     void BobRotation()
     {
-        bobEulerRotation.x = (inputManager.Move != Vector2.zero ? multiplierBob.x * (Mathf.Sin(2 * speedCurve)) : 0);
-        bobEulerRotation.y = (inputManager.Move != Vector2.zero ? multiplierBob.y * curveCos : 0);
+        float inputMagnitude = Mathf.Sqrt((inputManager.Move.x * inputManager.Move.x) + (inputManager.Move.y * inputManager.Move.y));
+
+        bobEulerRotation.x = (inputManager.Move != Vector2.zero ? multiplierBob.x * (Mathf.Sin(2 * speedCurve)) * inputMagnitude : 0);
+        bobEulerRotation.y = (inputManager.Move != Vector2.zero ? multiplierBob.y * curveCos * inputMagnitude : 0);
         bobEulerRotation.z = (inputManager.Move != Vector2.zero ? multiplierBob.z * curveCos * inputManager.Move.x : 0);
     }
 

@@ -19,6 +19,7 @@ public class MapObjective : MonoBehaviour
     public float batteryValue;
     private bool fuelFull;
     public bool batteryFull;
+    public GameObject carLight;
 
     public TextMeshProUGUI indicatorText;
     public TextMeshProUGUI objectiveText;
@@ -77,6 +78,7 @@ public class MapObjective : MonoBehaviour
         if (batteryValue < 0)
         {
             batteryFull = true;
+            carLight.SetActive(true);
             objectiveText.text = "Get In The Car";
         }
 

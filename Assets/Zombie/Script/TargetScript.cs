@@ -12,10 +12,12 @@ public class TargetScript : MonoBehaviour
     public GameObject ammoSecondaryBox;
     public GameObject painkiller;
 
+    private ScoreTrack score;
     private void Start()
     {
         animator = GetComponent<Animator>();
         zombie = GetComponent<Zombie>();
+        score = GameObject.FindGameObjectWithTag("ScoreTrack").GetComponent<ScoreTrack>();
     }
     public void TakeDamage(float amount)
     {
@@ -29,6 +31,7 @@ public class TargetScript : MonoBehaviour
             if (health <= 0)
             {
                 this.enabled = false;
+                score.ZombieKilled += 1;
 
                 if (zombie.RandomChance() > 8)
                 {

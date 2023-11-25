@@ -277,11 +277,11 @@ public class PistolScript : MonoBehaviour
                     }
                     else if (hit.collider.gameObject.CompareTag("Body"))
                     {
-                        target.TakeDamage(damage * 3);
+                        target.TakeDamage(damage * 5);
                     }
                     else if (hit.collider.gameObject.CompareTag("Leg"))
                     {
-                        target.TakeDamage(damage);
+                        target.TakeDamage(damage * 3);
                     }
 
                     Zombie zombie = hit.collider.GetComponentInParent<Zombie>();
@@ -289,7 +289,7 @@ public class PistolScript : MonoBehaviour
                     if (zombie != null)
                     {
                         zombie.GetHit();
-                        if (target.health < -50 || hit.collider.gameObject.CompareTag("Leg"))
+                        if (target.health <= 0 || hit.collider.gameObject.CompareTag("Leg"))
                         {
                             Vector3 forceDirection = zombie.transform.position - _camera.transform.position;
                             forceDirection.y = 1;

@@ -92436,7 +92436,7 @@ AnimationClip:
   - time: 0.36666667
     functionName: PlaySound
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: d2b9bb0356587524c906fa1be7a0da66,
+    objectReferenceParameter: {fileID: 8300000, guid: a474701b2eb7a9f4c9f74dacacfee49c,
       type: 3}
     floatParameter: 0
     intParameter: 0
@@ -92444,7 +92444,7 @@ AnimationClip:
   - time: 0.81666666
     functionName: PlaySound
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: d2b9bb0356587524c906fa1be7a0da66,
+    objectReferenceParameter: {fileID: 8300000, guid: a474701b2eb7a9f4c9f74dacacfee49c,
       type: 3}
     floatParameter: 0
     intParameter: 0
@@ -92452,7 +92452,7 @@ AnimationClip:
   - time: 1.2166667
     functionName: PlaySound
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: d2b9bb0356587524c906fa1be7a0da66,
+    objectReferenceParameter: {fileID: 8300000, guid: a474701b2eb7a9f4c9f74dacacfee49c,
       type: 3}
     floatParameter: 0
     intParameter: 0
@@ -92460,7 +92460,7 @@ AnimationClip:
   - time: 1.6666666
     functionName: PlaySound
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: d2b9bb0356587524c906fa1be7a0da66,
+    objectReferenceParameter: {fileID: 8300000, guid: a474701b2eb7a9f4c9f74dacacfee49c,
       type: 3}
     floatParameter: 0
     intParameter: 0

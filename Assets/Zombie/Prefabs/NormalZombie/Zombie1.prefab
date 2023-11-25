@@ -1855,14 +1855,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.369
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 113
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 31.2
@@ -1953,7 +1953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAI: 1
-  concreteStep: {fileID: 8300000, guid: d2b9bb0356587524c906fa1be7a0da66, type: 3}
+  concreteStep: {fileID: 8300000, guid: a474701b2eb7a9f4c9f74dacacfee49c, type: 3}
   feetBones: []
   range: 0.2
 --- !u!4 &6956225629758900499 stripped

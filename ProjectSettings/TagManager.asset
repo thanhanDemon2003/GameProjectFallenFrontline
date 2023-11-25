@@ -29,6 +29,7 @@ TagManager:
   - VirusSample
   - ExitPoint
   - AmmoStorage
+  - ScoreTrack
   layers:
   - Default
   - TransparentFX
@@ -58,13 +59,6 @@ TagManager:
   - ExitPoint
   - VirusSample
   - AmmoStorage
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 public class Zombie : MonoBehaviour
 {
@@ -382,9 +381,15 @@ public class Zombie : MonoBehaviour
     {
         Agent.SetDestination(transform.position);
 
-
         
         _isAlive = false;
+
+        var children = transform.GetComponentsInChildren<Transform>(includeInactive: true);
+        foreach (var child in children)
+        {
+            //            Debug.Log(child.name);
+            child.gameObject.layer = LayerMask.NameToLayer("Eject");
+        }
 
         if (_currentState != Zombie.ZombieState.Ragdoll &&
                         _currentState != Zombie.ZombieState.StandingUp &&
