@@ -55,7 +55,6 @@ public class GunSkinApi
             Data data = Player.data;
             Debug.Log("data: " + data);
             string PathFile = Application.persistentDataPath + "/Player.json";
-
             File.WriteAllText(PathFile, JsonUtility.ToJson(data));
             Debug.Log("Lưu dữ liệu vào file json" + data);
         }

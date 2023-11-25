@@ -19,7 +19,7 @@ public class ApplyWardrobe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PathFile = Application.persistentDataPath + "/Player.json";
+        PathFile = Application.persistentDataPath + "wardrobe.json";
         prefabsFolderPath = "Assets/Resource/UI/Skins/Skin";
         gunImageFolderPath = "Assets/Resource/UI/Skins/Images";
         applyWardrobe();
@@ -32,25 +32,38 @@ public class ApplyWardrobe : MonoBehaviour
     }
     public void applyWardrobe()
     {
-        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(PathFile));
-        UnityEngine.Debug.Log("data: " + data);
-        Skins[] skins = data.wardrobe;
-        foreach (Skins skin in skins)
-        {
-            string name = skin.nameSkin;
-            string color = skin.color;
-            UnityEngine.Debug.Log("color: " + name + " " + color);
-            string prefab = prefabsFolderPath + "/" + color;
-            string image = gunImageFolderPath + "/" + name + ".png";
-            itemWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
+        
 
-            var imgFill = itemWardrobe.GetComponentsInChildren<Image>()[0];
 
-            Texture2D tex = new(2, 2);
-            tex.LoadImage(File.ReadAllBytes(image));
-            imgFill.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
-            Instantiate(itemWardrobe, vitri.transform);
-        }
+
+
+
+
+
+
+
+
+
+
+        //Data data = JsonUtility.FromJson<Data>(File.ReadAllText(PathFile));
+        //UnityEngine.Debug.Log("data: " + data);
+        //Skins[] skins = data.wardrobe;
+        //foreach (Skins skin in skins)
+        //{
+        //    string name = skin.nameSkin;
+        //    string color = skin.color;
+        //    UnityEngine.Debug.Log("color: " + name + " " + color);
+        //    string prefab = prefabsFolderPath + "/" + color;
+        //    string image = gunImageFolderPath + "/" + name + ".png";
+        //    itemWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
+
+        //    var imgFill = itemWardrobe.GetComponentsInChildren<Image>()[0];
+
+        //    Texture2D tex = new(2, 2);
+        //    tex.LoadImage(File.ReadAllBytes(image));
+        //    imgFill.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
+        //    Instantiate(itemWardrobe, vitri.transform);
+        //}
         
     }
 }
