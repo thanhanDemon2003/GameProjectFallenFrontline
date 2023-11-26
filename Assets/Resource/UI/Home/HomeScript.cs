@@ -12,6 +12,7 @@ using PlayerModel;
 public class HomeScript : MonoBehaviour
 {
     private string filePathPlayer;
+    private string filePathGun;
     public Button btnLogin;
     public TextMeshProUGUI namePlayer;
     public Button btnInvetort;
@@ -21,6 +22,7 @@ public class HomeScript : MonoBehaviour
     void Start()
     {
         filePathPlayer = Application.persistentDataPath + "/player.json";
+        filePathGun = Application.persistentDataPath + "/wardrobe.json";
         startDataPlayer();
     }
 
@@ -65,6 +67,7 @@ public class HomeScript : MonoBehaviour
         btnLogin.onClick.AddListener(() => clickLoginButton());
         namePlayer.text = "";
         File.WriteAllText(filePathPlayer, "");
+        File.WriteAllText(filePathGun, "");
         ResetScene();
     }
     public void ResetScene()
