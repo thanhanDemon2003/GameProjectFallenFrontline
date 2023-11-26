@@ -30,6 +30,8 @@ TagManager:
   - ExitPoint
   - AmmoStorage
   - ScoreTrack
+  - ten
+  - lock
   layers:
   - Default
   - TransparentFX
