@@ -14,6 +14,7 @@ TagManager:
   - Body
   - Leg
   - ten
+  - lock
   layers:
   - Default
   - TransparentFX

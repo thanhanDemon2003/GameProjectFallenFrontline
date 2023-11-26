@@ -208,7 +208,7 @@ public class LoginSrcipts : MonoBehaviour
         //Debug.Log(skins); Debug.Log(jsonSkins);
         Debug.Log("Lưu thành công!" + filePath);
         Debug.Log("Dữ liệu nhận được: " + _id + name + fb_id + id_discord + balance + skins);
-
+        SceneManager.LoadScene("Index1");
         // code chuyển màn tại đây
     }
 
