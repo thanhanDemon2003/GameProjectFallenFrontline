@@ -65,6 +65,11 @@ public class HomeScript : MonoBehaviour
         btnLogin.onClick.AddListener(() => clickLoginButton());
         namePlayer.text = "";
         File.WriteAllText(filePathPlayer, "");
-        Start();
+        ResetScene();
     }
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
