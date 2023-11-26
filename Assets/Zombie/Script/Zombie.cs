@@ -1,3 +1,4 @@
+using FPS.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,8 @@ public class Zombie : MonoBehaviour
     private bool _isAlive;
     private NavMeshAgent Agent;
     private TargetScript health;
+    private InputManager playerinput;
+    private bool playerIdle;
 
     float curSpeed;
     Vector3 previousPosition;
@@ -67,6 +70,8 @@ public class Zombie : MonoBehaviour
         health = GetComponent<TargetScript>();
         Agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerinput = player.GetComponent<InputManager>();
+
         _ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         _animator = GetComponent<Animator>();
         _hipsBone = _animator.GetBoneTransform(HumanBodyBones.Hips);
@@ -118,6 +123,7 @@ public class Zombie : MonoBehaviour
         SetRandom();
         StateConstraint();
         SetCurrentSpeed();
+        CheckPlayerMove();
     }
 
     private void StateConstraint()
@@ -132,13 +138,13 @@ public class Zombie : MonoBehaviour
             _currentState == ZombieState.StandingUp ||
             _currentState == ZombieState.ResettingBones) return;
 
-        if (Vector3.Distance(player.position, transform.position) > (Agent.stoppingDistance + Agent.radius) * 2)
+        if (Vector3.Distance(player.position, transform.position) > 3)
         {
             if (!AnimCheck(_animator, "Attack"))
             {
                 _currentState = ZombieState.Walking;
-
             }
+            Debug.Log(Vector3.Distance(player.position, transform.position));
         }
         else
         {
@@ -230,8 +236,19 @@ public class Zombie : MonoBehaviour
 
     private void DoAttack()
     {
-        Agent.SetDestination(transform.position);
         _animator.SetBool("isAttacking", true);
+    }
+
+    private void CheckPlayerMove()
+    {
+        if (playerinput.Move != Vector2.zero)
+        {
+            playerIdle = false;
+        }
+        else playerIdle = true;
+
+        _animator.SetBool("playerIdle", playerIdle);
+
     }
 
     public void GetHit()
