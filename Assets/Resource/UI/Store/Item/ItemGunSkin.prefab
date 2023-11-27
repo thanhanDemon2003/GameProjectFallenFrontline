@@ -208,9 +208,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -231,7 +231,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3315623963471020429}
         m_TargetAssemblyTypeName: OnClickData, Assembly-CSharp
-        m_MethodName: onBuySkin
+        m_MethodName: onClickData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -283,6 +283,9 @@ MonoBehaviour:
   skinId: 653f809530688f7d6f95df83
   pathModelSkin: Assets/Resource/UI/Skins/Skin/SMGGolden
   blance: 100
+  category: Primary
+  pathImgSkin: Assets/Resource/UI/Skins/Images/SMGGolden.png
+  name: SMG Gold
 --- !u!114 &3315623963471020429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cf9167bb5444a4db1c039f1696de6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySkin: {fileID: 9092363514927173669}
+  buySkin: {fileID: 0}
 --- !u!1 &7633237277511419602
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Golden
+  m_text: SMG Gold
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

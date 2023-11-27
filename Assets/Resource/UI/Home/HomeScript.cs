@@ -17,7 +17,7 @@ public class HomeScript : MonoBehaviour
     public TextMeshProUGUI namePlayer;
     public Button btnInvetort;
     public Button btnStore;
-    public TextMeshProUGUI textCoin;    
+    public TextMeshProUGUI textCoin;
     public RawImage[] iconLock;
     public GameObject paymentBtn;
     public Button btnOther;
