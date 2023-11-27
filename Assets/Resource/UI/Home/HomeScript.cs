@@ -17,7 +17,9 @@ public class HomeScript : MonoBehaviour
     public TextMeshProUGUI namePlayer;
     public Button btnInvetort;
     public Button btnStore;
+    public TextMeshProUGUI textCoin;    
     public RawImage[] iconLock;
+    public GameObject paymentBtn;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,13 +44,16 @@ public class HomeScript : MonoBehaviour
             btnInvetort.interactable = false;
             btnInvetort.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
             btnStore.interactable = false;
+            textCoin.text = "---";
             btnStore.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
-
+            paymentBtn.SetActive(false);
             btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Login";
             btnLogin.onClick.AddListener(() => clickLoginButton());
         }
         else if(data!= null && name != null) {
+            paymentBtn.SetActive(true);
             namePlayer.text = data.name;
+            textCoin.text = data.balance.ToString();
             btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Logout";
             btnLogin.onClick.AddListener(() => clickLogoutButton());
         }
