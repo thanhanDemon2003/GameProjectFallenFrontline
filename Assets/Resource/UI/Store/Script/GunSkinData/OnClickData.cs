@@ -41,6 +41,7 @@ public class OnClickData : MonoBehaviour
             return;
         }
         StartCoroutine(GunSkinApi.BuySkin(id, skinId));
+        
     }
 
 }

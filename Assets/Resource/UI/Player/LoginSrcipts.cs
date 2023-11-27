@@ -182,7 +182,7 @@ public class LoginSrcipts : MonoBehaviour
         int balance = data.balance;
         Skins[] skins = data.wardrobe;
 
-
+        Debug.Log("Dotcoin nè: "+ balance );
         string filePath = Application.persistentDataPath + "/player.json";
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(filePath, json);

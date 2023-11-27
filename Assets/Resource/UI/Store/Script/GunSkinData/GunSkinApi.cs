@@ -57,6 +57,8 @@ public class GunSkinApi
             string PathFile = Application.persistentDataPath + "/Player.json";
             File.WriteAllText(PathFile, JsonUtility.ToJson(data));
             Debug.Log("Lưu dữ liệu vào file json" + data);
+            ApplySkin applySkin = new ApplySkin();
+            applySkin.resetSkin();
         }
     }
 }
