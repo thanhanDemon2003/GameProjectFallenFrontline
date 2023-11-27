@@ -7,12 +7,10 @@ public class InteractScript : MonoBehaviour
     public float interactionRange = 4f;
     public LayerMask interactableLayer;
     public TextMeshProUGUI interactionText;
-    public bool interactable;
 
     private void Start()
     {
         interactionText.text = "";
-        interactable = true;
     }
 
     private void Update()
