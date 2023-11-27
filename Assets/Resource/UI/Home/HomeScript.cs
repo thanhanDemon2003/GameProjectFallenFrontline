@@ -24,6 +24,10 @@ public class HomeScript : MonoBehaviour
     void Start()
     {
         filePathPlayer = Application.persistentDataPath + "/player.json";
+        if (!File.Exists(filePathPlayer))
+        {
+            File.WriteAllText(filePathPlayer, "");
+        }
         filePathGun = Application.persistentDataPath + "/wardrobe.json";
         startDataPlayer();
     }
