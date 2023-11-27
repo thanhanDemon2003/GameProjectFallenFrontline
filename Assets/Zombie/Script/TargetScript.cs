@@ -1,4 +1,4 @@
-
+using System.Collections;
 using UnityEngine;
 
 public class TargetScript : MonoBehaviour
@@ -13,6 +13,7 @@ public class TargetScript : MonoBehaviour
     public GameObject painkiller;
 
     private ScoreTrack score;
+    public bool canDodge;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -22,7 +23,10 @@ public class TargetScript : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+        if (!canDodge) return;
+        StartCoroutine(setAnimation("Dodge"));
     }
+
 
     private void Update()
     {
@@ -49,5 +53,13 @@ public class TargetScript : MonoBehaviour
                 else return;
             }
         }
+    }
+
+    private IEnumerator setAnimation(string animName)
+    {
+        animator.SetTrigger(animName);
+        yield return new WaitForSeconds(0.5f);
+        animator.ResetTrigger(animName);
+
     }
 }

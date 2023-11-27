@@ -1205,7 +1205,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8456a4d3f8ac3d64fb077bbf8a868d27,
         type: 3}
       propertyPath: m_Name
-      value: ZombieFast
+      value: ZombieFastDodge
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8456a4d3f8ac3d64fb077bbf8a868d27,
         type: 3}
@@ -3431,7 +3431,7 @@ MonoBehaviour:
     type: 3}
   painkiller: {fileID: 2156495054132763506, guid: 2402facfdf47e15429d303e003981ca3,
     type: 3}
-  canDodge: 0
+  canDodge: 1
 --- !u!114 &1284516871880126089
 MonoBehaviour:
   m_ObjectHideFlags: 0

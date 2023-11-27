@@ -10,10 +10,12 @@ public class BackgroundMusic : MonoBehaviour
     [SerializeField] LayerMask layer;
 
     public bool inCombat;
+    private MapObjective objective;
 
     [Header("Sound Properties")]
     [SerializeField] AudioSource ambient;
     [SerializeField] AudioSource action;
+    [SerializeField] AudioSource end;
 
     [SerializeField] float volume;
 
@@ -21,11 +23,20 @@ public class BackgroundMusic : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        objective = GameObject.FindGameObjectWithTag("Objective").GetComponent<MapObjective>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (objective.fuelFull)
+        {
+            ambient.volume -= 0.2f * Time.deltaTime;
+            action.volume -= 0.2f * Time.deltaTime;
+            end.gameObject.SetActive(true);
+            return;
+        }
+
         CheckEnemy();
         setMusic();
     }

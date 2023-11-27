@@ -11,13 +11,13 @@ public class MapObjective : MonoBehaviour
 
     public float totalTime = 200;
     public float time;
-    [Range(0, 1)]
+    [Range(0, 2)]
     public float speed;
 
 
     public Slider batterySlider;
     public float batteryValue;
-    private bool fuelFull;
+    public bool fuelFull;
     public bool batteryFull;
     public GameObject carLight;
 

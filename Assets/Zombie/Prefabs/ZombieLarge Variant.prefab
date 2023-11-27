@@ -1627,7 +1627,7 @@ Animator:
   m_GameObject: {fileID: 6600202725942544464}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 38d62d3f888424e4a87bf5412ddbf7cf, type: 3}
-  m_Controller: {fileID: 9100000, guid: 32995e62738d0424daa7ffac2cc055ef, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4a86e96427193f44c94a6a968d0f08fc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1657,6 +1657,7 @@ MonoBehaviour:
   _timeToResetBones: 0.5
   _currentState: 0
   _animator: {fileID: 0}
+  isInAction: 0
   zombieSound: []
 --- !u!114 &674614418627865394
 MonoBehaviour:
@@ -1678,6 +1679,7 @@ MonoBehaviour:
     type: 3}
   painkiller: {fileID: 2156495054132763506, guid: 2402facfdf47e15429d303e003981ca3,
     type: 3}
+  canDodge: 1
 --- !u!114 &553197311114291102
 MonoBehaviour:
   m_ObjectHideFlags: 0

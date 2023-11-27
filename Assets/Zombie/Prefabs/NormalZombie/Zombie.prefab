@@ -3387,6 +3387,7 @@ MonoBehaviour:
   _timeToResetBones: 0.5
   _currentState: 0
   _animator: {fileID: 0}
+  isInAction: 0
   zombieSound: []
 --- !u!195 &3896488654007406549
 NavMeshAgent:
@@ -3398,7 +3399,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.5
+  m_Speed: 2
   m_Acceleration: 1
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -3430,6 +3431,7 @@ MonoBehaviour:
     type: 3}
   painkiller: {fileID: 2156495054132763506, guid: 2402facfdf47e15429d303e003981ca3,
     type: 3}
+  canDodge: 0
 --- !u!114 &1284516871880126089
 MonoBehaviour:
   m_ObjectHideFlags: 0

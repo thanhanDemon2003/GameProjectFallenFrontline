@@ -19,6 +19,7 @@ public class Zombie : MonoBehaviour
         Walking,
         Attacking,
         Ragdoll,
+        InAction,
         StandingUp,
         ResettingBones,
         Dead
@@ -57,6 +58,7 @@ public class Zombie : MonoBehaviour
     private TargetScript health;
     private InputManager playerinput;
     private bool playerIdle;
+    public bool isInAction;
 
     float curSpeed;
     Vector3 previousPosition;
@@ -110,6 +112,9 @@ public class Zombie : MonoBehaviour
             case ZombieState.Ragdoll:
                 RagdollBehaviour();
                 break;
+            case ZombieState.InAction:
+                inAction();
+                break;
             case ZombieState.StandingUp:
                 StandingUpBehaviour();
                 break;
@@ -142,9 +147,15 @@ public class Zombie : MonoBehaviour
         {
             if (!AnimCheck(_animator, "Attack"))
             {
-                _currentState = ZombieState.Walking;
+                if (isInAction)
+                {
+                    _currentState = ZombieState.InAction;
+                }
+                else
+                {
+                    _currentState = ZombieState.Walking;
+                }
             }
-            Debug.Log(Vector3.Distance(player.position, transform.position));
         }
         else
         {
@@ -202,6 +213,11 @@ public class Zombie : MonoBehaviour
         _animator.enabled = false;
     }
 
+    private void inAction()
+    {
+        Agent.SetDestination(transform.position);
+        Agent.isStopped = true;
+    }
     private void WalkingBehaviour()
     {
         Vector3 direction = player.transform.position - transform.position;
@@ -227,11 +243,9 @@ public class Zombie : MonoBehaviour
 
     private void DoTargetMovement()
     {
-
+        Agent.isStopped = false;
         Agent.SetDestination(player.position);
         _animator.SetBool("isAttacking", false);
-
-
     }
 
     private void DoAttack()
@@ -398,7 +412,7 @@ public class Zombie : MonoBehaviour
     {
         Agent.SetDestination(transform.position);
 
-        
+
         _isAlive = false;
 
         var children = transform.GetComponentsInChildren<Transform>(includeInactive: true);
