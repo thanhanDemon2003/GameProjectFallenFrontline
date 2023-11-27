@@ -67,7 +67,7 @@ public class LoginSrcipts : MonoBehaviour
         login.gameObject.SetActive(true);
         loading.gameObject.SetActive(false);
         cancel.gameObject.SetActive(false);
-        textLoading.text = "Bạn đã dừng login!";
+        textLoading.text = "You have stopped logging in!";
         StopCoroutine(LoadPlayerGame(""));
     }
     IEnumerator LoadPlayerGame(string stt)
@@ -77,7 +77,7 @@ public class LoginSrcipts : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Lỗi kết nối: " + www.error);
-            textLoading.text = "Lỗi đăng nhập, vui lòng thử lại!";
+            textLoading.text = "Login error, please try again!";
             login.gameObject.SetActive(true);
             loading.gameObject.SetActive(false);
 
@@ -89,7 +89,7 @@ public class LoginSrcipts : MonoBehaviour
             string token = playerModel.token;
             string method = playerModel.method;
             string name = playerModel.name;
-            textLoading.text = "Đang lấy dữ liệu, xin vui lòng đợi!";
+            textLoading.text = "Retrieving data, please wait!";
             Debug.Log("Dữ liệu nhận được: " + responseData);
             if (method == "google")
             {
@@ -116,7 +116,7 @@ public class LoginSrcipts : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Lỗi kết nối: " + www.error);
-            textLoading.text = "Lỗi đăng nhập, vui lòng thử lại!";
+            textLoading.text = "Login error, please try again!";
             login.gameObject.SetActive(true);
             loading.gameObject.SetActive(false);
 
@@ -149,7 +149,7 @@ public class LoginSrcipts : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Lỗi kết nối: " + www.error);
-            textLoading.text = "Lỗi đăng nhập, vui lòng thử lại!";
+            textLoading.text = "Login error, please try again!";
             login.gameObject.SetActive(true);
             loading.gameObject.SetActive(false);
 
