@@ -12,15 +12,23 @@ using PlayerModel;
 public class HomeScript : MonoBehaviour
 {
     private string filePathPlayer;
+    private string filePathGun;
     public Button btnLogin;
     public TextMeshProUGUI namePlayer;
     public Button btnInvetort;
     public Button btnStore;
+    public TextMeshProUGUI textCoin;    
     public RawImage[] iconLock;
+    public GameObject paymentBtn;
     // Start is called before the first frame update
     void Start()
     {
         filePathPlayer = Application.persistentDataPath + "/player.json";
+        if (!File.Exists(filePathPlayer))
+        {
+            File.WriteAllText(filePathPlayer, "");
+        }
+        filePathGun = Application.persistentDataPath + "/wardrobe.json";
         startDataPlayer();
     }
 
@@ -40,13 +48,18 @@ public class HomeScript : MonoBehaviour
             btnInvetort.interactable = false;
             btnInvetort.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
             btnStore.interactable = false;
+            textCoin.text = "---";
             btnStore.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
-
+            paymentBtn.SetActive(false);
             btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Login";
             btnLogin.onClick.AddListener(() => clickLoginButton());
         }
         else if(data!= null && name != null) {
+            btnInvetort.interactable = true;
+            btnStore.interactable = true;
+            paymentBtn.SetActive(true);
             namePlayer.text = data.name;
+            textCoin.text = data.balance.ToString();
             btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Logout";
             btnLogin.onClick.AddListener(() => clickLogoutButton());
         }
@@ -65,6 +78,7 @@ public class HomeScript : MonoBehaviour
         btnLogin.onClick.AddListener(() => clickLoginButton());
         namePlayer.text = "";
         File.WriteAllText(filePathPlayer, "");
+        File.WriteAllText(filePathGun, "");
         ResetScene();
     }
     public void ResetScene()
