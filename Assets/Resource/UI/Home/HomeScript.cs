@@ -51,6 +51,8 @@ public class HomeScript : MonoBehaviour
             btnLogin.onClick.AddListener(() => clickLoginButton());
         }
         else if(data!= null && name != null) {
+            btnInvetort.interactable = true;
+            btnStore.interactable = true;
             paymentBtn.SetActive(true);
             namePlayer.text = data.name;
             textCoin.text = data.balance.ToString();
