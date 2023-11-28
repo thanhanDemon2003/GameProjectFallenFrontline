@@ -4401,6 +4401,7 @@ MonoBehaviour:
   conTent: {fileID: 1919668037}
   itemGunSkin: {fileID: 7107191592634200200, guid: 31596f08442aaa540a280713f8c916c4,
     type: 3}
+  buySkin: {fileID: 0}
 --- !u!1 &566146813
 GameObject:
   m_ObjectHideFlags: 0
@@ -7335,6 +7336,7 @@ MonoBehaviour:
   conTent: {fileID: 2063242034}
   itemGunSkin: {fileID: 7107191592634200200, guid: 31596f08442aaa540a280713f8c916c4,
     type: 3}
+  buySkin: {fileID: 0}
 --- !u!114 &963237731
 MonoBehaviour:
   m_ObjectHideFlags: 0
