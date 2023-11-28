@@ -410,8 +410,12 @@ public class Zombie : MonoBehaviour
 
     private void DeadBehavior()
     {
-        Agent.SetDestination(transform.position);
-
+        if (Agent.enabled)
+        {
+            Agent.SetDestination(transform.position);
+            Agent.isStopped = true;
+        }
+        Agent.enabled = false;
 
         _isAlive = false;
 
@@ -420,6 +424,7 @@ public class Zombie : MonoBehaviour
         {
             //            Debug.Log(child.name);
             child.gameObject.layer = LayerMask.NameToLayer("Eject");
+            child.gameObject.isStatic = true;
         }
 
         if (_currentState != Zombie.ZombieState.Ragdoll &&
@@ -430,6 +435,7 @@ public class Zombie : MonoBehaviour
         }
 
         Destroy(gameObject, 20f);
+
     }
 
     public float RandomChance()

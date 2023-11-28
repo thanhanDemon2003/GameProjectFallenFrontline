@@ -69,7 +69,7 @@ namespace FPS.Player
 
         void Start()
         {
-            state = State.Primary;
+            state = State.Secondary;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             UnityEngine.Cursor.visible = false;
 
