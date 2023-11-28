@@ -11,7 +11,7 @@ public class RandomEnemies : MonoBehaviour
 
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < maxEnemies)
+        if (GameObject.FindGameObjectsWithTag("Zombie").Length < maxEnemies)
         {
             Transform spawnPoint = GetRandomSpawnPoint();
             Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
