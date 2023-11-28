@@ -137,6 +137,36 @@ public class EnviromentScan : MonoBehaviour
 
             if (!input.Interact) pressed = false;
         }
+        else if (hit.collider.gameObject.CompareTag("DocCase"))
+        {
+            actionText.SetText("E - Pick Up");
+
+            if (input.Interact && !pressed)
+            {
+                Mission1Script.CollectDocument();
+                Destroy(hit.collider.gameObject);
+                pressed = true;   
+            }
+
+            if (!input.Interact) pressed = false;
+        }
+        else if (hit.collider.gameObject.CompareTag("VirusSample"))
+        {
+            actionText.SetText("E - Pick Up");
+
+            if (input.Interact && !pressed)
+            {
+                Mission1Script.CollectVirusSample();
+                Destroy(hit.collider.gameObject);
+                pressed = true;
+            }
+
+            if (!input.Interact) pressed = false;
+        }
+        else if (hit.collider.gameObject.CompareTag("ExitPoint"))
+        {         
+                Mission1Script.TryExit();  
+        }
     }
 }
 
