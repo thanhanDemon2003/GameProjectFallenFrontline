@@ -59,6 +59,8 @@ public class GunSkinApi
             Debug.Log("Lưu dữ liệu vào file json" + data);
             GameObject.FindWithTag("textCoin").
                 GetComponent<TMPro.TextMeshProUGUI>().text = data.balance.ToString();
+
+
         }
     }
 }

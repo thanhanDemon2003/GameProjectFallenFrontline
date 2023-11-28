@@ -34,6 +34,7 @@ TagManager:
   - lock
   - textCoin
   - BuySkinUi
+  - wardrobeItem
   layers:
   - Default
   - TransparentFX
