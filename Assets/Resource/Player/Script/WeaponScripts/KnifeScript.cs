@@ -10,14 +10,19 @@ public class KnifeScript : MonoBehaviour
     public int impactForce;
     public LayerMask hitLayer;
 
+    private Transform _cam;
+
+    private void Awake()
+    {
+        _cam = Camera.main.transform;
+    }
 
     public void Slash()
     {
         RaycastHit hit;
-        if (Physics.Raycast(knifePivot.transform.position, knifePivot.transform.forward, out hit, maxRange, hitLayer))
+        if (Physics.SphereCast(_cam.position, 0.5f, _cam.forward, out hit, maxRange, hitLayer))
         {
-            Debug.DrawRay(knifePivot.transform.position, knifePivot.transform.forward * hit.distance, Color.green);
-            Debug.Log(hit.transform.name);
+            
 
             if (hit.rigidbody != null)
             {
@@ -53,7 +58,7 @@ public class KnifeScript : MonoBehaviour
 
             else if (hit.collider.gameObject.CompareTag("Wall"))
             {
-                Debug.Log(">>> Knife Wall");
+
             }
             else if (hit.collider.gameObject.CompareTag("Destructable"))
             {

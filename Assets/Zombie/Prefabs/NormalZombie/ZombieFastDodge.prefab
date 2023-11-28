@@ -2668,14 +2668,14 @@ CharacterJoint:
     bounciness: 1
     contactDistance: 1
   m_HighTwistLimit:
-    limit: 70
+    limit: 60.403503
     bounciness: 1
     contactDistance: 1
   m_SwingLimitSpring:
     spring: 10
     damper: 0
   m_Swing1Limit:
-    limit: 10.924705
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
@@ -3399,13 +3399,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 5
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 180
   m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
@@ -4003,7 +4003,7 @@ CharacterJoint:
     spring: 10
     damper: 0
   m_Swing1Limit:
-    limit: 6.412837
+    limit: 3
     bounciness: 1
     contactDistance: 2
   m_Swing2Limit:
