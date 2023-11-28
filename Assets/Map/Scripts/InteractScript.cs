@@ -8,7 +8,6 @@ public class InteractScript : MonoBehaviour
     public LayerMask interactableLayer;
     public TextMeshProUGUI interactionText;
 
-    //public PistolScript[] pistolScript;
     private void Start()
     {
         interactionText.text = "";
@@ -51,13 +50,11 @@ public class InteractScript : MonoBehaviour
                 Debug.DrawRay(playerPosition, forward * interactionRange, Color.red);
                 Mission1Script.TryExit();
             }
-            //if (hit.collider.CompareTag("AmmoStorage"))
-            //{
-            //    Debug.DrawRay(playerPosition, forward * interactionRange, Color.red);
-            //    interactionText.text = "Press E to interact";
-            //    Debug.Log(">>> find Ammo");
-            //    PistolScript.CollectAmmo();
-            //}
+        }
+        else
+        {
+            Debug.Log(">>> Other");
+            interactionText.text = "";
         }
     }
 }

@@ -17,7 +17,7 @@ public class HomeScript : MonoBehaviour
     public TextMeshProUGUI namePlayer;
     public Button btnInvetort;
     public Button btnStore;
-    public TextMeshProUGUI textCoin;    
+    public TextMeshProUGUI textCoin;
     public RawImage[] iconLock;
     public GameObject paymentBtn;
     public Button btnOther;
@@ -85,5 +85,12 @@ public class HomeScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    public void clickOnLoadMap1()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void clickOnLoadMap2()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

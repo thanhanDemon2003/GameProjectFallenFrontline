@@ -2675,7 +2675,7 @@ CharacterJoint:
     spring: 10
     damper: 0
   m_Swing1Limit:
-    limit: 10.924705
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
@@ -4003,7 +4003,7 @@ CharacterJoint:
     spring: 10
     damper: 0
   m_Swing1Limit:
-    limit: 6.412837
+    limit: 3
     bounciness: 1
     contactDistance: 2
   m_Swing2Limit:

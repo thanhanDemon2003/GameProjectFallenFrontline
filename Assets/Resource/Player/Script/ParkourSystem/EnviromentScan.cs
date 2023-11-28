@@ -17,11 +17,13 @@ public class EnviromentScan : MonoBehaviour
     [SerializeField] LayerMask hitLayer;
     [SerializeField] TextMeshProUGUI actionText;
     private Camera _cam;
+    public Vector3 extent;
     RaycastHit hit;
 
     private InputManager input;
     private bool pressed;
     WeaponManager weapon;
+    PlayerUseArm playerUseArm;
     public ObstacleHitData ObstacleCheck()
     {
         var hitData = new ObstacleHitData();
@@ -49,6 +51,7 @@ public class EnviromentScan : MonoBehaviour
         _cam = Camera.main;
         input = GetComponent<InputManager>();
         weapon= GetComponent<WeaponManager>();
+        playerUseArm = GetComponentInChildren<PlayerUseArm>();
     }
 
     private void Update()
@@ -57,7 +60,7 @@ public class EnviromentScan : MonoBehaviour
     }
     private bool ForwardScan()
     {
-        return Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, 8, hitLayer);
+        return Physics.SphereCast(_cam.transform.position,0.5f, _cam.transform.forward, out hit, 4, hitLayer);
     }
 
     private void Interaction()
@@ -92,6 +95,19 @@ public class EnviromentScan : MonoBehaviour
                 weapon.AddAmmo(isPrimary);
                 Destroy(hit.collider.gameObject);
                 pressed = true;
+            }
+
+            if (!input.Interact) pressed = false;
+        }
+
+        else if (hit.collider.gameObject.CompareTag("Painkiller"))
+        {
+            actionText.SetText("E - Pick Up");
+
+            if (input.Interact && !pressed)
+            {
+                playerUseArm.currentPotion += 1;
+                Destroy(hit.collider.gameObject);
             }
 
             if (!input.Interact) pressed = false;

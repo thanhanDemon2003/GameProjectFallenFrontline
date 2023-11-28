@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: Owned
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4286611584
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7107191592634200200}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -208,9 +208,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -231,7 +231,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3315623963471020429}
         m_TargetAssemblyTypeName: OnClickData, Assembly-CSharp
-        m_MethodName: onBuySkin
+        m_MethodName: onClickData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -280,9 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9199e1a37dc3344886e7c6c5249a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinId: 653f809530688f7d6f95df83
-  pathModelSkin: Assets/Resource/UI/Skins/Skin/SMGGolden
-  blance: 100
+  skinId: 653f805230688f7d6f95df71
+  pathModelSkin: Assets/Resource/UI/Skins/Skin/SMGDefault
+  blance: 0
+  category: Primary
+  pathImgSkin: Assets/Resource/UI/Skins/Images/SMGDefault.png
+  nameSkin: SMG Default
 --- !u!114 &3315623963471020429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cf9167bb5444a4db1c039f1696de6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySkin: {fileID: 9092363514927173669}
+  buySkin: {fileID: 0}
 --- !u!1 &7633237277511419602
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Golden
+  m_text: SMG Gold
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

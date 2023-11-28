@@ -860,18 +860,6 @@ Transform:
   - {fileID: 1842474958}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &329169551 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7270672444406368824, guid: 02e1fbb565d26184b9bf23ce8553dc36,
-    type: 3}
-  m_PrefabInstance: {fileID: 163567645}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c145728a61a18ca499b0626c9bc79192, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &385481543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,11 +1292,9 @@ MonoBehaviour:
   interactionRange: 3
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 1966080
+    m_Bits: 2029632
   interactionText: {fileID: 1259990663}
-  pistolScript:
-  - {fileID: 901644922}
-  - {fileID: 329169551}
+  interactable: 0
 --- !u!1 &616425459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,18 +1739,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 502295932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &901644922 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1163418161899513370, guid: 02e1fbb565d26184b9bf23ce8553dc36,
-    type: 3}
-  m_PrefabInstance: {fileID: 163567645}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c145728a61a18ca499b0626c9bc79192, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &914709557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2971,7 +2945,7 @@ GameObject:
   - component: {fileID: 1582816881}
   - component: {fileID: 1582816880}
   - component: {fileID: 1582816879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Ground
   m_Icon: {fileID: 0}
