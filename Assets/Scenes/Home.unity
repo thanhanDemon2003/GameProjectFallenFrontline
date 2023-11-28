@@ -2667,7 +2667,7 @@ GameObject:
   - component: {fileID: 546328290}
   - component: {fileID: 546328289}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Map1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2736,7 +2736,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 546328290}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1541114251}
+        m_TargetAssemblyTypeName: HomeScript, Assembly-CSharp
+        m_MethodName: clickOnLoadMap1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &546328290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5698,7 +5710,7 @@ GameObject:
   - component: {fileID: 1158539355}
   - component: {fileID: 1158539354}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Map2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5767,7 +5779,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1158539355}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1541114251}
+        m_TargetAssemblyTypeName: HomeScript, Assembly-CSharp
+        m_MethodName: clickOnLoadMap2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1158539355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7640,7 +7664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1530973447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8729,7 +8753,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 963237728}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
