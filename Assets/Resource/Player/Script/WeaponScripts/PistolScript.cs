@@ -326,10 +326,4 @@ public class PistolScript : MonoBehaviour
         currentBulletText.SetText("" + currentBullet);
         maxBulletText.SetText("/" + remainingAmmo);
     }
-
-    //public static void CollectAmmo()
-    //{
-    //    if(currentBullet < remainingAmmo)
-    //        remainingAmmo = 80;
-    //}
 }

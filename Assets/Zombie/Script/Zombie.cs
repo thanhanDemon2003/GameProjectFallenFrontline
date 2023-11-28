@@ -394,7 +394,7 @@ public class Zombie : MonoBehaviour
             _animator.SetBool("Dead", true);
         }
 
-        Destroy(gameObject, 20f);
+        Destroy(gameObject, 10f);
     }
 
     private float RandomChance()
