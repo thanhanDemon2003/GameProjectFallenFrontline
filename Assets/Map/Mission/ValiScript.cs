@@ -14,7 +14,6 @@ public class ValiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Xác định va chạm với người chơi bằng raycast
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, playerDistance))
         {
@@ -22,7 +21,6 @@ public class ValiScript : MonoBehaviour
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green);
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                // Nếu có va chạm với người chơi, hiển thị thông báo hoặc thực hiện các hành động khác
                 Debug.Log("Vali va chạm với người chơi.");
             }
         }
