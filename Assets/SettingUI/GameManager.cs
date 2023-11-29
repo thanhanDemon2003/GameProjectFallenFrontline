@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿using FPS.Player;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private bool isGamePaused = false;
     private AudioSource[] allAudioSources;
     public GameObject GameObject;
+    private PlayerController scriptInstance;
 
     void Start()
     {
-
         allAudioSources = FindObjectsOfType<AudioSource>();
+        scriptInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        scriptInstance.canControl = true;
     }
 
     void Update()
@@ -40,7 +44,7 @@ public class GameManager : MonoBehaviour
         GameObject.SetActive(true);
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
-
+        scriptInstance.canControl = false;
     }
 
     void ResumeGame()
@@ -55,5 +59,6 @@ public class GameManager : MonoBehaviour
         GameObject.SetActive(false);
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
+        scriptInstance.canControl = true;
     }
 }

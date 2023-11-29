@@ -11981,6 +11981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 776865462}
   - component: {fileID: 776865463}
+  - component: {fileID: 776865464}
   m_Layer: 5
   m_Name: Slider Mouse
   m_TagString: Untagged
@@ -12060,7 +12061,32 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776865464}
+        m_TargetAssemblyTypeName: MouseSensitive, Assembly-CSharp
+        m_MethodName: SetMouseSensitive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &776865464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776865461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c26703fac17a749b394953908e79af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitiveSlider: {fileID: 0}
 --- !u!1001 &778732013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35539,6 +35565,11 @@ PrefabInstance:
     - target: {fileID: 1955790104136959407, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
       propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955790104136959407, guid: 02e1fbb565d26184b9bf23ce8553dc36,
+        type: 3}
+      propertyPath: canControl
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1955790104136959407, guid: 02e1fbb565d26184b9bf23ce8553dc36,
