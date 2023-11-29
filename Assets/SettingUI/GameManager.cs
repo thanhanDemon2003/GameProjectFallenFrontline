@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
             audioSource.Pause();
         }
         GameObject.SetActive(true);
-
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
 
     }
 
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
             audioSource.UnPause();
         }
         GameObject.SetActive(false);
-
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
     }
 }
