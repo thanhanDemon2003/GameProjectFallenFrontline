@@ -285,7 +285,7 @@ MonoBehaviour:
   blance: 100
   category: Primary
   pathImgSkin: Assets/Resource/UI/Skins/Images/SMGGolden.png
-  name: SMG Gold
+  nameSkin: SMG Gold
 --- !u!114 &3315623963471020429
 MonoBehaviour:
   m_ObjectHideFlags: 0
