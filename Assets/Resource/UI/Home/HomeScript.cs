@@ -17,9 +17,11 @@ public class HomeScript : MonoBehaviour
     public TextMeshProUGUI namePlayer;
     public Button btnInvetort;
     public Button btnStore;
-    public TextMeshProUGUI textCoin;    
+    public TextMeshProUGUI textCoin;
     public RawImage[] iconLock;
     public GameObject paymentBtn;
+    public Button btnOther;
+    public GameObject LoginGameObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,14 +47,18 @@ public class HomeScript : MonoBehaviour
         {
             iconLock[0].gameObject.SetActive(true);
             iconLock[1].gameObject.SetActive(true);
+            iconLock[2].gameObject.SetActive(true);
             btnInvetort.interactable = false;
+            btnOther.interactable = false;
+            btnOther.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
             btnInvetort.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
             btnStore.interactable = false;
-            textCoin.text = "---";
+            textCoin.text = "------";
             btnStore.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
             paymentBtn.SetActive(false);
             btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Login";
-            btnLogin.onClick.AddListener(() => clickLoginButton());
+            Debug.Log("click login");
+            btnLogin.onClick.AddListener(() => LoginGameObject.SetActive(true));
         }
         else if(data!= null && name != null) {
             btnInvetort.interactable = true;
@@ -65,17 +71,11 @@ public class HomeScript : MonoBehaviour
         }
        
     }
-    public void clickLoginButton()
-    {
-        Debug.Log("click login");
-        SceneManager.LoadScene("Index");
-
-    }
     public void clickLogoutButton()
     {
         Debug.Log("click logout");
         btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Login";
-        btnLogin.onClick.AddListener(() => clickLoginButton());
+        btnLogin.onClick.AddListener(() => LoginGameObject.SetActive(true));
         namePlayer.text = "";
         File.WriteAllText(filePathPlayer, "");
         File.WriteAllText(filePathGun, "");
