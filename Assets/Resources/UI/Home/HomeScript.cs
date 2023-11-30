@@ -47,9 +47,6 @@ public class HomeScript : MonoBehaviour
     { 
         Application.focusChanged -= OnFocusChanged;
     }
-
-
-
     void OnFocusChanged(bool focused)
     {
         
