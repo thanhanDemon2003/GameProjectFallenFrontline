@@ -10,8 +10,18 @@ public class OnClickWardrobe : MonoBehaviour
 {
     public GameObject equitWardrobe;
     public Button mySkinWardrobe;
-    public static GameObject skinSmgEquit;
-    public static GameObject skinPistolEquit;
+
+    void Awake()
+    {
+        if(PlayerPrefs.GetString("Secondary") == "")
+        {
+            PlayerPrefs.SetString("Secondary", "UI/Skins/Skin/Secondary/Default");
+        }
+        if (PlayerPrefs.GetString("Primary") == "")
+        {
+            PlayerPrefs.SetString("Primary", "UI/Skins/Skin/Primary/Default");
+        }
+    }
     public void onClickShowEquit()
     {
         equitWardrobe.SetActive(true);
@@ -26,24 +36,56 @@ public class OnClickWardrobe : MonoBehaviour
         image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
         equitWardrobe.GetComponentInChildren<Button>().onClick.AddListener(() => onCkickequitSkin(pathModelSkin, category));
         equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[1].text = name + " - " + category;
+        if(category == "Primary")
+        {
+          string checkSkin =  PlayerPrefs.GetString("Primary");
+          if (checkSkin == pathModelSkin)
+            {
+                equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Selected";
+                equitWardrobe.GetComponentInChildren<Button>().colors = ColorBlock.defaultColorBlock;
+                equitWardrobe.GetComponentInChildren<Button>().interactable = false;
+            }
+            else
+            {
+                equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Equit";
+                equitWardrobe.GetComponentInChildren<Button>().colors = ColorBlock.defaultColorBlock;
+                equitWardrobe.GetComponentInChildren<Button>().interactable = true;
+            }
+        }
+        else if (category == "Secondary")
+        {
+            string checkSkin = PlayerPrefs.GetString("Secondary");
+            if (checkSkin == pathModelSkin)
+            {
+                equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Selected";
+                equitWardrobe.GetComponentInChildren<Button>().colors = ColorBlock.defaultColorBlock;
+                equitWardrobe.GetComponentInChildren<Button>().interactable = false;
+            }
+            else
+            {
+                equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Equit";
+                equitWardrobe.GetComponentInChildren<Button>().colors = ColorBlock.defaultColorBlock;
+                equitWardrobe.GetComponentInChildren<Button>().interactable = true;
+            }
+        }
     }
     public void onCkickequitSkin(string pathModelSkin, string category)
     {
+
+
         equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Selected";
         equitWardrobe.GetComponentInChildren<Button>().colors = ColorBlock.defaultColorBlock;
         equitWardrobe.GetComponentInChildren<Button>().interactable = false;
         if (category == "Primary")
         {
-            skinSmgEquit = Resources.Load<GameObject>(pathModelSkin);
-            Debug.Log(pathModelSkin+"abcd");
-            Debug.Log(skinSmgEquit);
+            PlayerPrefs.SetString("Primary", pathModelSkin);
+            Debug.Log(pathModelSkin);
             
         }
         else if (category == "Secondary")
         {
-            skinPistolEquit = Resources.Load<GameObject>(pathModelSkin);
-            Debug.Log(skinPistolEquit);
-            Debug.Log(pathModelSkin +"  "+"abcd");
+            PlayerPrefs.SetString("Secondary", pathModelSkin);
+            Debug.Log(pathModelSkin);
 
         }
     }

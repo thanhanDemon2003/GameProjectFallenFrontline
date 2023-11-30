@@ -20,7 +20,7 @@ public class ApplySkin : MonoBehaviour
     public GameObject buySkin;
 
     void Start()
-    {   prefabsFolderPath = "Assets/Resources/UI/Skins/Skin";
+    {   prefabsFolderPath = "UI/Skins/Skin";
         gunImageFolderPath = "Assets/Resources/UI/Skins/Images";
         FilePathGunSkin = Application.persistentDataPath + "/player.json";
         getAllSkin();

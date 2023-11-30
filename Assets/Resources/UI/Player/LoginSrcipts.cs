@@ -54,8 +54,7 @@ public class LoginSrcipts : MonoBehaviour
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
             cancel.gameObject.SetActive(true);
-            textLoading.text = "Đang đăng nhập...";
-            Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
+            textLoading.text = "Login...";
         }
     }
     public void loadPlayer(string stt)
@@ -67,7 +66,7 @@ public class LoginSrcipts : MonoBehaviour
         login.gameObject.SetActive(true);
         loading.gameObject.SetActive(false);
         cancel.gameObject.SetActive(false);
-        textLoading.text = "Bạn đã dừng login!";
+        textLoading.text = "Login stopped!";
         StopCoroutine(LoadPlayerGame(""));
     }
     IEnumerator LoadPlayerGame(string stt)
@@ -77,7 +76,7 @@ public class LoginSrcipts : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Lỗi kết nối: " + www.error);
-            textLoading.text = "Lỗi đăng nhập, vui lòng thử lại!";
+            textLoading.text = "Error, please try again!";
             login.gameObject.SetActive(true);
             loading.gameObject.SetActive(false);
 
@@ -89,8 +88,7 @@ public class LoginSrcipts : MonoBehaviour
             string token = playerModel.token;
             string method = playerModel.method;
             string name = playerModel.name;
-            textLoading.text = "Đang lấy dữ liệu, xin vui lòng đợi!";
-            Debug.Log("Dữ liệu nhận được: " + responseData);
+            textLoading.text = "Retrieving data, please wait!";
             if (method == "google")
             {
                 apiGetLoginGG(token, name);
@@ -129,7 +127,7 @@ public class LoginSrcipts : MonoBehaviour
             Debug.Log("Dữ liệu nhận được: " + data);
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
-            textLoading.text = "Đăng nhập thành công";
+            textLoading.text = "Logged in successfully";
             Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
             SavePlayer(data);
         }

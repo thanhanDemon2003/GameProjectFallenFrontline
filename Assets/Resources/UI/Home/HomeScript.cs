@@ -79,6 +79,7 @@ public class HomeScript : MonoBehaviour
         namePlayer.text = "";
         File.WriteAllText(filePathPlayer, "");
         File.WriteAllText(filePathGun, "");
+        PlayerPrefs.DeleteAll();
         ResetScene();
     }
     public void ResetScene()

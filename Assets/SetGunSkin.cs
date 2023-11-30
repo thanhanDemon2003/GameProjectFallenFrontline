@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static OnClickWardrobe;
 
 public class SetGunSkin : MonoBehaviour
 {
@@ -15,9 +14,6 @@ public class SetGunSkin : MonoBehaviour
     public GameObject DefautPistol;
     private void Awake()
     {
-        //Instantiate(pistolSkin, pistolGun.transform, false);
-        //GameObject smg = Instantiate(smgSkin, smgGun.transform, false);
-        //smg.name = "smg45";
         SetGunSkinEquit();
     }
 
@@ -28,8 +24,8 @@ public class SetGunSkin : MonoBehaviour
     }
     public void SetGunSkinEquit()
     {
-        smgSkin = skinSmgEquit;
-        pistolSkin = skinPistolEquit;
+        smgSkin = Resources.Load<GameObject>(PlayerPrefs.GetString("Primary"));
+        pistolSkin = Resources.Load<GameObject>(PlayerPrefs.GetString("Secondary"));
 
         if (smgSkin == null) {
             smgSkin = DefautSmg;
