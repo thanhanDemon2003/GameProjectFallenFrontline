@@ -8,6 +8,8 @@ using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
 using PlayerModel;
+using System;
+using UnityEngine.Rendering.LookDev;
 
 public class HomeScript : MonoBehaviour
 {
@@ -22,8 +24,9 @@ public class HomeScript : MonoBehaviour
     public GameObject paymentBtn;
     public Button btnOther;
     public GameObject LoginGameObject;
+    public GameObject panelLoading;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         filePathPlayer = Application.persistentDataPath + "/player.json";
         if (!File.Exists(filePathPlayer))
@@ -31,15 +34,64 @@ public class HomeScript : MonoBehaviour
             File.WriteAllText(filePathPlayer, "");
         }
         filePathGun = Application.persistentDataPath + "/wardrobe.json";
+        chekcInternet();
         startDataPlayer();
     }
-
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
-       
+
+        Application.focusChanged += OnFocusChanged;
     }
 
+    void OnDisable()
+    { 
+        Application.focusChanged -= OnFocusChanged;
+    }
+
+
+
+    void OnFocusChanged(bool focused)
+    {
+        
+        if (Application.isFocused)
+        {
+            Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
+            string id = data._id;
+            if (id == null || id =="")
+            {
+                File.WriteAllText(filePathPlayer, "");
+                startDataPlayer();
+                return;
+            }
+            panelLoading.SetActive(true);
+            StartCoroutine(CheckPlayer(id));
+        }
+    }
+
+    IEnumerator CheckPlayer(string id)
+    {
+        UnityWebRequest www = UnityWebRequest.Get("http://localhost:3000/games/checkplayer/"+ id);
+        yield return www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Lỗi kết nối: " + www.error);
+        }
+        else
+        {
+           Player player = JsonUtility.FromJson<Player>(www.downloadHandler.text);
+            Data data = player.data;
+            string json1 = JsonUtility.ToJson(data);
+            Data dataPlayer = JsonUtility.FromJson<Data>(json1);
+            if(dataPlayer != null)
+            {
+                Debug.Log(dataPlayer+"hiiii");
+                panelLoading.SetActive(false);
+                string json = JsonUtility.ToJson(dataPlayer);
+                File.WriteAllText(filePathPlayer, json);
+                startDataPlayer();
+            }   
+        }
+    }       
     private void startDataPlayer()
     {
         Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
@@ -93,5 +145,42 @@ public class HomeScript : MonoBehaviour
     public void clickOnLoadMap2()
     {
         SceneManager.LoadScene(2);
+    }
+    public void chekcInternet()
+    {
+        if (Application.internetReachability == NetworkReachability.NotReachable) {
+            iconLock[0].gameObject.SetActive(true);
+            iconLock[2].gameObject.SetActive(true);
+            btnOther.interactable = false;
+            btnOther.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
+            btnStore.interactable = false;
+            btnStore.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
+            Debug.Log("Error. Check internet connection!");
+            return;
+        }
+        else
+        {
+            Debug.Log("Internet connection is available");
+        }
+    }
+    public void onClickPayment()
+    {
+        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
+        string idgg = data.fb_id;
+        string ds = data.id_discord;
+        if(idgg != null)
+        {
+            Application.OpenURL("https://dotstudio.andemongame.tech/payment/#idgg="+ idgg);
+            return;
+        }
+        else if(ds != null)
+        {
+            Application.OpenURL("https://dotstudio.andemongame.tech/payment/#ds="+ds);
+            return;
+        }
+        else
+        {
+            Application.OpenURL("https://dotstudio.andemongame.tech/loginpayment");
+        }
     }
 }
