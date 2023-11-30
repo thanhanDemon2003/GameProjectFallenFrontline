@@ -11181,8 +11181,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 36.66, y: 0}
+  m_AnchoredPosition: {x: -32.82898, y: 0}
+  m_SizeDelta: {x: 102.3178, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752768563
 MonoBehaviour:
@@ -11805,15 +11805,15 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1097400395}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 776865464}
-        m_TargetAssemblyTypeName: MouseSensitive, Assembly-CSharp
-        m_MethodName: SetMouseSensitive
+        m_TargetAssemblyTypeName: SliderMouse, Assembly-CSharp
+        m_MethodName: MouseSensitivity
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11832,9 +11832,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 776865461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c26703fac17a749b394953908e79af, type: 3}
+  m_Script: {fileID: 11500000, guid: c223e045c59778f4d9dc36b97fc387d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 776865463}
 --- !u!1001 &778732013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17124,8 +17125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 36.66, y: 0}
+  m_AnchoredPosition: {x: -32.56079, y: 0}
+  m_SizeDelta: {x: 101.7816, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097400396
 MonoBehaviour:
@@ -36291,5 +36292,5 @@ SceneRoots:
   - {fileID: 579248096}
   - {fileID: 1334052037}
   - {fileID: 1531287730}
-  - {fileID: 1530583774}
   - {fileID: 1838412899}
+  - {fileID: 1530583774}
