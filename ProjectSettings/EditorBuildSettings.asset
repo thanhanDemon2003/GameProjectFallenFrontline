@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Map/ConstructionSite.unity
     guid: cb33d671eff7a7a4aa8449ce9db53760
   - enabled: 1
-    path: Assets/Map/SceneMap/Map.unity
+    path: Assets/Scenes/Game/Map/Map.unity
     guid: e62c0944749633a439da6bdc600d1a51
   - enabled: 1
     path: Assets/Scenes/DataSkin.unity

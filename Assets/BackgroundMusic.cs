@@ -73,4 +73,11 @@ public class BackgroundMusic : MonoBehaviour
 
         Debug.Log(hitCollider.Length);
     }
+
+    public void TurnOffMusic()
+    {
+        ambient.volume -= 0.2f * Time.deltaTime;
+        action.volume -= 0.2f * Time.deltaTime;
+        end.volume -= 0.2f * Time.deltaTime;
+    }
 }
