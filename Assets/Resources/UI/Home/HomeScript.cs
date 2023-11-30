@@ -5,11 +5,10 @@ using System.IO;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
-using System.Collections;
 using TMPro;
 using PlayerModel;
+using static FPS.Player.PlayerController;
 using System;
-using UnityEngine.Rendering.LookDev;
 
 public class HomeScript : MonoBehaviour
 {
@@ -117,8 +116,7 @@ public class HomeScript : MonoBehaviour
             textCoin.text = data.balance.ToString();
             btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Logout";
             btnLogin.onClick.AddListener(() => clickLogoutButton());
-        }
-       
+        } 
     }
     public void clickLogoutButton()
     {
