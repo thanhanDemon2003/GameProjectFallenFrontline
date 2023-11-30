@@ -1024,8 +1024,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smgGun: {fileID: 604097679}
   pistolGun: {fileID: 611320041}
-  smgSkin: {fileID: 3655835940690434760, guid: 5954371cf06aba541bdc3da8a60a9dce, type: 3}
-  pistolSkin: {fileID: 3216709615101361046, guid: ddc938a72ad2b6e43a8e9ccd216aba7f,
+  smgSkin: {fileID: 0}
+  pistolSkin: {fileID: 0}
+  DefautSmg: {fileID: 3655835940690434760, guid: 5954371cf06aba541bdc3da8a60a9dce,
+    type: 3}
+  DefautPistol: {fileID: 3216709615101361046, guid: ddc938a72ad2b6e43a8e9ccd216aba7f,
     type: 3}
 --- !u!1 &73300435
 GameObject:

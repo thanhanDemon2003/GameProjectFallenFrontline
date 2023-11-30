@@ -12,14 +12,16 @@ using PlayerModel;
 
 public class ApplySkin : MonoBehaviour
 {
-    public string prefabsFolderPath = "Assets/Resource/UI/Skins/Skin";
-    public string gunImageFolderPath = "Assets/Resource/UI/Skins/Images";
+    public string prefabsFolderPath;
+    public string gunImageFolderPath;
     public string FilePathGunSkin;
     public GameObject conTent;
     public GameObject itemGunSkin;
     public GameObject buySkin;
+
     void Start()
-    {
+    {   prefabsFolderPath = "Assets/Resources/UI/Skins/Skin";
+        gunImageFolderPath = "Assets/Resources/UI/Skins/Images";
         FilePathGunSkin = Application.persistentDataPath + "/player.json";
         getAllSkin();
     }

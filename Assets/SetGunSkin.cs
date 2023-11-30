@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static OnClickWardrobe;
 
 public class SetGunSkin : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class SetGunSkin : MonoBehaviour
 
     [SerializeField] GameObject smgSkin;
     [SerializeField] GameObject pistolSkin;
+    public GameObject DefautSmg;
+    public GameObject DefautPistol;
     private void Awake()
     {
-        GameObject smg = Instantiate(smgSkin, smgGun.transform, false);
-        smg.name = "smg45";
-
-        Instantiate(pistolSkin, pistolGun.transform, false);
+        //Instantiate(pistolSkin, pistolGun.transform, false);
+        //GameObject smg = Instantiate(smgSkin, smgGun.transform, false);
+        //smg.name = "smg45";
+        SetGunSkinEquit();
     }
 
     // Update is called once per frame
@@ -23,4 +26,69 @@ public class SetGunSkin : MonoBehaviour
     {
 
     }
+    public void SetGunSkinEquit()
+    {
+        smgSkin = skinSmgEquit;
+        pistolSkin = skinPistolEquit;
+
+        if (smgSkin == null) {
+            smgSkin = DefautSmg;
+        }
+        if (pistolSkin == null)
+        {
+            pistolSkin = DefautPistol;
+        }
+
+        GameObject smgEquit = Instantiate(smgSkin, smgGun.transform, false);
+        smgEquit.name = "smg45";
+        Instantiate(pistolSkin, pistolGun.transform, false);
+
+    }
 }
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using static OnClickWardrobe;
+
+//public class SetGunSkin : MonoBehaviour
+//{
+//    [SerializeField] GameObject smgGun;
+//    [SerializeField] GameObject pistolGun;
+
+
+//    [SerializeField] GameObject smgSkin;
+//    [SerializeField] GameObject pistolSkin;
+//    public GameObject DefautSmg;
+//    public GameObject DefautPistol;
+//    private void Awake()
+//    {
+//        SetGunSkinEquit();
+//    }
+
+//    // Update is called once per frame
+//    void Update()
+//    {
+
+//    }
+//    public void SetGunSkinEquit()
+//    {
+
+//        smgSkin = skinSmgEquit;
+//        GameObject smgEquit = Instantiate(smgSkin, smgGun.transform, false);
+//        smgEquit.name = "smg45";
+//        pistolSkin = skinPistolEquit;
+//        GameObject pistolEquit = Instantiate(pistolSkin, pistolGun.transform, false);
+//        if (smgSkin == null)
+//        {
+//            GameObject smg = Instantiate(DefautSmg, smgGun.transform, false);
+//            smg.name = "smg45";
+//        }
+//        if (pistolSkin == null)
+//        {
+//            Instantiate(DefautPistol, DefautPistol.transform, false);
+//        }
+
+
+//    }
+//}
+
