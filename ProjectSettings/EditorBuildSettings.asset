@@ -5,24 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/test.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/PlayerTestField.unity
-    guid: 939a8049eb6bcf84f9f355bde537767d
-  - enabled: 0
-    path: Assets/Scenes/ZombieTest.unity
-    guid: 7ebce664781e33f42bf48ac760bc047c
-  - enabled: 0
-    path: Assets/Scenes/Index.unity
-    guid: 3ea694b170432e9428229a446f9c220a
-  - enabled: 0
-    path: Assets/Scenes/index1.unity
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
     guid: e9604b030ff65da41a5afdd8c8abc597
   - enabled: 1
     path: Assets/Scenes/Game/Map/ConstructionSite.unity
     guid: cb33d671eff7a7a4aa8449ce9db53760
+  - enabled: 1
+    path: Assets/Map/SceneMap/Map.unity
+    guid: e62c0944749633a439da6bdc600d1a51
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4a59148a03cd85f4394605a1bc2354f2,
       type: 2}

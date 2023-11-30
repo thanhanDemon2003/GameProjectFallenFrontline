@@ -85,5 +85,12 @@ public class HomeScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    public void clickOnLoadMap1()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void clickOnLoadMap2()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
