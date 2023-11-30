@@ -26,14 +26,11 @@ public class PlayerHealth : MonoBehaviour
     public UnityEngine.UI.Slider healthBar;
     public Image healthImage;
 
-    EndLevel endLevel;
-
     // Start is called before the first frame update
     void Start()
     {
         currentHP = maxHP;
         mainCamera = Camera.main.transform;
-        endLevel = GetComponent<EndLevel>();
     }
 
     private void Update()

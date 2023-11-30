@@ -20,7 +20,7 @@ namespace FPS.Player
 
         [SerializeField] float upLimit = -40f;
         [SerializeField] float downLimit = 70f;
-        public float mouseSensitive = 21f;
+        [SerializeField] float mouseSensitive = 21f;
 
 
         private Rigidbody rb;

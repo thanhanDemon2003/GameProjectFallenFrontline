@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnWave : MonoBehaviour
 {
-    public GameObject[] enemies;
+    private GameObject[] enemies;
     public bool isInWaves;
     public bool isNearEnd;
 

@@ -25,13 +25,10 @@ public class MapObjective : MonoBehaviour
     public TextMeshProUGUI objectiveText;
     public TextMeshProUGUI gasText;
 
-    EndLevel endLevel;
     void Start()
     {
         batteryValue = 0;
         batterySlider.maxValue = totalTime;
-
-        endLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<EndLevel>();
     }
 
     // Update is called once per frame
@@ -103,7 +100,5 @@ public class MapObjective : MonoBehaviour
             return;
         }
         Debug.Log(">>>>>>>Show Win Screen");
-        endLevel.EndALevel(true);
-
     }
 }

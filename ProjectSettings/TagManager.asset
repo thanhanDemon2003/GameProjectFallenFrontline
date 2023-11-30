@@ -35,7 +35,6 @@ TagManager:
   - textCoin
   - BuySkinUi
   - wardrobeItem
-  - Music
   layers:
   - Default
   - TransparentFX

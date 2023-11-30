@@ -7,7 +7,6 @@ using UnityEngine;
 public class PistolScript : MonoBehaviour
 {
     [SerializeField] InputManager inputManager;
-    PlayerController playyer;
 
     [Header("Shooting Attributes")]
     public Transform gunPivot;
@@ -66,7 +65,6 @@ public class PistolScript : MonoBehaviour
         audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         fireRateCount = fireRate;
-        player = GetComponentInParent<PlayerController>();
     }
 
     public bool canReload()
@@ -88,7 +86,6 @@ public class PistolScript : MonoBehaviour
     private void Update()
     {
         if (!this.enabled) return;
-        if (!player.canControl) return;
 
         if (isPrimary)
         {
