@@ -244,6 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acff158ba56bb194884e41a80c4ff3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resolutionDropdown: {fileID: 0}
+  fullscreenToggle: {fileID: 0}
 --- !u!1 &14950022
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,6 +6115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8d7800edd2a304fa784eaf35e54c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSlider: {fileID: 0}
 --- !u!114 &427935526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10400,6 +10403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f4aca8e2a9d7c45bc0731aeb74fd4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
 --- !u!1 &699782451
 GameObject:
   m_ObjectHideFlags: 0
@@ -28264,6 +28268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243be4bfdad78c74ebb643924017ffea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameObject: {fileID: 10449023}
 --- !u!1 &1838792660
 GameObject:
   m_ObjectHideFlags: 0
