@@ -24,6 +24,7 @@ public class HomeScript : MonoBehaviour
     public Button btnOther;
     public GameObject LoginGameObject;
     public GameObject panelLoading;
+    public GameObject panelCheckInternet;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,7 +34,6 @@ public class HomeScript : MonoBehaviour
             File.WriteAllText(filePathPlayer, "");
         }
         filePathGun = Application.persistentDataPath + "/wardrobe.json";
-        chekcInternet();
         startDataPlayer();
     }
     void OnEnable()
@@ -48,25 +48,33 @@ public class HomeScript : MonoBehaviour
     }
     void OnFocusChanged(bool focused)
     {
-        
-        if (Application.isFocused)
+        if(Application.internetReachability == NetworkReachability.NotReachable)
         {
-            Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-            string id = data._id;
-            if (id == null || id =="")
-            {
-                File.WriteAllText(filePathPlayer, "");
-                startDataPlayer();
-                return;
-            }
-            panelLoading.SetActive(true);
-            StartCoroutine(CheckPlayer(id));
+            checkInternet();
+            return;
         }
+        else {
+            if (Application.isFocused)
+            {
+                Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
+                string id = data._id;
+                if (id == null || id == "")
+                {
+                    File.WriteAllText(filePathPlayer, "");
+                    startDataPlayer();
+                    return;
+                }
+                panelLoading.SetActive(true);
+                StartCoroutine(CheckPlayer(id));
+            }
+        }
+
+       
     }
 
     IEnumerator CheckPlayer(string id)
     {
-        UnityWebRequest www = UnityWebRequest.Get("http://localhost:3000/games/checkplayer/"+ id);
+        UnityWebRequest www = UnityWebRequest.Get("https://darkdisquitegame.andemongame.tech/games/checkplayer/" + id);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -81,11 +89,14 @@ public class HomeScript : MonoBehaviour
             if(dataPlayer != null)
             {
                 Debug.Log(dataPlayer+"hiiii");
+                panelCheckInternet.SetActive(false);
                 panelLoading.SetActive(false);
                 string json = JsonUtility.ToJson(dataPlayer);
                 File.WriteAllText(filePathPlayer, json);
+
                 startDataPlayer();
-            }   
+            }
+            Debug.Log("Internet connection is available");
         }
     }       
     private void startDataPlayer()
@@ -109,6 +120,13 @@ public class HomeScript : MonoBehaviour
             btnLogin.onClick.AddListener(() => LoginGameObject.SetActive(true));
         }
         else if(data!= null && name != null) {
+            iconLock[0].gameObject.SetActive(false);
+            iconLock[1].gameObject.SetActive(false);
+            iconLock[2].gameObject.SetActive(false);
+            btnOther.interactable = true;
+            btnOther.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+            btnInvetort.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+            btnStore.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
             btnInvetort.interactable = true;
             btnStore.interactable = true;
             paymentBtn.SetActive(true);
@@ -141,22 +159,18 @@ public class HomeScript : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
-    public void chekcInternet()
+    public void checkInternet()
     {
-        if (Application.internetReachability == NetworkReachability.NotReachable) {
+        panelCheckInternet.SetActive(true);
             iconLock[0].gameObject.SetActive(true);
             iconLock[2].gameObject.SetActive(true);
             btnOther.interactable = false;
             btnOther.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
             btnStore.interactable = false;
-            btnStore.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
+        paymentBtn.SetActive(false);
+        btnStore.GetComponentInChildren<TextMeshProUGUI>().color = Color.gray;
             Debug.Log("Error. Check internet connection!");
-            return;
-        }
-        else
-        {
-            Debug.Log("Internet connection is available");
-        }
+            
     }
     public void onClickPayment()
     {
