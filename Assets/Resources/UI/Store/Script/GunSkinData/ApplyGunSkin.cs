@@ -21,7 +21,7 @@ public class ApplySkin : MonoBehaviour
 
     void Start()
     {   prefabsFolderPath = "UI/Skins/Skin";
-        gunImageFolderPath = "Assets/Resources/UI/Skins/Images";
+        gunImageFolderPath = "UI/Skins/Images";
         FilePathGunSkin = Application.persistentDataPath + "/player.json";
         getAllSkin();
     }
@@ -45,14 +45,12 @@ public class ApplySkin : MonoBehaviour
             var percent = skin.percent;
             var price = skin.price;
             skin.PrefabPath = prefabsFolderPath + "/" + color;
-            skin.image = gunImageFolderPath + "/" + color + ".png";
+            skin.image = gunImageFolderPath + "/" + color;
 
             Debug.Log(skin.image);
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
             var image = itemGunSkin.GetComponentsInChildren<Image>()[0];
-            Texture2D tex = new(2, 2);
-            tex.LoadImage(File.ReadAllBytes(skin.image));
-            image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
+            image.sprite = Resources.Load<Sprite>(skin.image);
 
             foreach (Skins ownedSkin in ownedGunSkins)
             {

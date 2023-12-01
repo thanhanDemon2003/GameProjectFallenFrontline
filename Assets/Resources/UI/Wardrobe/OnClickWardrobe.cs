@@ -15,11 +15,11 @@ public class OnClickWardrobe : MonoBehaviour
     {
         if(PlayerPrefs.GetString("Secondary") == "")
         {
-            PlayerPrefs.SetString("Secondary", "UI/Skins/Skin/Secondary/Default");
+            PlayerPrefs.SetString("Secondary", "UI/Skins/Skin/PistolDefault");
         }
         if (PlayerPrefs.GetString("Primary") == "")
         {
-            PlayerPrefs.SetString("Primary", "UI/Skins/Skin/Primary/Default");
+            PlayerPrefs.SetString("Primary", "UI/Skins/Skin/SMGDefault");
         }
     }
     public void onClickShowEquit()
@@ -31,9 +31,7 @@ public class OnClickWardrobe : MonoBehaviour
         var pathImgSkin = dataWardrobe.pathImgSkin;
         var pathModelSkin = dataWardrobe.pathModelSkin;
         var image = equitWardrobe.GetComponentsInChildren<Image>()[1];
-        Texture2D tex = new(2, 2);
-        tex.LoadImage(System.IO.File.ReadAllBytes(pathImgSkin));
-        image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
+        image.sprite = Resources.Load<Sprite>(pathImgSkin);
         equitWardrobe.GetComponentInChildren<Button>().onClick.AddListener(() => onCkickequitSkin(pathModelSkin, category));
         equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[1].text = name + " - " + category;
         if(category == "Primary")

@@ -38,7 +38,7 @@ public class ApplyWardrobe : MonoBehaviour
         }
         PathFile = Application.persistentDataPath + "/player.json";
         prefabsFolderPath = "UI/Skins/Skin";
-        gunImageFolderPath = "Assets/Resources/UI/Skins/Images";
+        gunImageFolderPath = "UI/Skins/Images";
         Data data = JsonUtility.FromJson<Data>(File.ReadAllText(PathFile));
         UnityEngine.Debug.Log("data: " + data);
         Skins[] skins = data.wardrobe;
@@ -51,13 +51,11 @@ public class ApplyWardrobe : MonoBehaviour
             string category = skin.category;
             UnityEngine.Debug.Log("color: " + name + " " + color);
             string prefabPath = prefabsFolderPath + "/" + color;
-            string image = gunImageFolderPath + "/" + color + ".png";
+            string image = gunImageFolderPath + "/" + color;
             itemWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
 
             var imgFill = itemWardrobe.GetComponentsInChildren<Image>()[1];
-            Texture2D tex = new(2, 2);
-            tex.LoadImage(File.ReadAllBytes(image));
-            imgFill.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
+            imgFill.sprite = Resources.Load<Sprite>(image);
             SkinDataWardrobe skinData = itemWardrobe.GetComponent<SkinDataWardrobe>();
             skinData.SetSkinData(SkinId, prefabPath, category, image, name);
             OnClickWardrobe onClickWardrobe = itemWardrobe.GetComponent<OnClickWardrobe>();
