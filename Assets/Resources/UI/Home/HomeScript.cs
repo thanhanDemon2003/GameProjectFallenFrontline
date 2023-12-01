@@ -120,6 +120,11 @@ public class HomeScript : MonoBehaviour
             btnLogin.onClick.AddListener(() => LoginGameObject.SetActive(true));
         }
         else if(data!= null && name != null) {
+            if(data.status == 1)
+            {
+                   checkStatusPlayer();
+                return;
+            }
             iconLock[0].gameObject.SetActive(false);
             iconLock[1].gameObject.SetActive(false);
             iconLock[2].gameObject.SetActive(false);
@@ -162,6 +167,7 @@ public class HomeScript : MonoBehaviour
     public void checkInternet()
     {
         panelCheckInternet.SetActive(true);
+        panelCheckInternet.GetComponentInChildren<TextMeshProUGUI>().text = "Your network is not available, you will be locked out of online functions, please reconnect to the network to use online functions!";
             iconLock[0].gameObject.SetActive(true);
             iconLock[2].gameObject.SetActive(true);
             btnOther.interactable = false;
@@ -191,5 +197,11 @@ public class HomeScript : MonoBehaviour
         {
             Application.OpenURL("https://dotstudio.andemongame.tech/loginpayment");
         }
+    }
+    public void checkStatusPlayer()
+    {
+        panelCheckInternet.SetActive(true);
+        panelCheckInternet.GetComponentInChildren<TextMeshProUGUI>().text = "Your account has been locked. Please contact admin via email iamdemon.dev@gmail.com for more details!";
+        clickLogoutButton();
     }
 }

@@ -38,8 +38,9 @@ namespace PlayerModel
         public string token;
         public string method;
         public int balance;
+        public int status;
         public Skins[] wardrobe;
-        public Data(string _id, string name, string fb_id, string id_discord, string token, string method, int balance, Skins[] wardrobe)
+        public Data(string _id, string name, string fb_id, string id_discord, string token, string method, int balance, int status, Skins[] wardrobe)
         {
             this._id = _id;
             this.name = name;
@@ -48,6 +49,7 @@ namespace PlayerModel
             this.token = token;
             this.method = method;
             this.balance = balance;
+            this.status = status;
             this.wardrobe = wardrobe;
         }
     }

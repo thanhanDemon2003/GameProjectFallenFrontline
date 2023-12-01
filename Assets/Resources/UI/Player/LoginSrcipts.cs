@@ -106,6 +106,7 @@ public class LoginSrcipts : MonoBehaviour
     }
     IEnumerator GetLoginGG(string token, string name)
     {
+        cancel.gameObject.SetActive(false);
         WWWForm form = new WWWForm();
         form.AddField("token", token);
         form.AddField("name", name);
@@ -114,7 +115,8 @@ public class LoginSrcipts : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Lỗi kết nối: " + www.error);
-            textLoading.text = "Lỗi đăng nhập, vui lòng thử lại!";
+            Player playerModel = JsonUtility.FromJson<Player>(www.downloadHandler.text);
+            textLoading.text = playerModel.notification;
             login.gameObject.SetActive(true);
             loading.gameObject.SetActive(false);
 
@@ -139,6 +141,7 @@ public class LoginSrcipts : MonoBehaviour
     }
     IEnumerator GetLoginDC(string token, string name)
     {
+        cancel.gameObject.SetActive(false);
         WWWForm form = new WWWForm();
         form.AddField("id_discord", token);
         form.AddField("name", token);
@@ -147,7 +150,8 @@ public class LoginSrcipts : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Lỗi kết nối: " + www.error);
-            textLoading.text = "Lỗi đăng nhập, vui lòng thử lại!";
+            Player playerModel = JsonUtility.FromJson<Player>(www.downloadHandler.text);
+            textLoading.text = playerModel.notification;
             login.gameObject.SetActive(true);
             loading.gameObject.SetActive(false);
 
