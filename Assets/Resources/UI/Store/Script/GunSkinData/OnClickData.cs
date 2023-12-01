@@ -28,8 +28,7 @@ public class OnClickData : MonoBehaviour
         buySkin.SetActive(true);
         var image = buySkin.GetComponentsInChildren<Image>()[1];
         Texture2D tex = new(2, 2);
-        tex.LoadImage(File.ReadAllBytes(pathImgSkin));
-        image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0));
+        image.sprite = Resources.Load<Sprite>(pathImgSkin);
         buySkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name + " - " + category;
         buySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = balance.ToString();
         buySkin.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => onBuySkin(skinId, balance));
