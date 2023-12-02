@@ -166,6 +166,7 @@ public class HomeScript : MonoBehaviour
     }
     public void checkInternet()
     {
+        panelLoading.SetActive(false);
         panelCheckInternet.SetActive(true);
         panelCheckInternet.GetComponentInChildren<TextMeshProUGUI>().text = "Your network is not available, you will be locked out of online functions, please reconnect to the network to use online functions!";
             iconLock[0].gameObject.SetActive(true);
