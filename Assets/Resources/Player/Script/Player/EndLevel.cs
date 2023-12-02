@@ -3,6 +3,7 @@ using FPS.Player;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EndLevel : MonoBehaviour
@@ -87,5 +88,13 @@ public class EndLevel : MonoBehaviour
             audio.clip = musicLose;
             videoBackGround.color = Color.red;
         }
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

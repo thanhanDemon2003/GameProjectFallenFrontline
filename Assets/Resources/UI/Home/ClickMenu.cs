@@ -34,10 +34,10 @@ public class ClickMenu : MonoBehaviour
     }
     public void clickdownOff()
     {
-        story.SetActive(false);
-        wardrobe.SetActive(false);
-        shop.SetActive(false);
-        other.SetActive(false);
-        setting.SetActive(false);
+        //story.SetActive(false);
+        //wardrobe.SetActive(false);
+        //shop.SetActive(false);
+        //other.SetActive(false);
+        //setting.SetActive(false);
     }
 }

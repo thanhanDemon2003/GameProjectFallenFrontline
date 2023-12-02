@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using TMPro;
 using PlayerModel;
-using static FPS.Player.PlayerController;
 using System;
 
 public class HomeScript : MonoBehaviour
@@ -25,6 +24,8 @@ public class HomeScript : MonoBehaviour
     public GameObject LoginGameObject;
     public GameObject panelLoading;
     public GameObject panelCheckInternet;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,6 +36,10 @@ public class HomeScript : MonoBehaviour
         }
         filePathGun = Application.persistentDataPath + "/wardrobe.json";
         startDataPlayer();
+
+
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
     }
     void OnEnable()
     {
@@ -48,12 +53,6 @@ public class HomeScript : MonoBehaviour
     }
     void OnFocusChanged(bool focused)
     {
-        if(Application.internetReachability == NetworkReachability.NotReachable)
-        {
-            checkInternet();
-            return;
-        }
-        else {
             if (Application.isFocused)
             {
                 Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
@@ -66,7 +65,7 @@ public class HomeScript : MonoBehaviour
                 }
                 panelLoading.SetActive(true);
                 StartCoroutine(CheckPlayer(id));
-            }
+            
         }
 
        
@@ -78,7 +77,9 @@ public class HomeScript : MonoBehaviour
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
+            Debug.Log("Error. Check internet connection1!");
             Debug.LogError("Lỗi kết nối: " + www.error);
+            checkInternet();
         }
         else
         {
