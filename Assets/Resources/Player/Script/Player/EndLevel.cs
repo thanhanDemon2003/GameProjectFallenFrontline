@@ -65,7 +65,7 @@ public class EndLevel : MonoBehaviour
         {
             Destroy(zombie);
         }
-        spawnWave.enabled = false;
+        //spawnWave.enabled = false;
         endPanel.SetActive(true);
         music.TurnOffMusic();
 

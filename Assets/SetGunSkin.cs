@@ -12,7 +12,7 @@ public class SetGunSkin : MonoBehaviour
     [SerializeField] GameObject pistolSkin;
     public GameObject DefautSmg;
     public GameObject DefautPistol;
-    private void Awake()
+    private void Start()
     {
         SetGunSkinEquit();
     }
@@ -26,6 +26,8 @@ public class SetGunSkin : MonoBehaviour
     {
         smgSkin = Resources.Load<GameObject>(PlayerPrefs.GetString("Primary"));
         pistolSkin = Resources.Load<GameObject>(PlayerPrefs.GetString("Secondary"));
+        Debug.Log(smgSkin);
+
 
         if (smgSkin == null) {
             smgSkin = DefautSmg;
@@ -38,6 +40,8 @@ public class SetGunSkin : MonoBehaviour
         GameObject smgEquit = Instantiate(smgSkin, smgGun.transform, false);
         smgEquit.name = "smg45";
         Instantiate(pistolSkin, pistolGun.transform, false);
+        Debug.Log(smgSkin+ "Sung dai");
+        Debug.Log(pistolSkin + "sung ngan");
 
     }
 }
