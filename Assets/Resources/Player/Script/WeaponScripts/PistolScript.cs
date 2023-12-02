@@ -7,6 +7,7 @@ using UnityEngine;
 public class PistolScript : MonoBehaviour
 {
     [SerializeField] InputManager inputManager;
+    PlayerController playyer;
 
     [Header("Shooting Attributes")]
     public Transform gunPivot;
