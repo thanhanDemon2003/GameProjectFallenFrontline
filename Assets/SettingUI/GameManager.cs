@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         allAudioSources = FindObjectsOfType<AudioSource>();
         scriptInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         scriptInstance.canControl = true;
+        Time.timeScale = 1;
     }
 
     void Update()
