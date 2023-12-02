@@ -45,7 +45,7 @@ public class OnClickWardrobe : MonoBehaviour
             }
             else
             {
-                equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Equit";
+                equitWardrobe.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Equip";
                 equitWardrobe.GetComponentInChildren<Button>().colors = ColorBlock.defaultColorBlock;
                 equitWardrobe.GetComponentInChildren<Button>().interactable = true;
             }
