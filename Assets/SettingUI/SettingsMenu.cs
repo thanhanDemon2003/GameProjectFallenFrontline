@@ -1,52 +1,30 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class SettingsMenu : MonoBehaviour
 {
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
 
-    private Resolution[] resolutions;
+    private Resolution[] resolutions; // mang do phan giai
 
     private void Start()
     {
         resolutions = Screen.resolutions;
 
+        // danh sach do phan giai
         resolutionDropdown.ClearOptions();
-
-        // Tạo danh sách các độ phân giải HD, Full HD và 2K
-        List<string> resolutionOptions = new List<string>();
         foreach (Resolution res in resolutions)
         {
-            if (IsResolutionHD(res) || IsResolutionFullHD(res) || IsResolution2K(res))
-            {
-                resolutionOptions.Add(res.width + " x " + res.height);
-            }
+            resolutionDropdown.options.Add(new TMP_Dropdown.OptionData(res.width + " x " + res.height));
         }
 
-        resolutionDropdown.AddOptions(resolutionOptions);
-
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
+
         fullscreenToggle.onValueChanged.AddListener(OnFullscreenChanged);
 
         LoadAndApplySettings();
-    }
-
-    private bool IsResolutionHD(Resolution resolution)
-    {
-        return resolution.width == 1280 && resolution.height == 720;
-    }
-
-    private bool IsResolutionFullHD(Resolution resolution)
-    {
-        return resolution.width == 1920 && resolution.height == 1080;
-    }
-
-    private bool IsResolution2K(Resolution resolution)
-    {
-        return resolution.width == 2560 && resolution.height == 1440;
     }
 
     private void LoadAndApplySettings()
