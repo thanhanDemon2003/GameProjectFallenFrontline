@@ -1,5 +1,79 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &52476837621098953
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6119376515631847155}
+    m_Modifications:
+    - target: {fileID: 4859210641067051337, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_Name
+      value: Sounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.127971
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0464661
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.4094715
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71a25f76f6f08404a8d3fc76b00642a8, type: 3}
+--- !u!4 &7188535690016662019 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7167655245357403082, guid: 71a25f76f6f08404a8d3fc76b00642a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 52476837621098953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6009734816900575512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -484,7 +558,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5744513da12dac34192fd1893eae0c22,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 7188535690016662019}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5744513da12dac34192fd1893eae0c22,
         type: 3}
@@ -1579,6 +1657,12 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!4 &6119376515631847155 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5744513da12dac34192fd1893eae0c22,
+    type: 3}
+  m_PrefabInstance: {fileID: 6009734816900575512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6229102367397880183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 366175167995203695, guid: 5744513da12dac34192fd1893eae0c22,
@@ -1709,8 +1793,8 @@ MonoBehaviour:
   _timeToResetBones: 0.5
   _currentState: 0
   _animator: {fileID: 0}
+  _isAlive: 0
   isInAction: 0
-  zombieSound: []
 --- !u!114 &1949144858880503252
 MonoBehaviour:
   m_ObjectHideFlags: 0

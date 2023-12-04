@@ -29,6 +29,13 @@ public class BackgroundMusic : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+
+        CheckEnemy();
+        setMusic();
+
+        if (objective == null) return;
+
         if (objective.fuelFull)
         {
             ambient.volume -= 0.2f * Time.deltaTime;
@@ -36,9 +43,6 @@ public class BackgroundMusic : MonoBehaviour
             end.gameObject.SetActive(true);
             return;
         }
-
-        CheckEnemy();
-        setMusic();
     }
 
     private void setMusic()

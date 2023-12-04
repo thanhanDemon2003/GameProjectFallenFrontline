@@ -53,7 +53,7 @@ public class Zombie : MonoBehaviour
     private Transform[] _bones;
     private float _elapsedResetBonesTime;
     private bool _isFacingUp;
-    private bool _isAlive;
+    public bool _isAlive;
     private NavMeshAgent Agent;
     private TargetScript health;
     private InputManager playerinput;
@@ -64,7 +64,6 @@ public class Zombie : MonoBehaviour
     Vector3 previousPosition;
 
     private AudioSource audioSource;
-    [SerializeField] AudioClip[] zombieSound;
 
     void Awake()
     {
@@ -435,6 +434,7 @@ public class Zombie : MonoBehaviour
         }
 
         Destroy(gameObject, 20f);
+        this.enabled = false;
 
     }
 
@@ -459,4 +459,6 @@ public class Zombie : MonoBehaviour
         else
             return false;
     }
+
+    
 }
