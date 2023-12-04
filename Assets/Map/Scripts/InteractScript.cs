@@ -7,7 +7,7 @@ public class InteractScript : MonoBehaviour
     public float interactionRange = 4f;
     public LayerMask interactableLayer;
     public TextMeshProUGUI interactionText;
-
+    public WinOrLose WinOrLose;
     private void Start()
     {
         interactionText.text = "";
@@ -49,6 +49,7 @@ public class InteractScript : MonoBehaviour
             {
                 Debug.DrawRay(playerPosition, forward * interactionRange, Color.red);
                 Mission1Script.TryExit();
+                WinOrLose.EndALevel(true);
             }
         }
         else
