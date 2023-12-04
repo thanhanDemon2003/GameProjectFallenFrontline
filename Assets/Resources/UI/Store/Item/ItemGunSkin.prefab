@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Owned
+  m_text: 2000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7107191592634200200}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -280,12 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9199e1a37dc3344886e7c6c5249a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinId: 656accff33b27571a4eb7f78
-  pathModelSkin: UI/Skins/Skin/SMGSnow
-  blance: 1500
+  skinId: 656acd5133b27571a4eb7f8f
+  pathModelSkin: UI/Skins/Skin/SMGRusty
+  blance: 2000
   category: Primary
-  pathImgSkin: UI/Skins/Images/SMGSnow
-  nameSkin: SMG Snow
+  pathImgSkin: UI/Skins/Images/SMGRusty
+  nameSkin: SMG Rusty
 --- !u!114 &3315623963471020429
 MonoBehaviour:
   m_ObjectHideFlags: 0
