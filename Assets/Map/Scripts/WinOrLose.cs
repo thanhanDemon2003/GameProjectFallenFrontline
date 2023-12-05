@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class WinOrLose : MonoBehaviour
 {
-    [SerializeField] BackgroundMusic music;
+    // [SerializeField] BackgroundMusic music;
     [SerializeField] GameObject endPanel;
     [SerializeField] RawImage videoBackGround;
     [SerializeField] TextMeshProUGUI result;
@@ -60,7 +60,7 @@ public class WinOrLose : MonoBehaviour
         isEnded = true;
         //spawnWave.enabled = false;
         endPanel.SetActive(true);
-        music.TurnOffMusic();
+        // music.TurnOffMusic();
 
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         UnityEngine.Cursor.visible = true;

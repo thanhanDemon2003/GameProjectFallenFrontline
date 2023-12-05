@@ -10,7 +10,8 @@ public class Mission1Script : MonoBehaviour
     public static int QualityVirusSample = 1;
     public static int collectedVirusSample = 0;
     public static bool isGameOver = false;
-    
+
+    public static WinOrLose winOrLose;
     public static void CollectDocument()
     {
         if (!isGameOver)
@@ -18,8 +19,7 @@ public class Mission1Script : MonoBehaviour
             collectedDocuments++;
 
             if (collectedDocuments >= numberOfDocumentsToCollect)
-            {
-                Debug.Log("Collected enough documents! >>> Number: " + numberOfDocumentsToCollect);
+            {              
                 MissionComplete.Instance.Mission_1_Done(true);
             }
         }
@@ -31,8 +31,7 @@ public class Mission1Script : MonoBehaviour
         {
             collectedVirusSample++;
             if (collectedVirusSample >= QualityVirusSample)
-            {
-                Debug.Log("Collected enough virus sample! >>> Number: " + QualityVirusSample);
+            {       
                 MissionComplete.Instance.Mission_2_Done(true);
             }
         }      
@@ -51,9 +50,9 @@ public class Mission1Script : MonoBehaviour
         {
             if (collectedDocuments >= numberOfDocumentsToCollect && collectedVirusSample >= QualityVirusSample)
             {
-                Debug.Log("Mission Complete! Change to exit point...");
                 MissionComplete.Instance.Mission_3_Done(true);
                 EndGame(true);
+            
             }
             else
             {
@@ -68,6 +67,7 @@ public class Mission1Script : MonoBehaviour
 
         if (isSuccessful)
         {
+            winOrLose.EndALevel(true);
             Debug.Log("Mission Complete, End Mode!");
         }
         else
