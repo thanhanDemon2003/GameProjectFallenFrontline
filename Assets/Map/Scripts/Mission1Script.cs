@@ -12,6 +12,11 @@ public class Mission1Script : MonoBehaviour
     public static bool isGameOver = false;
 
     public static WinOrLose winOrLose;
+
+    private void Start()
+    {
+        winOrLose = GameObject.FindGameObjectWithTag("Player").GetComponent<WinOrLose>();
+    }
     public static void CollectDocument()
     {
         if (!isGameOver)
@@ -52,7 +57,7 @@ public class Mission1Script : MonoBehaviour
             {
                 MissionComplete.Instance.Mission_3_Done(true);
                 EndGame(true);
-            
+
             }
             else
             {
