@@ -9,16 +9,12 @@ public class ApiReward : MonoBehaviour
 {
     public static ApiReward rewardApi;
     public static string msg;
-    public string filePlayer;
-    void Awake()
-    {
-        filePlayer = Application.persistentDataPath + "/Player.json";
+ 
 
-    }
-
-    IEnumerator UpRewardMode1 (string playingTime, int dotcoin)
+    
+    public static IEnumerator UpRewardMode1 (string playingTime, int dotcoin)
     {
-        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePlayer));
+        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
         WWWForm form = new WWWForm();
         form.AddField("id_Player", id);
@@ -40,7 +36,7 @@ public class ApiReward : MonoBehaviour
     }
     IEnumerator UpRewardMode2 (string playingTime, int dotcoin)
     {
-        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePlayer));
+        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
         WWWForm form = new WWWForm();
         form.AddField("id", id);

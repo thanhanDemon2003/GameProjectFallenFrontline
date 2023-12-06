@@ -1,5 +1,6 @@
 
 using FPS.Player;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -80,8 +81,7 @@ public class EndLevel : MonoBehaviour
         // float dotcoinReward =  track.ZombieKilled * 3 + bonus;
         // dotcoin.text= "Dotcoin:" + dotcoinReward;
 
-        
-    
+         
         
 
         if (win)
@@ -94,8 +94,8 @@ public class EndLevel : MonoBehaviour
             dotcoin.text= "Dotcoin:" + dotcoinReward;
             if(TimeCount < 240){
             bonus = 50;
-            string playingTime = TimeCount.toString();
-            UpRewardMap1( playingTime,  dotcoin);
+            string playingTime = TimeCount.ToString();
+            UpRewardMap1(playingTime, dotcoinReward);
         }
         }
         else
@@ -106,8 +106,10 @@ public class EndLevel : MonoBehaviour
         }
     }
     public void UpRewardMap1(string playingTime, int dotcoin){
-        StartCoroutine(ApiReward.UpRewardMap1( playingTime,  dotcoin));
+        StartCoroutine(UpRewardMode1(playingTime, dotcoin));
     }
+
+
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
