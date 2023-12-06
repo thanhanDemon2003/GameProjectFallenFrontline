@@ -31,25 +31,25 @@ public class EndLevel : MonoBehaviour
     public int TimeCount;
     public bool isEnded;
     public int bonus;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        health= GetComponent<PlayerHealth>();
+        health = GetComponent<PlayerHealth>();
         audio = endPanel.GetComponentInChildren<AudioSource>();
-        track= GameObject.FindGameObjectWithTag("ScoreTrack").GetComponent<ScoreTrack>();
+        track = GameObject.FindGameObjectWithTag("ScoreTrack").GetComponent<ScoreTrack>();
         player = GetComponent<PlayerController>();
         StartCoroutine(countTime());
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (health.currentHP <= 0)
-        {
-            EndALevel(false);
-        }
-    }
+    //void Update()
+    //{
+    //    if (health.currentHP <= 0)
+    //    {
+    //        EndALevel(false);
+    //    }
+    //}
 
     private IEnumerator countTime()
     {
@@ -90,13 +90,14 @@ public class EndLevel : MonoBehaviour
             audio.clip = musicWin;
             videoBackGround.color = Color.white;
 
-            int dotcoinReward =  track.ZombieKilled * 5 + bonus;
-            dotcoin.text= "Dotcoin:" + dotcoinReward;
-            if(TimeCount < 240){
-            bonus = 50;
-            string playingTime = TimeCount.ToString();
-            UpRewardMap1(playingTime, dotcoinReward);
-        }
+            int dotcoinReward = track.ZombieKilled * 5 + bonus;
+            dotcoin.text = "Dotcoin:" + dotcoinReward;
+            if (TimeCount < 240)
+            {
+                bonus = 50;
+                string playingTime = TimeCount.ToString();
+                UpRewardMap1(playingTime, dotcoinReward);
+            }
         }
         else
         {
@@ -105,7 +106,8 @@ public class EndLevel : MonoBehaviour
             videoBackGround.color = Color.red;
         }
     }
-    public void UpRewardMap1(string playingTime, int dotcoin){
+    public void UpRewardMap1(string playingTime, int dotcoin)
+    {
         StartCoroutine(UpRewardMode1(playingTime, dotcoin));
     }
 
