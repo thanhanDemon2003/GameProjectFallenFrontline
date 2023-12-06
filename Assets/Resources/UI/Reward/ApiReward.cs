@@ -8,7 +8,7 @@ using PlayerModel;
 public class ApiReward : MonoBehaviour
 {
     public static ApiReward rewardApi;
-    public string msg;
+    public static string msg;
  
 
     
