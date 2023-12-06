@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: c145728a61a18ca499b0626c9bc79192
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inputManager: {instanceID: 0}
+  - gunPivot: {instanceID: 0}
+  - muzzleFlash: {instanceID: 0}
+  - smoke: {instanceID: 0}
+  - impactEffect: {instanceID: 0}
+  - fleshEffect: {fileID: 2047878545156098471, guid: a6840859d55acbe478742840176abea8,
+      type: 3}
+  - shellPoint: {instanceID: 0}
+  - shell: {instanceID: 0}
+  - magPoint: {instanceID: 0}
+  - mag: {instanceID: 0}
+  - _camera: {instanceID: 0}
+  - modelAnimator: {instanceID: 0}
+  - player: {instanceID: 0}
+  - recoil: {instanceID: 0}
+  - shootSFX: {instanceID: 0}
+  - shootEmptySFX: {instanceID: 0}
+  - reloadSFX: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

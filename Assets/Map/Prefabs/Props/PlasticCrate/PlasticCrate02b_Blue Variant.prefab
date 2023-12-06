@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4014252997083714493
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116955336210742527, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7594366464730446384, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78bce4a0115cb7042a0c9def21a98669, type: 2}
+    - target: {fileID: 8167359410871963372, guid: e1d2dc2b464f6864c8951decfbc452d2,
+        type: 3}
+      propertyPath: m_Name
+      value: PlasticCrate02b_Blue Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1d2dc2b464f6864c8951decfbc452d2, type: 3}
