@@ -42,14 +42,14 @@ public class EndLevel : MonoBehaviour
         StartCoroutine(countTime());
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if (health.currentHP <= 0)
-    //    {
-    //        EndALevel(false);
-    //    }
-    //}
+     //Update is called once per frame
+    void Update()
+    {
+        if (health.currentHP <= 0)
+        {
+          EndALevel(false);
+       }
+    }
 
     private IEnumerator countTime()
     {

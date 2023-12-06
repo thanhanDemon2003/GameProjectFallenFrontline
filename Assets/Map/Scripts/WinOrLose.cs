@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using static ApiReward;
 public class WinOrLose : MonoBehaviour
 {
     // [SerializeField] BackgroundMusic music;
@@ -26,8 +26,9 @@ public class WinOrLose : MonoBehaviour
     ScoreTrack track;
     PlayerController player;
 
-    public float TimeCount;
+    public int TimeCount;
     public bool isEnded;
+    public int bonus;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,7 @@ public class WinOrLose : MonoBehaviour
         track = GameObject.FindGameObjectWithTag("ScoreTrack").GetComponent<ScoreTrack>();
         player = GetComponent<PlayerController>();
         StartCoroutine(countTime());
+        bonus = 100;
     }
 
     // Update is called once per frame
@@ -80,6 +82,8 @@ public class WinOrLose : MonoBehaviour
             result.text = "MISSION COMPLETE";
             audio.clip = musicWin;
             videoBackGround.color = Color.white;
+
+            dotcoin.text = "Dotcoin:" + bonus;
         }
         else
         {
@@ -87,6 +91,11 @@ public class WinOrLose : MonoBehaviour
             audio.clip = musicLose;
             videoBackGround.color = Color.red;
         }
+    }
+
+    public void UpRewardMap2(string playingTime, int dotcoin)
+    {
+        StartCoroutine(UpRewardMode2(playingTime, dotcoin));
     }
     public void Restart()
     {

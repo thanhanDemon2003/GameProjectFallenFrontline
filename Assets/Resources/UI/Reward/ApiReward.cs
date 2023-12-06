@@ -34,7 +34,7 @@ public class ApiReward : MonoBehaviour
         }
 
     }
-    IEnumerator UpRewardMode2 (string playingTime, int dotcoin)
+    public static IEnumerator UpRewardMode2 (string playingTime, int dotcoin)
     {
         Data data = JsonUtility.FromJson<Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
