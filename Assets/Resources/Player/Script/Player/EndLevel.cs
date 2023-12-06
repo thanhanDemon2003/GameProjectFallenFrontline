@@ -29,6 +29,7 @@ public class EndLevel : MonoBehaviour
 
     public float TimeCount;
     public bool isEnded;
+    // public int Showdotcoin;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +76,13 @@ public class EndLevel : MonoBehaviour
 
         kill.text = "Kill: " + track.ZombieKilled;
         time.text = "Time: " + TimeCount;
+
+        // if(TimeCount< 240){
+        //      Showdotcoin = track.ZombieKilled * 3 + 50;
+             
+        // }
+        // Showdotcoin = track.ZombieKilled * 3;
+        
 
         if (win)
         {
