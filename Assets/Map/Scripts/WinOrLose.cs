@@ -10,6 +10,7 @@ public class WinOrLose : MonoBehaviour
 {
     // [SerializeField] BackgroundMusic music;
     [SerializeField] RandomEnemies randomEnemies;
+    [SerializeField] RandomEnemies randomEnemies_1;
     [SerializeField] GameObject endPanel;
     [SerializeField] RawImage videoBackGround;
     [SerializeField] TextMeshProUGUI result;
@@ -65,6 +66,7 @@ public class WinOrLose : MonoBehaviour
             Destroy(zombie);
         }
         randomEnemies.enabled = false;
+        randomEnemies_1.enabled = false;
         endPanel.SetActive(true);
         // music.TurnOffMusic();
 
