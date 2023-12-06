@@ -49,10 +49,12 @@ public class ApiReward : MonoBehaviour
         yield return request.SendWebRequest();
         if (request.result != UnityWebRequest.Result.Success)
         {
+            msg.text = "Unable to connect";
             Debug.Log(request.error);
         }
         else
         {
+            msg.text = "You have received " + dotcoin + " dotcoin";
             Debug.Log("Form upload complete!");
         }
 
