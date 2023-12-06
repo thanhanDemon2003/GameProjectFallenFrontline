@@ -27,6 +27,7 @@ public class EndLevel : MonoBehaviour
     PlayerHealth health;
     ScoreTrack track;
     PlayerController player;
+    public TextMeshProUGUI statusApi;
 
     public int TimeCount;
     public bool isEnded;
@@ -78,11 +79,10 @@ public class EndLevel : MonoBehaviour
 
         kill.text = "Kill: " + track.ZombieKilled;
         time.text = "Time: " + TimeCount;
+        // string message = ApiReward.msg;
+        statusApi.text = "oke";
         // float dotcoinReward =  track.ZombieKilled * 3 + bonus;
         // dotcoin.text= "Dotcoin:" + dotcoinReward;
-
-         
-        
 
         if (win)
         {
