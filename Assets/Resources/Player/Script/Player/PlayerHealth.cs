@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
     public Image healthImage;
 
     EndLevel endLevel;
+    WinOrLose winOrLose;
 
     // Start is called before the first frame update
     void Start()
