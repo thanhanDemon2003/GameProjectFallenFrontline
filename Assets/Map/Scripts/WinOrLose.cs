@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class WinOrLose : MonoBehaviour
 {
     // [SerializeField] BackgroundMusic music;
+    [SerializeField] RandomEnemies randomEnemies;
     [SerializeField] GameObject endPanel;
     [SerializeField] RawImage videoBackGround;
     [SerializeField] TextMeshProUGUI result;
@@ -58,7 +59,12 @@ public class WinOrLose : MonoBehaviour
     {
         player.canControl = false;
         isEnded = true;
-        //spawnWave.enabled = false;
+        GameObject[] enemy = GameObject.FindGameObjectsWithTag("Zombie");
+        foreach (GameObject zombie in enemy)
+        {
+            Destroy(zombie);
+        }
+        randomEnemies.enabled = false;
         endPanel.SetActive(true);
         // music.TurnOffMusic();
 
