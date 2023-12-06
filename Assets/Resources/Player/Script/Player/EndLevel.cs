@@ -90,13 +90,21 @@ public class EndLevel : MonoBehaviour
             audio.clip = musicWin;
             videoBackGround.color = Color.white;
 
-            int dotcoinReward = track.ZombieKilled * 5 + bonus;
-            dotcoin.text = "Dotcoin:" + dotcoinReward;
+            //int dotcoinReward = track.ZombieKilled * 5 + bonus;
+            
             if (TimeCount < 240)
             {
-                bonus = 50;
+                int bonus = 50;
+                int dotcoinReward = track.ZombieKilled * 5 + bonus;
                 string playingTime = TimeCount.ToString();
                 UpRewardMap1(playingTime, dotcoinReward);
+                dotcoin.text = "Dotcoin:" + dotcoinReward;
+            }else
+            {
+                int dotcoinReward = track.ZombieKilled * 5;
+                string playingTime = TimeCount.ToString();
+                UpRewardMap1(playingTime, dotcoinReward);
+                dotcoin.text = "Dotcoin:" + dotcoinReward;
             }
         }
         else
