@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using static ApiReward;
 public class EndLevel : MonoBehaviour
 {
     [SerializeField] SpawnWave spawnWave;
@@ -27,9 +27,10 @@ public class EndLevel : MonoBehaviour
     ScoreTrack track;
     PlayerController player;
 
-    public float TimeCount;
+    public int TimeCount;
     public bool isEnded;
-    // public int Showdotcoin;
+    public int bonus;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -76,12 +77,11 @@ public class EndLevel : MonoBehaviour
 
         kill.text = "Kill: " + track.ZombieKilled;
         time.text = "Time: " + TimeCount;
+        // float dotcoinReward =  track.ZombieKilled * 3 + bonus;
+        // dotcoin.text= "Dotcoin:" + dotcoinReward;
 
-        // if(TimeCount< 240){
-        //      Showdotcoin = track.ZombieKilled * 3 + 50;
-             
-        // }
-        // Showdotcoin = track.ZombieKilled * 3;
+        
+    
         
 
         if (win)
@@ -89,6 +89,14 @@ public class EndLevel : MonoBehaviour
             result.text = "YOU SURVIVED THE NIGHT";
             audio.clip = musicWin;
             videoBackGround.color = Color.white;
+
+            int dotcoinReward =  track.ZombieKilled * 5 + bonus;
+            dotcoin.text= "Dotcoin:" + dotcoinReward;
+            if(TimeCount < 240){
+            bonus = 50;
+            string playingTime = TimeCount.toString();
+            UpRewardMap1( playingTime,  dotcoin);
+        }
         }
         else
         {
@@ -96,6 +104,9 @@ public class EndLevel : MonoBehaviour
             audio.clip = musicLose;
             videoBackGround.color = Color.red;
         }
+    }
+    public void UpRewardMap1(string playingTime, int dotcoin){
+        StartCoroutine(ApiReward.UpRewardMap1( playingTime,  dotcoin));
     }
     public void Restart()
     {
