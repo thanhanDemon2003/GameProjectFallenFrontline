@@ -24,6 +24,7 @@ public class HomeScript : MonoBehaviour
     public GameObject LoginGameObject;
     public GameObject panelLoading;
     public GameObject panelCheckInternet;
+    public GameObject panelLoad;
 
 
     // Start is called before the first frame update
@@ -36,6 +37,7 @@ public class HomeScript : MonoBehaviour
         }
         filePathGun = Application.persistentDataPath + "/wardrobe.json";
         startDataPlayer();
+
 
 
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -157,13 +159,16 @@ public class HomeScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void clickOnLoadMap1()
+    public void clickOnLoadMap(int index)
     {
-        SceneManager.LoadScene(1);
+        panelLoad.SetActive(true);
+        StartCoroutine(LoadMap(index));
     }
-    public void clickOnLoadMap2()
+
+    private IEnumerator LoadMap(int index)
     {
-        SceneManager.LoadScene(2);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(index);
     }
     public void checkInternet()
     {
