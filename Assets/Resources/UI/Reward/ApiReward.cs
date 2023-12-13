@@ -68,7 +68,7 @@ public class ApiReward : MonoBehaviour
     }
     public static async Task<RewardModel.Reward>GetRewardModel(string idPlayer)
     {
-        string url = "http://localhost:3000/games/getreward/" + idPlayer;
+        string url = "https://darkdisquitegame.andemongame.tech/games/getreward/" + idPlayer;
         Debug.Log(url);
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
