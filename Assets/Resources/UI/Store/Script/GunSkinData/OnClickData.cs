@@ -7,9 +7,11 @@ using UnityEngine.UI;
 using TMPro;
 public class OnClickData : MonoBehaviour
 {
+    public static OnClickData DataSkinClick;
     private string PathFile;
     public Button mySkin;
     public GameObject buySkin;
+    public GameObject ThongBao;
 
     private void Awake()
     {
@@ -41,18 +43,23 @@ public class OnClickData : MonoBehaviour
         int balancePlayer = data.balance;
         if (balance > balancePlayer)
         {
+            ThongBao.SetActive(true);
+            ThongBao.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "You don't have enough money to buy this skin";
             Debug.Log("Không đủ tiền");
             return;
         }
-        StartCoroutine(GunSkinApi.BuySkin(id, skinId));
-        Debug.Log("Mua thành công");
-        succesBuy();
+        else
+        {
+            StartCoroutine(GunSkinApi.BuySkin(id, skinId));
+            Debug.Log("Mua thành công");
+            succesBuy();
+        }
 
     }
 
     public void succesBuy()
     {
-            mySkin.interactable = false;
+        mySkin.interactable = false;
         mySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Owned";
         mySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.gray;
 

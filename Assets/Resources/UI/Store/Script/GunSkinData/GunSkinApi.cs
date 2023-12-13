@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GunSkinModel;
 using PlayerModel;
 using System.IO;
+using static OnClickData;
 public class GunSkinApi
 {
     private const string BaseURL = "https://darkdisquitegame.andemongame.tech/games/getallgunskin";
@@ -48,7 +49,9 @@ public class GunSkinApi
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError(request.error);
-                yield break;
+                DataSkinClick.ThongBao.SetActive(true);
+                DataSkinClick.ThongBao.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Error, please check your network or balance again";
+             yield break;
             }
             string json = request.downloadHandler.text;
             Player Player = JsonUtility.FromJson<Player>(json);

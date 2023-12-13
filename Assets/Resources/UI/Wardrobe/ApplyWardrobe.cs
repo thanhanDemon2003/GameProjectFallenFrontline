@@ -33,7 +33,7 @@ public class ApplyWardrobe : MonoBehaviour
         {
             foreach (Transform child in vitri.transform)
             {
-                GameObject.Destroy(child.gameObject);
+                Destroy(child.gameObject);
             }
         }
         PathFile = Application.persistentDataPath + "/player.json";

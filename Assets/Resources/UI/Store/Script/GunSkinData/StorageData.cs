@@ -25,7 +25,8 @@ public class StorageData : MonoBehaviour
         }
         else
         {
-            blance = (price / 100 * percent);
+            blance = price - (price / 100 * percent);
+            Debug.Log("gg");
 
         }
         this.category = category;

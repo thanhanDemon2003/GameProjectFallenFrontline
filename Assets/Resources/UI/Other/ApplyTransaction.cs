@@ -13,9 +13,7 @@ public class ApplyTransaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var player = File.ReadAllText(Application.persistentDataPath + "/Player.json");
-        Data data = JsonUtility.FromJson<PlayerModel.Data>(player);
-        ApplyTransactionData(data._id);
+        
     }
 
     // Update is called once per frame
@@ -24,9 +22,19 @@ public class ApplyTransaction : MonoBehaviour
         
     }
 
-    private async void ApplyTransactionData(string idPlayer)
+    private async void ApplyTransactionData()
     {
-        
+        if (itemTransaction != null)
+        {
+            foreach (Transform child in contentTransaction)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        var player = File.ReadAllText(Application.persistentDataPath + "/Player.json");
+        Data data = JsonUtility.FromJson<PlayerModel.Data>(player);
+        var idPlayer = data._id;
+
         TransactionData transactionData = await ApiOther.GetAllTransactionModel(idPlayer);
         foreach (TransactionModel.Transaction transaction in transactionData.data)
         {
@@ -45,5 +53,9 @@ public class ApplyTransaction : MonoBehaviour
             Instantiate(itemTransaction, contentTransaction);
         }
 
+    }
+    public void openTransaction()
+    {
+        ApplyTransactionData();
     }
 }

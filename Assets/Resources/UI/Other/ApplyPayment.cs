@@ -14,11 +14,7 @@ public class ApplyPayment : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var player = File.ReadAllText(Application.persistentDataPath + "/Player.json");
-        Data data = JsonUtility.FromJson<Data>(player);
-        ApplyPaymentData(data._id);
-        Debug.Log(data._id);
-        
+        openPayment();
     }
 
     // Update is called once per frame
@@ -26,9 +22,18 @@ public class ApplyPayment : MonoBehaviour
     {
         
     }
-    private async void ApplyPaymentData(string idPlayer)
+    private async void ApplyPaymentData()
     {
-        Debug.Log(idPlayer + "nè");
+        if (itemPayment != null)
+        {
+            foreach (Transform child in contentPayment)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        var player = File.ReadAllText(Application.persistentDataPath + "/Player.json");
+        Data data = JsonUtility.FromJson<Data>(player);
+        var idPlayer = data._id;
 
         PaymentData paymentData = await ApiOther.GetAllPaymentModel(idPlayer);
         Debug.Log(paymentData);
@@ -62,5 +67,9 @@ public class ApplyPayment : MonoBehaviour
 
 
         }
+    }
+    public void openPayment()
+    {
+        ApplyPaymentData();
     }
 }

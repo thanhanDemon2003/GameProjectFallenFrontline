@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Threading.Tasks;
+using System;
 public class ApiReward : MonoBehaviour
 {
     public static ApiReward rewardApi;
@@ -63,5 +65,24 @@ public class ApiReward : MonoBehaviour
             Debug.Log("Form upload complete!");
         }
 
+    }
+    public static async Task<RewardModel.Reward>GetRewardModel(string idPlayer)
+    {
+        string url = "http://localhost:3000/games/getreward/" + idPlayer;
+        Debug.Log(url);
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            var operation = request.SendWebRequest();
+            while (!operation.isDone)
+                await Task.Delay(100);
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(request.error);
+                return null;
+            }
+            string json = request.downloadHandler.text;
+            RewardModel.Reward reward = JsonUtility.FromJson<RewardModel.Reward>(json);
+            return reward;
+        }
     }
 }

@@ -18,6 +18,7 @@ public class ApplySkin : MonoBehaviour
     public GameObject conTent;
     public GameObject itemGunSkin;
     public GameObject buySkin;
+    public GameObject ThongBao;
 
     void Start()
     {   prefabsFolderPath = "UI/Skins/Skin";
@@ -44,6 +45,8 @@ public class ApplySkin : MonoBehaviour
             var color = skin.color;
             var percent = skin.percent;
             var price = skin.price;
+            var status = skin.status;
+            Debug.Log("status" + status);
             skin.PrefabPath = prefabsFolderPath + "/" + color;
             skin.image = gunImageFolderPath + "/" + color;
 
@@ -71,22 +74,30 @@ public class ApplySkin : MonoBehaviour
             {
                 continue;
             }
-            if(percent == 0)
+            if(percent == 0 && status != 0)
             {
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = price.ToString();
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.black;
+                itemGunSkin.GetComponent<Button>().enabled = true;
+            }
+            else if(status == 0)
+            {
+                itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "stop selling";
+                itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.blue;
+                itemGunSkin.GetComponent<Button>().enabled = false;
             }
             else
             {
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = (price - (price/100*percent)).ToString() ;
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.red;
+                itemGunSkin.GetComponent<Button>().enabled = true;
 
             }
-            itemGunSkin.GetComponent<Button>().enabled = true;
             var skinDataStorage = itemGunSkin.GetComponent<StorageData>();
             skinDataStorage.SkinData(id, skin.PrefabPath, price, percent, skin.category, skin.image, name);
             OnClickData onClickData = itemGunSkin.GetComponent<OnClickData>();
             onClickData.buySkin = buySkin;
+            onClickData.ThongBao = ThongBao;
             var newSkin =  Instantiate(itemGunSkin, conTent.transform);
           newSkin.name = id;
 
