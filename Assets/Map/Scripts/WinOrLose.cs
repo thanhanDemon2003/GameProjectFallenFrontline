@@ -103,6 +103,6 @@ public class WinOrLose : MonoBehaviour
     }
     public void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
