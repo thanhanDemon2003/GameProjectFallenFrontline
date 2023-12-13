@@ -4,7 +4,6 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
-using PlayerModel;
 public class ApiReward : MonoBehaviour
 {
     public static ApiReward rewardApi;
@@ -14,7 +13,8 @@ public class ApiReward : MonoBehaviour
     
     public static IEnumerator UpRewardMode1 (string playingTime, int dotcoin)
     {
-        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
+        Debug.LogError("UpRewardMode1"+ playingTime+ dotcoin);
+        PlayerModel.Data data = JsonUtility.FromJson<PlayerModel.Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
         WWWForm form = new WWWForm();
         form.AddField("id_Player", id);
@@ -30,13 +30,17 @@ public class ApiReward : MonoBehaviour
         }
         else
         {
+            RewardModel.Reward reward = JsonUtility.FromJson<RewardModel.Reward>(request.downloadHandler.text);
+            reward.player = data;
+            string json = JsonUtility.ToJson(reward.player);
+            File.WriteAllText(Application.persistentDataPath + "/player.json", json);
             Debug.Log("Form upload complete!");
         }
 
     }
     public static IEnumerator UpRewardMode2 (string playingTime, int dotcoin)
     {
-        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
+        PlayerModel.Data data = JsonUtility.FromJson<PlayerModel.Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
         WWWForm form = new WWWForm();
         form.AddField("id", id);
@@ -52,7 +56,10 @@ public class ApiReward : MonoBehaviour
         }
         else
         {
-            msg = "You have received " + dotcoin + " dotcoin";
+            RewardModel.Reward reward = JsonUtility.FromJson<RewardModel.Reward>(request.downloadHandler.text);
+            reward.player = data;
+            string json = JsonUtility.ToJson(reward.player);
+            File.WriteAllText(Application.persistentDataPath + "/player.json", json);
             Debug.Log("Form upload complete!");
         }
 

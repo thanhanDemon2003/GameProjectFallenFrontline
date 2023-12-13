@@ -45,7 +45,7 @@ public class HomeScript : MonoBehaviour
     }
     void OnEnable()
     {
-
+        Awake();
         Application.focusChanged += OnFocusChanged;
     }
 

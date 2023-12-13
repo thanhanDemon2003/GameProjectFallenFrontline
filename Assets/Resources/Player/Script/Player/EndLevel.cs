@@ -99,12 +99,15 @@ public class EndLevel : MonoBehaviour
                 string playingTime = TimeCount.ToString();
                 UpRewardMap1(playingTime, dotcoinReward);
                 dotcoin.text = "Dotcoin:" + dotcoinReward;
+                return;
             }else
             {
                 int dotcoinReward = track.ZombieKilled * 5;
                 string playingTime = TimeCount.ToString();
                 UpRewardMap1(playingTime, dotcoinReward);
                 dotcoin.text = "Dotcoin:" + dotcoinReward;
+                return;
+
             }
         }
         else
@@ -117,6 +120,7 @@ public class EndLevel : MonoBehaviour
     public void UpRewardMap1(string playingTime, int dotcoin)
     {
         StartCoroutine(UpRewardMode1(playingTime, dotcoin));
+        Debug.LogError("UpRewardMode1" + playingTime + dotcoin);
     }
 
 
