@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinId: 656accee33b27571a4eb7f72
   pathModelSkin: UI/Skins/Skin/SMGPearl
-  blanked: 150
+  blance: 1350
   category: Primary
   pathImgSkin: UI/Skins/Images/SMGPearl
   nameSkin: SMG Pearl
