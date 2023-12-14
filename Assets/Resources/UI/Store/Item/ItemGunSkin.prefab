@@ -355,12 +355,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9199e1a37dc3344886e7c6c5249a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinId: 656accee33b27571a4eb7f72
-  pathModelSkin: UI/Skins/Skin/SMGPearl
-  blance: 1350
+  skinId: 656accff33b27571a4eb7f78
+  pathModelSkin: UI/Skins/Skin/SMGSnow
+  blance: 1500
   category: Primary
-  pathImgSkin: UI/Skins/Images/SMGPearl
-  nameSkin: SMG Pearl
+  pathImgSkin: UI/Skins/Images/SMGSnow
+  nameSkin: SMG Snow
 --- !u!114 &127354544204738231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cf9167bb5444a4db1c039f1696de6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  applySkin: {fileID: 0}
   mySkin: {fileID: 5902409678190067487}
   buySkin: {fileID: 0}
   ThongBao: {fileID: 0}

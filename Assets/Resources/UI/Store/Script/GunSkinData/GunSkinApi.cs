@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using GunSkinModel;
 using PlayerModel;
 using System.IO;
-using static OnClickData;
 public class GunSkinApi
 {
     private const string BaseURL = "https://darkdisquitegame.andemongame.tech/games/getallgunskin";
@@ -45,13 +44,12 @@ public class GunSkinApi
         {
             var operation = request.SendWebRequest();
             while (!operation.isDone)
-                yield return null;
+
+                yield return false;
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError(request.error);
-                DataSkinClick.ThongBao.SetActive(true);
-                DataSkinClick.ThongBao.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Error, please check your network or balance again";
-             yield break;
+             yield return false;
             }
             string json = request.downloadHandler.text;
             Player Player = JsonUtility.FromJson<Player>(json);
@@ -62,6 +60,7 @@ public class GunSkinApi
             Debug.Log("Lưu dữ liệu vào file json" + data);
             GameObject.FindWithTag("textCoin").
                 GetComponent<TMPro.TextMeshProUGUI>().text = data.balance.ToString();
+            yield return true;
 
 
         }

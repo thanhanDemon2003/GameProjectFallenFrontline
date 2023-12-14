@@ -5,9 +5,10 @@ using UnityEngine;
 using PlayerModel;
 using UnityEngine.UI;
 using TMPro;
+using static UnityEngine.InputManagerEntry;
 public class OnClickData : MonoBehaviour
 {
-    public static OnClickData DataSkinClick;
+    public ApplySkin applySkin;
     private string PathFile;
     public Button mySkin;
     public GameObject buySkin;
@@ -50,11 +51,22 @@ public class OnClickData : MonoBehaviour
         }
         else
         {
-            StartCoroutine(GunSkinApi.BuySkin(id, skinId));
+            StartCoroutine(resApiBuy(id, skinId));
             Debug.Log("Mua thành công");
-            succesBuy();
         }
 
+    }
+    IEnumerator resApiBuy(string id, string skinId)
+    {
+        yield return GunSkinApi.BuySkin(id, skinId);
+        if (GunSkinApi.BuySkin(id, skinId) != null)
+        {
+            succesBuy();
+        }
+        else
+        {
+            failBuy();
+        }
     }
 
     public void succesBuy()
@@ -62,6 +74,12 @@ public class OnClickData : MonoBehaviour
         mySkin.interactable = false;
         mySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Owned";
         mySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.gray;
+
+    }
+    public void failBuy()
+    {
+        ThongBao.SetActive(true);
+        ThongBao.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Error, please check your network or balance again";
 
     }
 }
