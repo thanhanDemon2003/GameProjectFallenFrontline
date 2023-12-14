@@ -36,17 +36,12 @@ public class HomeScript : MonoBehaviour
         {
             File.WriteAllText(filePathPlayer, "");
         }
-        filePathGun = Application.persistentDataPath + "/wardrobe.json";
-        startDataPlayer();
+        OnFocusChanged(true);
 
-
-
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-        UnityEngine.Cursor.visible = true;
     }
+
     void OnEnable()
     {
-        Awake();
         Application.focusChanged += OnFocusChanged;
     }
 
@@ -168,7 +163,7 @@ public class HomeScript : MonoBehaviour
 
     private IEnumerator LoadMap(int index)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(index);
     }
     public void checkInternet()

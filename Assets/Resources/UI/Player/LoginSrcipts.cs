@@ -10,8 +10,6 @@ using TMPro;
 using PlayerModel;
 public class LoginSrcipts : MonoBehaviour
 {
-    public string urlApi1 = "http://dotstudio.andemongame.tech/api";
-    // public string urlApi2 = "http://localhost:3000/games";
     public RectTransform login;
     public RectTransform cancel;
 
@@ -188,30 +186,10 @@ public class LoginSrcipts : MonoBehaviour
         string filePath = Application.persistentDataPath + "/player.json";
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(filePath, json);
-        string filePathWardrobe = Application.persistentDataPath + "/wardrobe.json";
-        foreach ( Skins sk in skins )
-        {
-            string id = sk._id;
-            string gunskinId = sk.gunskinId;
-            string nameSkin = sk.nameSkin;
-            string color = sk.color;
-            string category = sk.category;
-            string jsonSkins = JsonUtility.ToJson(sk);
-
-            File.AppendAllText(filePathWardrobe, jsonSkins + "\n");
-            Debug.Log("Dữ liệu nhận được: " + id + gunskinId + nameSkin + color + category);
-
-        }
         
-
-        //string jsonSkins = JsonUtility.ToJson(wardrobeData); 
-
-        //File.WriteAllText(filePathWardrobe, jsonSkins);
-        //Debug.Log(skins); Debug.Log(jsonSkins);
         Debug.Log("Lưu thành công!" + filePath);
         Debug.Log("Dữ liệu nhận được: " + _id + name + fb_id + id_discord + balance + skins);
-        SceneManager.LoadScene(0);
-        // code chuyển màn tại đây
+        SceneManager.LoadScene(1);
     }
 
 

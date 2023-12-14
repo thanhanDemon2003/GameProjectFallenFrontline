@@ -3932,6 +3932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 402321788}
   - component: {fileID: 402321787}
+  - component: {fileID: 402321790}
   m_Layer: 0
   m_Name: Video Player
   m_TagString: Untagged
@@ -3976,21 +3977,33 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
---- !u!4 &402321788
-Transform:
+--- !u!224 &402321788
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402321786}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 90}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &402321790
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402321786}
+  m_CullTransparentMesh: 1
 --- !u!1 &423038072
 GameObject:
   m_ObjectHideFlags: 0
@@ -4435,7 +4448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e480f139635b84981de1b6661eaab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  urlApi1: https://dotstudio.demondev.games/api
   login: {fileID: 956964155}
   cancel: {fileID: 658130807}
   loading: {fileID: 311826714}
@@ -11650,6 +11662,7 @@ GameObject:
   - component: {fileID: 1235284613}
   - component: {fileID: 1235284612}
   - component: {fileID: 1235284611}
+  - component: {fileID: 1235284616}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -11743,6 +11756,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!222 &1235284616
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235284610}
+  m_CullTransparentMesh: 1
 --- !u!1 &1244002978
 GameObject:
   m_ObjectHideFlags: 0
@@ -20015,8 +20036,28 @@ PrefabInstance:
     - target: {fileID: 3417176205262137793, guid: 1ee6f42b112812f43b3ccde1c405836c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4096174982038887423, guid: 1ee6f42b112812f43b3ccde1c405836c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096174982038887423, guid: 1ee6f42b112812f43b3ccde1c405836c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096174982038887423, guid: 1ee6f42b112812f43b3ccde1c405836c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096174982038887423, guid: 1ee6f42b112812f43b3ccde1c405836c,
+        type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: b9624c485660936489d1557a94874df6, type: 3}
     - target: {fileID: 5368018040668808874, guid: 1ee6f42b112812f43b3ccde1c405836c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -20117,6 +20158,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8606330828152195843, guid: 1ee6f42b112812f43b3ccde1c405836c,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606330828152195843, guid: 1ee6f42b112812f43b3ccde1c405836c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20139,6 +20190,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RainbowAnimationCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RotationAnimationCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RainbowAnimationCurve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RainbowAnimationCurve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RainbowAnimationCurve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RainbowAnimationCurve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RotationAnimationCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RotationAnimationCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RainbowAnimationCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RainbowAnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RotationAnimationCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108346585747627356, guid: b2d1e0883d78bf34290a1446da6178f6,
+        type: 3}
+      propertyPath: RotationAnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 8553020151019940293, guid: b2d1e0883d78bf34290a1446da6178f6,
         type: 3}
@@ -20253,7 +20364,7 @@ SceneRoots:
   - {fileID: 173451326}
   - {fileID: 1235284614}
   - {fileID: 1632335184}
-  - {fileID: 402321788}
   - {fileID: 1752214454}
   - {fileID: 1840086624571482177}
   - {fileID: 3009201938087444727}
+  - {fileID: 402321788}
