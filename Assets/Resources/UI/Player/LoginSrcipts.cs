@@ -5,7 +5,6 @@ using System.IO;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
-using System.Collections;
 using TMPro;
 using PlayerModel;
 public class LoginSrcipts : MonoBehaviour
@@ -128,7 +127,6 @@ public class LoginSrcipts : MonoBehaviour
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
             textLoading.text = "Logged in successfully";
-            Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
             SavePlayer(data);
         }
     }
@@ -165,7 +163,7 @@ public class LoginSrcipts : MonoBehaviour
             Debug.Log("Dữ liệu nhận được: " + success + notification);
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
-            textLoading.text = "Đăng nhập thành công";
+            textLoading.text = "";
             Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
             SavePlayer(data);
         }
@@ -189,7 +187,7 @@ public class LoginSrcipts : MonoBehaviour
         
         Debug.Log("Lưu thành công!" + filePath);
         Debug.Log("Dữ liệu nhận được: " + _id + name + fb_id + id_discord + balance + skins);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 
 

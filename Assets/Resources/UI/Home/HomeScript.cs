@@ -12,7 +12,6 @@ using System;
 public class HomeScript : MonoBehaviour
 {
     private string filePathPlayer;
-    private string filePathGun;
     public Button btnLogin;
     public TextMeshProUGUI namePlayer;
     public Button btnInvetort;
@@ -54,14 +53,15 @@ public class HomeScript : MonoBehaviour
             if (Application.isFocused)
             {
                 Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-                string id = data._id;
-                if (id == null || id == "")
+
+                if (string.IsNullOrEmpty(File.ReadAllText(filePathPlayer)))
                 {
                     File.WriteAllText(filePathPlayer, "");
                     startDataPlayer();
                     return;
                 }
-                panelLoading.SetActive(true);
+            string id = data._id;
+            panelLoading.SetActive(true);
                 StartCoroutine(CheckPlayer(id));
             
         }
@@ -97,11 +97,11 @@ public class HomeScript : MonoBehaviour
             }
             Debug.Log("Internet connection is available");
         }
-    }       
+    }
     private void startDataPlayer()
     {
         Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-        if(data == null)
+        if (string.IsNullOrEmpty(File.ReadAllText(filePathPlayer)))
         {
             iconLock[0].gameObject.SetActive(true);
             iconLock[1].gameObject.SetActive(true);
@@ -147,13 +147,8 @@ public class HomeScript : MonoBehaviour
         btnLogin.onClick.AddListener(() => LoginGameObject.SetActive(true));
         namePlayer.text = "";
         File.WriteAllText(filePathPlayer, "");
-        File.WriteAllText(filePathGun, "");
         PlayerPrefs.DeleteAll();
-        ResetScene();
-    }
-    public void ResetScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        startDataPlayer();
     }
     public void clickOnLoadMap(int index)
     {
