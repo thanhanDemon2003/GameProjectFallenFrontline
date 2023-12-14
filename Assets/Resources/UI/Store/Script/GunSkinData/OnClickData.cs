@@ -5,7 +5,6 @@ using UnityEngine;
 using PlayerModel;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEngine.InputManagerEntry;
 public class OnClickData : MonoBehaviour
 {
     public ApplySkin applySkin;
