@@ -34,7 +34,7 @@ public class LoginSrcipts : MonoBehaviour
     IEnumerator Login()
     {
 
-        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.andemongame.tech/api/LoginGameWeb");
+        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.demondev.games/api/LoginGameWeb");
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -68,7 +68,7 @@ public class LoginSrcipts : MonoBehaviour
     }
     IEnumerator LoadPlayerGame(string stt)
     {
-        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.andemongame.tech/api/getdatauser?stt=" + stt);
+        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.demondev.games/api/getdatauser?stt=" + stt);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {

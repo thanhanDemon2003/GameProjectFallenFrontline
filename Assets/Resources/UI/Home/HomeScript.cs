@@ -183,17 +183,17 @@ public class HomeScript : MonoBehaviour
         string ds = data.id_discord;
         if(idgg != null)
         {
-            Application.OpenURL("https://dotstudio.andemongame.tech/payment/#idgg="+ idgg);
+            Application.OpenURL("https://dotstudio.demondev.games/payment/#idgg=" + idgg);
             return;
         }
         else if(ds != null)
         {
-            Application.OpenURL("https://dotstudio.andemongame.tech/payment/#ds="+ds);
+            Application.OpenURL("https://dotstudio.demondev.games/payment/#ds=" + ds);
             return;
         }
         else
         {
-            Application.OpenURL("https://dotstudio.andemongame.tech/loginpayment");
+            Application.OpenURL("https://dotstudio.demondev.games/loginpayment");
         }
     }
     public void checkStatusPlayer()
