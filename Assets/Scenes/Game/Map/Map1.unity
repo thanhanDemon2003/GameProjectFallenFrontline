@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 73300439}
   - component: {fileID: 73300438}
   - component: {fileID: 73300437}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HouseTrailer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8617,7 +8617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.43, y: 204}
+  m_AnchoredPosition: {x: -30.430054, y: 204}
   m_SizeDelta: {x: -1419.86, y: -992.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579424439
