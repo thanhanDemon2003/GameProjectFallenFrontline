@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using static MissionComplete;
 public class Mission1Script : MonoBehaviour
 {
     public static int numberOfDocumentsToCollect = 5;
@@ -24,6 +24,7 @@ public class Mission1Script : MonoBehaviour
         if (!isGameOver)
         {
             collectedDocuments++;
+            Instance.Mission_1.text = "Collect " + collectedDocuments + "/5 Document Case!";
             if (collectedDocuments >= numberOfDocumentsToCollect)
             {              
                 MissionComplete.Instance.Mission_1_Done(true);
