@@ -139,7 +139,7 @@ public class HomeScript : MonoBehaviour
             btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Logout";
             btnLogin.onClick.AddListener(() => clickLogoutButton());
         } 
-    }
+    } 
     public void clickLogoutButton()
     {
         Debug.Log("click logout");
