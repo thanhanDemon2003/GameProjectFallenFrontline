@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using static MissionComplete;
 public class Mission1Script : MonoBehaviour
 {
     public static int numberOfDocumentsToCollect = 5;
-    public static int collectedDocuments = 0;
+    public static int collectedDocuments;
     public static int QualityVirusSample = 1;
-    public static int collectedVirusSample = 0;
+    public static int collectedVirusSample;
     public static bool isGameOver = false;
 
     public static WinOrLose winOrLose;
 
     private void Start()
     {
+        collectedDocuments = 0;
+        collectedVirusSample = 0;
         winOrLose = GameObject.FindGameObjectWithTag("Player").GetComponent<WinOrLose>();
     }
     public static void CollectDocument()
@@ -22,7 +24,7 @@ public class Mission1Script : MonoBehaviour
         if (!isGameOver)
         {
             collectedDocuments++;
-
+            Instance.Mission_1.text = "Collect " + collectedDocuments + "/5 Document Case!";
             if (collectedDocuments >= numberOfDocumentsToCollect)
             {              
                 MissionComplete.Instance.Mission_1_Done(true);
@@ -57,7 +59,6 @@ public class Mission1Script : MonoBehaviour
             {
                 MissionComplete.Instance.Mission_3_Done(true);
                 EndGame(true);
-
             }
             else
             {
@@ -77,6 +78,7 @@ public class Mission1Script : MonoBehaviour
         }
         else
         {
+            
             Debug.Log("Mission Failed!");
         }
     }
