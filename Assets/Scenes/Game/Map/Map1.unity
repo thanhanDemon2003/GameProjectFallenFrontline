@@ -35499,6 +35499,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8861383861532118713, guid: 02e1fbb565d26184b9bf23ce8553dc36,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -785.91174
+      objectReference: {fileID: 0}
     - target: {fileID: 9126187745511100893, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
       propertyPath: smgSkin

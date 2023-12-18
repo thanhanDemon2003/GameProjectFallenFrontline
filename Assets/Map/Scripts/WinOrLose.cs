@@ -79,6 +79,7 @@ public class WinOrLose : MonoBehaviour
 
         if (win)
         {
+            UpRewardMap2(TimeCount.ToString(), bonus);
             result.text = "MISSION COMPLETE";
             audio.clip = musicWin;
             videoBackGround.color = Color.white;
@@ -93,9 +94,9 @@ public class WinOrLose : MonoBehaviour
     }
     public void UpRewardMap2(string playingTime, int dotcoin)
     {
-        StartCoroutine(upReward(playingTime, dotcoin));
+        StartCoroutine(upReward2(playingTime, dotcoin));
     }
-    IEnumerator upReward(string playingTime, int dotcoinReward)
+    IEnumerator upReward2(string playingTime, int dotcoinReward)
     {
         yield return UpRewardMode2(playingTime, dotcoinReward);
         if (UpRewardMode2(playingTime, dotcoinReward) != null)

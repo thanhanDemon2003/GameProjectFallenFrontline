@@ -19,6 +19,10 @@ public class ApiReward : MonoBehaviour
         Debug.LogError("UpRewardMode1"+ playingTime+ dotcoin);
         PlayerModel.Data data = JsonUtility.FromJson<PlayerModel.Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
+        if (id == null || id == "")
+        {
+            yield return null;
+        }
         WWWForm form = new WWWForm();
         form.AddField("id_Player", id);
         form.AddField("playingTime", playingTime);
@@ -47,6 +51,10 @@ public class ApiReward : MonoBehaviour
     {
         PlayerModel.Data data = JsonUtility.FromJson<PlayerModel.Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
+        if (id == null || id == "")
+        {
+            yield return null;
+        }
         WWWForm form = new WWWForm();
         form.AddField("id", id);
         form.AddField("playingTime", playingTime);

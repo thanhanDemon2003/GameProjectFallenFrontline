@@ -53,7 +53,12 @@ public class HomeScript : MonoBehaviour
             if (Application.isFocused)
             {
                 Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-
+                if (data._id == null || data._id == "") 
+            {
+                File.WriteAllText(filePathPlayer, "");
+                startDataPlayer();
+                return;
+            }
                 if (string.IsNullOrEmpty(File.ReadAllText(filePathPlayer)))
                 {
                     File.WriteAllText(filePathPlayer, "");
