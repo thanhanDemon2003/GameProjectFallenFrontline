@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using static ApiReward;
 public class EndLevel : MonoBehaviour
 {
-    [SerializeField] SpawnWave spawnWave;
+    [SerializeField] GameObject spawnWave;
     [SerializeField] BackgroundMusic music;
     [SerializeField] GameObject endPanel;
     [SerializeField] RawImage videoBackGround;
@@ -69,7 +69,7 @@ public class EndLevel : MonoBehaviour
         {
             Destroy(zombie);
         }
-        //spawnWave.enabled = false;
+        spawnWave.SetActive(false);
         endPanel.SetActive(true);
         music.TurnOffMusic();
 

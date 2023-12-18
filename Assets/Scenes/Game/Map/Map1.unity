@@ -8617,7 +8617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.430054, y: 204}
+  m_AnchoredPosition: {x: -30.430176, y: 204}
   m_SizeDelta: {x: -1419.86, y: -992.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579424439
@@ -21224,7 +21224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -32.82898, y: 0}
+  m_AnchoredPosition: {x: -32.8291, y: 0}
   m_SizeDelta: {x: 102.3178, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1312788197
@@ -35473,7 +35473,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnWave
       value: 
-      objectReference: {fileID: 180158631}
+      objectReference: {fileID: 180158630}
     - target: {fileID: 7164726250244042845, guid: 02e1fbb565d26184b9bf23ce8553dc36,
         type: 3}
       propertyPath: m_Volume
