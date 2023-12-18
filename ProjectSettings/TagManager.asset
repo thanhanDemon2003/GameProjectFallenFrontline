@@ -37,6 +37,7 @@ TagManager:
   - wardrobeItem
   - Music
   - LoadScene
+  - saleImg
   layers:
   - Default
   - TransparentFX

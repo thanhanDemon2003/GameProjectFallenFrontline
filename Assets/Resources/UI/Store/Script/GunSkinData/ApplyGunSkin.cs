@@ -54,7 +54,7 @@ public class ApplySkin : MonoBehaviour
             itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
             var image = itemGunSkin.GetComponentsInChildren<Image>()[0];
             image.sprite = Resources.Load<Sprite>(skin.image);
-
+            var saler = itemGunSkin.GetComponentsInChildren<RawImage>()[1];
             foreach (Skins ownedSkin in ownedGunSkins)
             {
                 if (ownedSkin.gunskinId == skin._id)
@@ -65,6 +65,7 @@ public class ApplySkin : MonoBehaviour
                     itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ownedSkin.nameSkin;
                     itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Owned";
                     itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.gray;
+                    saler.enabled = false;
                     Instantiate(itemGunSkin, conTent.transform);
                     found = true;
                    
@@ -78,18 +79,22 @@ public class ApplySkin : MonoBehaviour
             {
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = price.ToString();
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.black;
+                saler.enabled = false;
                 itemGunSkin.GetComponent<Button>().enabled = true;
             }
             else if(status == 0)
             {
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "stop selling";
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.blue;
+                saler.enabled = false;
                 itemGunSkin.GetComponent<Button>().enabled = false;
             }
             else
             {
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = (price - (price/100*percent)).ToString() ;
                 itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.red;
+                saler.enabled = true;
+                itemGunSkin.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "sale "+ percent.ToString() + "%";
                 itemGunSkin.GetComponent<Button>().enabled = true;
 
             }

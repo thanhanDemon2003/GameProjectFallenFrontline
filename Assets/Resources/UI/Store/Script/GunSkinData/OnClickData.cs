@@ -26,7 +26,8 @@ public class OnClickData : MonoBehaviour
         var category = skinData.category;
         var pathImgSkin = skinData.pathImgSkin;
         var name = skinData.nameSkin;
-        skinData.GetSkinData(skinId, pathModelSkin, balance, category, pathImgSkin, name);
+        var priceOld = skinData.priceOld;
+        skinData.GetSkinData(skinId, pathModelSkin, balance, category, pathImgSkin, name, priceOld);
         buySkin.SetActive(true);
         var image = buySkin.GetComponentsInChildren<Image>()[1];
         Texture2D tex = new(2, 2);
@@ -34,6 +35,19 @@ public class OnClickData : MonoBehaviour
         buySkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name + " - " + category;
         buySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = balance.ToString();
         buySkin.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => onBuySkin(skinId, balance));
+        if(priceOld == balance)
+        {
+            buySkin.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "";
+            buySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.white;
+
+        }
+        else
+        {
+            buySkin.GetComponentsInChildren<TextMeshProUGUI>()[3].text = $"({priceOld})";
+            buySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.red;
+        }
+
+
         buySkin.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => buySkin.SetActive(false));
     }
     public void onBuySkin(string skinId, int balance)
