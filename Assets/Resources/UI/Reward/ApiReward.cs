@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
 using System;
+using static UnityEngine.Rendering.DebugUI;
 public class ApiReward : MonoBehaviour
 {
     public static ApiReward rewardApi;
@@ -28,6 +29,7 @@ public class ApiReward : MonoBehaviour
         yield return request.SendWebRequest();
         if (request.result != UnityWebRequest.Result.Success)
         {
+            yield return null;
             Debug.Log(request.error);
         }
         else
@@ -37,6 +39,7 @@ public class ApiReward : MonoBehaviour
             string json = JsonUtility.ToJson(reward.player);
             File.WriteAllText(Application.persistentDataPath + "/player.json", json);
             Debug.Log("Form upload complete!");
+            yield return true;
         }
 
     }
@@ -55,6 +58,7 @@ public class ApiReward : MonoBehaviour
         {
             msg = "Unable to connect";
             Debug.Log(request.error);
+            yield return null;
         }
         else
         {
@@ -63,6 +67,7 @@ public class ApiReward : MonoBehaviour
             string json = JsonUtility.ToJson(reward.player);
             File.WriteAllText(Application.persistentDataPath + "/player.json", json);
             Debug.Log("Form upload complete!");
+            yield return true;
         }
 
     }

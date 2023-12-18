@@ -82,20 +82,30 @@ public class WinOrLose : MonoBehaviour
             result.text = "MISSION COMPLETE";
             audio.clip = musicWin;
             videoBackGround.color = Color.white;
-
-            dotcoin.text = "Dotcoin:" + bonus;
         }
         else
         {
             result.text = "MISSION FAILED";
             audio.clip = musicLose;
             videoBackGround.color = Color.red;
+            dotcoin.text = "";
         }
     }
-
     public void UpRewardMap2(string playingTime, int dotcoin)
     {
-        StartCoroutine(UpRewardMode2(playingTime, dotcoin));
+        StartCoroutine(upReward(playingTime, dotcoin));
+    }
+    IEnumerator upReward(string playingTime, int dotcoinReward)
+    {
+        yield return UpRewardMode2(playingTime, dotcoinReward);
+        if (UpRewardMode2(playingTime, dotcoinReward) != null)
+        {
+            dotcoin.text = "Dotcoin: " + dotcoinReward + " - Success";
+        }
+        else
+        {
+            dotcoin.text = "Dotcoin:" + dotcoinReward + " - Fail ";
+        }
     }
     public void Restart()
     {

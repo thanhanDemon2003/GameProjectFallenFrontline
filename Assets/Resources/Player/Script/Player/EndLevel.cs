@@ -78,8 +78,6 @@ public class EndLevel : MonoBehaviour
 
         kill.text = "Kill: " + track.ZombieKilled;
         time.text = "Time: " + TimeCount;
-        // float dotcoinReward =  track.ZombieKilled * 3 + bonus;
-        // dotcoin.text= "Dotcoin:" + dotcoinReward;
 
          
         
@@ -90,7 +88,6 @@ public class EndLevel : MonoBehaviour
             audio.clip = musicWin;
             videoBackGround.color = Color.white;
 
-            //int dotcoinReward = track.ZombieKilled * 5 + bonus;
             
             if (TimeCount < 240)
             {
@@ -105,7 +102,6 @@ public class EndLevel : MonoBehaviour
                 int dotcoinReward = track.ZombieKilled * 5;
                 string playingTime = TimeCount.ToString();
                 UpRewardMap1(playingTime, dotcoinReward);
-                dotcoin.text = "Dotcoin:" + dotcoinReward;
                 return;
 
             }
@@ -115,14 +111,26 @@ public class EndLevel : MonoBehaviour
             result.text = "ANOTHER FALLEN SOLDIER";
             audio.clip = musicLose;
             videoBackGround.color = Color.red;
+            dotcoin.text = "";
         }
     }
-    public void UpRewardMap1(string playingTime, int dotcoin)
+    public void UpRewardMap1(string playingTime, int dotcoinReward)
     {
-        StartCoroutine(UpRewardMode1(playingTime, dotcoin));
+        StartCoroutine(upReward(playingTime, dotcoinReward));
         Debug.LogError("UpRewardMode1" + playingTime + dotcoin);
     }
-
+    IEnumerator upReward( string playingTime, int dotcoinReward)
+    {
+        yield return UpRewardMode1 (playingTime, dotcoinReward);
+        if (UpRewardMode1(playingTime, dotcoinReward) != null)
+        {
+            dotcoin.text = "Dotcoin: " + dotcoinReward + " - Success";
+        }
+        else
+        {
+            dotcoin.text = "Dotcoin:" + dotcoinReward + " - Fail ";
+        }
+    }
 
     public void Restart()
     {
