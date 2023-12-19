@@ -87,6 +87,8 @@ public class OnClickData : MonoBehaviour
         mySkin.interactable = false;
         mySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Owned";
         mySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.gray;
+        mySkin.GetComponentsInChildren<RawImage>()[1].enabled = false;
+        mySkin.GetComponentsInChildren<TextMeshProUGUI>()[2].text= "";
 
     }
     public void failBuy()
