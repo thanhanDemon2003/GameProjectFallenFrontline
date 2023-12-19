@@ -53,18 +53,18 @@ public class HomeScript : MonoBehaviour
             if (Application.isFocused)
             {
                 Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-                if (data._id == null || data._id == "") 
+                if (string.IsNullOrEmpty(File.ReadAllText(filePathPlayer)))
+                {
+                File.WriteAllText(filePathPlayer, "");
+                    startDataPlayer();
+                    return;
+                }
+                if(data._id == null || data._id == "")
             {
                 File.WriteAllText(filePathPlayer, "");
                 startDataPlayer();
                 return;
             }
-                if (string.IsNullOrEmpty(File.ReadAllText(filePathPlayer)))
-                {
-                    File.WriteAllText(filePathPlayer, "");
-                    startDataPlayer();
-                    return;
-                }
             string id = data._id;
             panelLoading.SetActive(true);
                 StartCoroutine(CheckPlayer(id));
@@ -184,14 +184,16 @@ public class HomeScript : MonoBehaviour
     public void onClickPayment()
     {
         Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-        string idgg = data.fb_id;
+        string gg = data.fb_id;
         string ds = data.id_discord;
-        if(idgg != null)
+        Debug.Log(gg);
+        Debug.Log(ds);
+        if(gg != null && ds == "")
         {
-            Application.OpenURL("https://dotstudio.demondev.games/payment/#idgg=" + idgg);
+            Application.OpenURL("https://dotstudio.demondev.games/payment/#idgg=" + gg);
             return;
         }
-        else if(ds != null)
+        else if(ds != null && gg == "")
         {
             Application.OpenURL("https://dotstudio.demondev.games/payment/#ds=" + ds);
             return;

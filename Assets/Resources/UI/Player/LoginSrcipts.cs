@@ -140,7 +140,7 @@ public class LoginSrcipts : MonoBehaviour
         cancel.gameObject.SetActive(false);
         WWWForm form = new WWWForm();
         form.AddField("id_discord", token);
-        form.AddField("name", token);
+        form.AddField("name", name);
         UnityWebRequest www = UnityWebRequest.Post("https://darkdisquitegame.andemongame.tech/games/Loginwithdiscord", form);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
