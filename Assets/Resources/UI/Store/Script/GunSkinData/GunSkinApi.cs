@@ -8,7 +8,7 @@ using PlayerModel;
 using System.IO;
 public class GunSkinApi
 {
-    private const string BaseURL = "https://darkdisquitegame.andemongame.tech/games/getallgunskin";
+    private const string BaseURL = "http://localhost:3000/games/getallgunskin";
 
     public static async Task<GunSkinData> GetAllSkins()
     {
@@ -36,7 +36,7 @@ public class GunSkinApi
     }
     public static IEnumerator BuySkin(string id, string idSkin)
     {
-        string url = "https://darkdisquitegame.andemongame.tech/games/buygunskin?id_Player=" + id + "&id_GunSkin=" + idSkin;
+        string url = "http://localhost:3000/games/buygunskin?id_Player=" + id + "&id_GunSkin=" + idSkin;
         WWWForm form = new WWWForm();
         form.AddField("id_Player", id);
         Debug.Log(url);

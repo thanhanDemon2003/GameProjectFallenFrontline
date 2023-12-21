@@ -107,7 +107,7 @@ public class LoginSrcipts : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("token", token);
         form.AddField("name", name);
-        UnityWebRequest www = UnityWebRequest.Post("https://darkdisquitegame.andemongame.tech/games/Login", form);
+        UnityWebRequest www = UnityWebRequest.Post("http://localhost:3000/games/Login", form);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -141,7 +141,7 @@ public class LoginSrcipts : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("id_discord", token);
         form.AddField("name", name);
-        UnityWebRequest www = UnityWebRequest.Post("https://darkdisquitegame.andemongame.tech/games/Loginwithdiscord", form);
+        UnityWebRequest www = UnityWebRequest.Post("http://localhost:3000/games/Loginwithdiscord", form);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {

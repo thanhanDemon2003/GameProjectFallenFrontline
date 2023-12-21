@@ -27,8 +27,6 @@ public class ClickMenu : MonoBehaviour
     {
         story.SetActive(false);
         wardrobe.SetActive(false);
-        shop.SetActive(false);
-        other.SetActive(false);
         setting.SetActive(false);
         instruct.SetActive(false);
     }

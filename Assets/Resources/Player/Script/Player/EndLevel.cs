@@ -18,8 +18,6 @@ public class EndLevel : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI kill;
     [SerializeField] TextMeshProUGUI time;
-    [SerializeField] TextMeshProUGUI dotcoin;
-
     [SerializeField] AudioClip musicWin;
     [SerializeField] AudioClip musicLose;
 
@@ -94,14 +92,11 @@ public class EndLevel : MonoBehaviour
                 int bonus = 50;
                 int dotcoinReward = track.ZombieKilled * 5 + bonus;
                 string playingTime = TimeCount.ToString();
-                UpRewardMap1(playingTime, dotcoinReward);
-                dotcoin.text = "Dotcoin:" + dotcoinReward;
                 return;
             }else
             {
                 int dotcoinReward = track.ZombieKilled * 5;
                 string playingTime = TimeCount.ToString();
-                UpRewardMap1(playingTime, dotcoinReward);
                 return;
 
             }
@@ -111,24 +106,6 @@ public class EndLevel : MonoBehaviour
             result.text = "ANOTHER FALLEN SOLDIER";
             audio.clip = musicLose;
             videoBackGround.color = Color.red;
-            dotcoin.text = "";
-        }
-    }
-    public void UpRewardMap1(string playingTime, int dotcoinReward)
-    {
-        StartCoroutine(upReward(playingTime, dotcoinReward));
-        Debug.LogError("UpRewardMode1" + playingTime + dotcoin);
-    }
-    IEnumerator upReward( string playingTime, int dotcoinReward)
-    {
-        yield return UpRewardMode1 (playingTime, dotcoinReward);
-        if (UpRewardMode1(playingTime, dotcoinReward) != null)
-        {
-            dotcoin.text = "Dotcoin: " + dotcoinReward + " - Success";
-        }
-        else
-        {
-            dotcoin.text = "Dotcoin:" + dotcoinReward + " - Fail ";
         }
     }
 
