@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3313466102905448899}
   - component: {fileID: 7495168636987989585}
   - component: {fileID: 5995035854654813524}
-  m_Layer: 24
+  m_Layer: 15
   m_Name: DocCase 1
   m_TagString: DocCase
   m_Icon: {fileID: 0}
