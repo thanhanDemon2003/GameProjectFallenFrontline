@@ -16,14 +16,16 @@ public class SpawnWave : MonoBehaviour
     [SerializeField] GameObject[] specialZombie;
 
     [Header("Attribute")]
-    public float timeBetweenSpawn = 7f;
-    public float count;
+    public float timeBetweenSpawn = 5f;
+    public float timeBetweenSpawnLarge = 20f;
+    public float count,largeCount;
     public int enemyIndex;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         count = timeBetweenSpawn;
+        largeCount = 50f;
     }
 
     // Update is called once per frame
@@ -47,11 +49,21 @@ public class SpawnWave : MonoBehaviour
             count = timeBetweenSpawn;
             SpawnZombie();
         }
+        if (largeCount < 0)
+        {
+            count = timeBetweenSpawnLarge;
+            SpawnLargeZombie();
+        }
     }
 
     private void SpawnZombie()
     {
         Instantiate(RandomNorZombie(), RandomSpawnPoint().position, Quaternion.identity);
+    }
+
+    private void SpawnLargeZombie()
+    {
+        Instantiate(RandomLargeZombie(), RandomSpawnPoint().position, Quaternion.identity);
     }
 
 
@@ -77,6 +89,11 @@ public class SpawnWave : MonoBehaviour
     private GameObject RandomNorZombie()
     {
         return normalZombie[Random.Range(0, normalZombie.Length)];
+    }
+
+    private GameObject RandomLargeZombie()
+    {
+        return specialZombie[Random.Range(0, normalZombie.Length)];
     }
 
 }

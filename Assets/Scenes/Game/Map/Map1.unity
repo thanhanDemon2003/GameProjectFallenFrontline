@@ -2142,7 +2142,9 @@ MonoBehaviour:
   specialZombie:
   - {fileID: 6600202725942544464, guid: 7417b2271cb95f149babb0bcaaa5042e, type: 3}
   timeBetweenSpawn: 5
+  timeBetweenSpawnLarge: 25
   count: 0
+  largeCount: 0
   enemyIndex: 0
 --- !u!4 &180158632
 Transform:
