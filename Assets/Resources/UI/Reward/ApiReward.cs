@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
 using System;
-using static UnityEngine.Rendering.DebugUI;
 public class ApiReward : MonoBehaviour
 {
     public static ApiReward rewardApi;
