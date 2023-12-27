@@ -12,7 +12,6 @@ using System;
 public class HomeScript : MonoBehaviour
 {
     private string filePathPlayer;
-    private string filePathGun;
     public Button btnLogin;
     public TextMeshProUGUI namePlayer;
     public Button btnInvetort;
@@ -24,26 +23,24 @@ public class HomeScript : MonoBehaviour
     public GameObject LoginGameObject;
     public GameObject panelLoading;
     public GameObject panelCheckInternet;
+    public GameObject panelLoad;
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        Time.timeScale =  1f;
         filePathPlayer = Application.persistentDataPath + "/player.json";
         if (!File.Exists(filePathPlayer))
         {
             File.WriteAllText(filePathPlayer, "");
         }
-        filePathGun = Application.persistentDataPath + "/wardrobe.json";
-        startDataPlayer();
+        OnFocusChanged(true);
 
-
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-        UnityEngine.Cursor.visible = true;
     }
+
     void OnEnable()
     {
-
         Application.focusChanged += OnFocusChanged;
     }
 
@@ -56,14 +53,20 @@ public class HomeScript : MonoBehaviour
             if (Application.isFocused)
             {
                 Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-                string id = data._id;
-                if (id == null || id == "")
+                if (string.IsNullOrEmpty(File.ReadAllText(filePathPlayer)))
                 {
-                    File.WriteAllText(filePathPlayer, "");
+                File.WriteAllText(filePathPlayer, "");
                     startDataPlayer();
                     return;
                 }
-                panelLoading.SetActive(true);
+                if(data._id == null || data._id == "")
+            {
+                File.WriteAllText(filePathPlayer, "");
+                startDataPlayer();
+                return;
+            }
+            string id = data._id;
+            panelLoading.SetActive(true);
                 StartCoroutine(CheckPlayer(id));
             
         }
@@ -99,11 +102,11 @@ public class HomeScript : MonoBehaviour
             }
             Debug.Log("Internet connection is available");
         }
-    }       
+    }
     private void startDataPlayer()
     {
         Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-        if(data == null)
+        if (string.IsNullOrEmpty(File.ReadAllText(filePathPlayer)))
         {
             iconLock[0].gameObject.SetActive(true);
             iconLock[1].gameObject.SetActive(true);
@@ -141,7 +144,7 @@ public class HomeScript : MonoBehaviour
             btnLogin.GetComponentInChildren<TextMeshProUGUI>().text = "Logout";
             btnLogin.onClick.AddListener(() => clickLogoutButton());
         } 
-    }
+    } 
     public void clickLogoutButton()
     {
         Debug.Log("click logout");
@@ -149,21 +152,19 @@ public class HomeScript : MonoBehaviour
         btnLogin.onClick.AddListener(() => LoginGameObject.SetActive(true));
         namePlayer.text = "";
         File.WriteAllText(filePathPlayer, "");
-        File.WriteAllText(filePathGun, "");
         PlayerPrefs.DeleteAll();
-        ResetScene();
+        startDataPlayer();
     }
-    public void ResetScene()
+    public void clickOnLoadMap(int index)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        panelLoad.SetActive(true);
+        StartCoroutine(LoadMap(index));
     }
-    public void clickOnLoadMap1()
+
+    private IEnumerator LoadMap(int index)
     {
-        SceneManager.LoadScene(1);
-    }
-    public void clickOnLoadMap2()
-    {
-        SceneManager.LoadScene(2);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(index);
     }
     public void checkInternet()
     {
@@ -183,21 +184,23 @@ public class HomeScript : MonoBehaviour
     public void onClickPayment()
     {
         Data data = JsonUtility.FromJson<Data>(File.ReadAllText(filePathPlayer));
-        string idgg = data.fb_id;
+        string gg = data.fb_id;
         string ds = data.id_discord;
-        if(idgg != null)
+        Debug.Log(gg);
+        Debug.Log(ds);
+        if(gg != null && ds == "")
         {
-            Application.OpenURL("https://dotstudio.andemongame.tech/payment/#idgg="+ idgg);
+            Application.OpenURL("https://dotstudio.demondev.games/payment/#idgg=" + gg);
             return;
         }
-        else if(ds != null)
+        else if(ds != null && gg == "")
         {
-            Application.OpenURL("https://dotstudio.andemongame.tech/payment/#ds="+ds);
+            Application.OpenURL("https://dotstudio.demondev.games/payment/#ds=" + ds);
             return;
         }
         else
         {
-            Application.OpenURL("https://dotstudio.andemongame.tech/loginpayment");
+            Application.OpenURL("https://dotstudio.demondev.games/loginpayment");
         }
     }
     public void checkStatusPlayer()

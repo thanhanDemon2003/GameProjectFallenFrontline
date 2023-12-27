@@ -45,7 +45,6 @@ public class PlayerHealth : MonoBehaviour
             Dead();
             mainCamera.localRotation = Quaternion.Euler(xRotation, 0, 0);
             animator.SetBool("PistolEquip", false);
-            endLevel.EndALevel(false);
         }
 
         UI();

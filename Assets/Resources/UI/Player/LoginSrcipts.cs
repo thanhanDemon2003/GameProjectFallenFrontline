@@ -5,13 +5,10 @@ using System.IO;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
-using System.Collections;
 using TMPro;
 using PlayerModel;
 public class LoginSrcipts : MonoBehaviour
 {
-    public string urlApi1 = "http://dotstudio.andemongame.tech/api";
-    // public string urlApi2 = "http://localhost:3000/games";
     public RectTransform login;
     public RectTransform cancel;
 
@@ -37,7 +34,7 @@ public class LoginSrcipts : MonoBehaviour
     IEnumerator Login()
     {
 
-        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.andemongame.tech/api/LoginGameWeb");
+        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.demondev.games/api/LoginGameWeb");
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -71,7 +68,7 @@ public class LoginSrcipts : MonoBehaviour
     }
     IEnumerator LoadPlayerGame(string stt)
     {
-        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.andemongame.tech/api/getdatauser?stt=" + stt);
+        UnityWebRequest www = UnityWebRequest.Get("https://dotstudio.demondev.games/api/getdatauser?stt=" + stt);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
@@ -130,7 +127,6 @@ public class LoginSrcipts : MonoBehaviour
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
             textLoading.text = "Logged in successfully";
-            Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
             SavePlayer(data);
         }
     }
@@ -144,7 +140,7 @@ public class LoginSrcipts : MonoBehaviour
         cancel.gameObject.SetActive(false);
         WWWForm form = new WWWForm();
         form.AddField("id_discord", token);
-        form.AddField("name", token);
+        form.AddField("name", name);
         UnityWebRequest www = UnityWebRequest.Post("https://darkdisquitegame.andemongame.tech/games/Loginwithdiscord", form);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
@@ -167,7 +163,7 @@ public class LoginSrcipts : MonoBehaviour
             Debug.Log("Dữ liệu nhận được: " + success + notification);
             login.gameObject.SetActive(false);
             loading.gameObject.SetActive(true);
-            textLoading.text = "Đăng nhập thành công";
+            textLoading.text = "";
             Debug.Log("Đăng nhập thành công! Dữ liệu nhận được: " + responseData);
             SavePlayer(data);
         }
@@ -188,30 +184,10 @@ public class LoginSrcipts : MonoBehaviour
         string filePath = Application.persistentDataPath + "/player.json";
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(filePath, json);
-        string filePathWardrobe = Application.persistentDataPath + "/wardrobe.json";
-        foreach ( Skins sk in skins )
-        {
-            string id = sk._id;
-            string gunskinId = sk.gunskinId;
-            string nameSkin = sk.nameSkin;
-            string color = sk.color;
-            string category = sk.category;
-            string jsonSkins = JsonUtility.ToJson(sk);
-
-            File.AppendAllText(filePathWardrobe, jsonSkins + "\n");
-            Debug.Log("Dữ liệu nhận được: " + id + gunskinId + nameSkin + color + category);
-
-        }
         
-
-        //string jsonSkins = JsonUtility.ToJson(wardrobeData); 
-
-        //File.WriteAllText(filePathWardrobe, jsonSkins);
-        //Debug.Log(skins); Debug.Log(jsonSkins);
         Debug.Log("Lưu thành công!" + filePath);
         Debug.Log("Dữ liệu nhận được: " + _id + name + fb_id + id_discord + balance + skins);
-        SceneManager.LoadScene(0);
-        // code chuyển màn tại đây
+        SceneManager.LoadSceneAsync(1);
     }
 
 

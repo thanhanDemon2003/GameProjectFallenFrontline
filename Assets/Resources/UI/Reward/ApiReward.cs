@@ -4,7 +4,9 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
-using PlayerModel;
+using System.Threading.Tasks;
+using System;
+using static UnityEngine.Rendering.DebugUI;
 public class ApiReward : MonoBehaviour
 {
     public static ApiReward rewardApi;
@@ -14,8 +16,13 @@ public class ApiReward : MonoBehaviour
     
     public static IEnumerator UpRewardMode1 (string playingTime, int dotcoin)
     {
-        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
+        Debug.LogError("UpRewardMode1"+ playingTime+ dotcoin);
+        PlayerModel.Data data = JsonUtility.FromJson<PlayerModel.Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
+        if (id == null || id == "")
+        {
+            yield return null;
+        }
         WWWForm form = new WWWForm();
         form.AddField("id_Player", id);
         form.AddField("playingTime", playingTime);
@@ -26,18 +33,28 @@ public class ApiReward : MonoBehaviour
         yield return request.SendWebRequest();
         if (request.result != UnityWebRequest.Result.Success)
         {
+            yield return null;
             Debug.Log(request.error);
         }
         else
         {
+            RewardModel.Reward reward = JsonUtility.FromJson<RewardModel.Reward>(request.downloadHandler.text);
+            reward.player = data;
+            string json = JsonUtility.ToJson(reward.player);
+            File.WriteAllText(Application.persistentDataPath + "/player.json", json);
             Debug.Log("Form upload complete!");
+            yield return true;
         }
 
     }
-    IEnumerator UpRewardMode2 (string playingTime, int dotcoin)
+    public static IEnumerator UpRewardMode2 (string playingTime, int dotcoin)
     {
-        Data data = JsonUtility.FromJson<Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
+        PlayerModel.Data data = JsonUtility.FromJson<PlayerModel.Data>(File.ReadAllText(Application.persistentDataPath + "/Player.json"));
         var id = data._id;
+        if (id == null || id == "")
+        {
+            yield return null;
+        }
         WWWForm form = new WWWForm();
         form.AddField("id", id);
         form.AddField("playingTime", playingTime);
@@ -49,12 +66,36 @@ public class ApiReward : MonoBehaviour
         {
             msg = "Unable to connect";
             Debug.Log(request.error);
+            yield return null;
         }
         else
         {
-            msg = "You have received " + dotcoin + " dotcoin";
+            RewardModel.Reward reward = JsonUtility.FromJson<RewardModel.Reward>(request.downloadHandler.text);
+            reward.player = data;
+            string json = JsonUtility.ToJson(reward.player);
+            File.WriteAllText(Application.persistentDataPath + "/player.json", json);
             Debug.Log("Form upload complete!");
+            yield return true;
         }
 
+    }
+    public static async Task<RewardModel.Reward>GetRewardModel(string idPlayer)
+    {
+        string url = "https://darkdisquitegame.andemongame.tech/games/getreward/" + idPlayer;
+        Debug.Log(url);
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            var operation = request.SendWebRequest();
+            while (!operation.isDone)
+                await Task.Delay(100);
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(request.error);
+                return null;
+            }
+            string json = request.downloadHandler.text;
+            RewardModel.Reward reward = JsonUtility.FromJson<RewardModel.Reward>(json);
+            return reward;
+        }
     }
 }

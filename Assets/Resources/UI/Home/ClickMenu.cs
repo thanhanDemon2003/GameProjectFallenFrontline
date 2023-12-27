@@ -11,6 +11,7 @@ public class ClickMenu : MonoBehaviour
     public GameObject shop;
     public GameObject other;
     public GameObject setting;
+    public GameObject instruct;
     public float lastClickTime;
     // Start is called before the first frame update
     void Start()
@@ -29,5 +30,6 @@ public class ClickMenu : MonoBehaviour
         shop.SetActive(false);
         other.SetActive(false);
         setting.SetActive(false);
+        instruct.SetActive(false);
     }
 }

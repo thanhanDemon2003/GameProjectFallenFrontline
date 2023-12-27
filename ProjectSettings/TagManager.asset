@@ -36,6 +36,8 @@ TagManager:
   - BuySkinUi
   - wardrobeItem
   - Music
+  - LoadScene
+  - saleImg
   layers:
   - Default
   - TransparentFX

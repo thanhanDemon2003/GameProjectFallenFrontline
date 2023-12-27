@@ -7,9 +7,11 @@ using UnityEngine.UI;
 using TMPro;
 public class OnClickData : MonoBehaviour
 {
+    public ApplySkin applySkin;
     private string PathFile;
     public Button mySkin;
     public GameObject buySkin;
+    public GameObject ThongBao;
 
     private void Awake()
     {
@@ -24,7 +26,8 @@ public class OnClickData : MonoBehaviour
         var category = skinData.category;
         var pathImgSkin = skinData.pathImgSkin;
         var name = skinData.nameSkin;
-        skinData.GetSkinData(skinId, pathModelSkin, balance, category, pathImgSkin, name);
+        var priceOld = skinData.priceOld;
+        skinData.GetSkinData(skinId, pathModelSkin, balance, category, pathImgSkin, name, priceOld);
         buySkin.SetActive(true);
         var image = buySkin.GetComponentsInChildren<Image>()[1];
         Texture2D tex = new(2, 2);
@@ -32,6 +35,19 @@ public class OnClickData : MonoBehaviour
         buySkin.GetComponentsInChildren<TextMeshProUGUI>()[0].text = name + " - " + category;
         buySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = balance.ToString();
         buySkin.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => onBuySkin(skinId, balance));
+        if(priceOld == balance)
+        {
+            buySkin.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "";
+            buySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.white;
+
+        }
+        else
+        {
+            buySkin.GetComponentsInChildren<TextMeshProUGUI>()[3].text = $"({priceOld})";
+            buySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.red;
+        }
+
+
         buySkin.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => buySkin.SetActive(false));
     }
     public void onBuySkin(string skinId, int balance)
@@ -41,20 +57,44 @@ public class OnClickData : MonoBehaviour
         int balancePlayer = data.balance;
         if (balance > balancePlayer)
         {
+            ThongBao.SetActive(true);
+            ThongBao.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "You don't have enough money to buy this skin";
             Debug.Log("Không đủ tiền");
             return;
         }
-        StartCoroutine(GunSkinApi.BuySkin(id, skinId));
-        Debug.Log("Mua thành công");
-        succesBuy();
+        else
+        {
+            StartCoroutine(resApiBuy(id, skinId));
+            Debug.Log("Mua thành công");
+        }
 
+    }
+    IEnumerator resApiBuy(string id, string skinId)
+    {
+        yield return GunSkinApi.BuySkin(id, skinId);
+        if (GunSkinApi.BuySkin(id, skinId) != null)
+        {
+            succesBuy();
+        }
+        else
+        {
+            failBuy();
+        }
     }
 
     public void succesBuy()
     {
-            mySkin.interactable = false;
+        mySkin.interactable = false;
         mySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "Owned";
         mySkin.GetComponentsInChildren<TextMeshProUGUI>()[1].color = Color.gray;
+        mySkin.GetComponentsInChildren<RawImage>()[1].enabled = false;
+        mySkin.GetComponentsInChildren<TextMeshProUGUI>()[2].text= "";
+
+    }
+    public void failBuy()
+    {
+        ThongBao.SetActive(true);
+        ThongBao.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[0].text = "Error, please check your network or balance again";
 
     }
 }

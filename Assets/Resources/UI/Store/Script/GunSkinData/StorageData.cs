@@ -13,6 +13,7 @@ public class StorageData : MonoBehaviour
    public string category;
    public string pathImgSkin;
    public string nameSkin;
+    public int priceOld;
 
     public void SkinData(string id, string pathPrefap, int price, int percent, string category, string pathImgSkin, string name)
     {
@@ -25,15 +26,16 @@ public class StorageData : MonoBehaviour
         }
         else
         {
-            blance = (price / 100 * percent);
+            blance = price - (price / 100 * percent);
 
         }
         this.category = category;
         this.pathImgSkin = pathImgSkin;
         nameSkin = name;
+        priceOld = price;
 
     }
-   public void GetSkinData(string skinId, string pathModelSkin, int balance, string category, string pathImgSkin, string name)
+   public void GetSkinData(string skinId, string pathModelSkin, int balance, string category, string pathImgSkin, string name, int priceOld)
     {
         this.skinId = skinId;
         this.pathModelSkin = pathModelSkin;
@@ -41,5 +43,6 @@ public class StorageData : MonoBehaviour
         this.category = category;
         this.pathImgSkin = pathImgSkin;
         nameSkin = name;
+        this.priceOld = priceOld;
     }
 }
